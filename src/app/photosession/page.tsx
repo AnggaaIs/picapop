@@ -296,7 +296,11 @@ export default function PhotoSession() {
             <div
               tabIndex={0}
               role="button"
-              className={`btn m-1 ${isCapturing ? "hidden" : ""}`}
+              className={`btn m-1 ${
+                isCapturing || error !== null || !selectedDeviceId
+                  ? "hidden"
+                  : ""
+              }`}
             >
               {filter || "No Filter"}
               <svg
