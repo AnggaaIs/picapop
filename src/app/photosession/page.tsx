@@ -231,7 +231,7 @@ export default function PhotoSession() {
                     key={index}
                     src={image}
                     alt={`Captured ${index + 1}`}
-                    className="rounded-xl aspect-4/3"
+                    className="rounded-xl aspect-[4/3] object-cover w-full"
                   />
                 ))}
               </div>
