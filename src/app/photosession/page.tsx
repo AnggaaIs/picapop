@@ -213,6 +213,12 @@ export default function PhotoSession() {
               autoPlay
               className={`${filter} w-full h-full rounded-xl border-1 object-cover`}
               style={{ transform: "scaleX(-1)" }}
+              onLoadedMetadata={() => {
+                if (videoRef.current) {
+                  videoRef.current.width = videoRef.current.videoWidth;
+                  videoRef.current.height = videoRef.current.videoHeight;
+                }
+              }}
             />
           </div>
           <div className="col-span-2 scale-100">
