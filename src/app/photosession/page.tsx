@@ -16,37 +16,12 @@ export default function PhotoSession() {
   const [filter, setFilter] = useState("");
 
   const [devices, setDevices] = useState<MediaDeviceInfo[]>([]);
-  const [selectedDeviceId, setSelectedDeviceId] = useState<string | null>(null);
-
-  useEffect(() => {
-    const getDevices = async () => {
-      if (!navigator.mediaDevices?.enumerateDevices) {
-        setError("Device enumeration is not supported on this browser.");
-        return;
-      }
-
-      try {
-        const allDevices = await navigator.mediaDevices.enumerateDevices();
-        const videoDevices = allDevices.filter(
-          (device) => device.kind === "videoinput"
-        );
-        setDevices(videoDevices);
-        if (videoDevices.length > 0) {
-          setSelectedDeviceId(videoDevices[0]?.deviceId || null);
-        }
-      } catch (err) {
-        setError("Failed to fetch devices.");
-        console.error("Error fetching devices:", err);
-      }
-    };
-
-    getDevices();
-  }, []);
+  const [selectedDeviceId, setSelectedDeviceId] = useState<string | undefined>(
+    undefined
+  );
 
   useEffect(() => {
     const startCamera = async () => {
-      if (!selectedDeviceId) return;
-
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
           video: { deviceId: { exact: selectedDeviceId } },
@@ -54,9 +29,26 @@ export default function PhotoSession() {
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
         }
+
+        if (!navigator.mediaDevices?.enumerateDevices) {
+          setError("Device enumeration is not supported on this browser.");
+          return;
+        }
+
+        try {
+          const allDevices = await navigator.mediaDevices.enumerateDevices();
+          const videoDevices = allDevices.filter(
+            (device) => device.kind === "videoinput"
+          );
+          setDevices(videoDevices);
+          if (videoDevices.length > 0) {
+            setSelectedDeviceId(videoDevices[0]?.deviceId || undefined);
+          }
+        } catch (err) {
+          setError("Failed to fetch devices.");
+        }
       } catch (err) {
         setError("Error accessing camera. Make sure permissions are allowed.");
-        console.error("Error accessing camera:", err);
       }
     };
 
