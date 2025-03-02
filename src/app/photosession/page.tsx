@@ -44,10 +44,12 @@ export default function PhotoSession() {
           if (videoDevices.length > 0) {
             setSelectedDeviceId(videoDevices[0]?.deviceId || undefined);
           }
-        } catch (_err) {
+          //eslint-disable-next-line @typescript-eslint/no-unused-vars
+        } catch (err) {
           setError("Failed to fetch devices.");
         }
-      } catch (_err) {
+        //eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (err) {
         setError("Error accessing camera. Make sure permissions are allowed.");
       }
     };
