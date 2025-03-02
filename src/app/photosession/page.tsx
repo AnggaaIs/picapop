@@ -240,7 +240,8 @@ export default function PhotoSession() {
                   devices.map((device) => (
                     <li key={device.deviceId}>
                       <button
-                        className="btn btn-ghost justify-start w-full"
+                        disabled={device.deviceId === selectedDeviceId}
+                        className="btn btn-block btn-ghost justify-start"
                         onClick={() => handleCameraSelect(device.deviceId)}
                       >
                         {device.label || `Camera ${device.deviceId}`}
