@@ -106,7 +106,7 @@ export default function PhotoSession() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error, selectedDeviceId]);
 
   const captureImage = () => {
@@ -297,11 +297,10 @@ export default function PhotoSession() {
             <div
               tabIndex={0}
               role="button"
-              className={`btn m-1 ${
-                isCapturing || error !== null || !selectedDeviceId
+              className={`btn m-1 ${isCapturing || error !== null || !selectedDeviceId
                   ? "hidden"
                   : ""
-              }`}
+                }`}
             >
               {filter || "No Filter"}
               <svg
