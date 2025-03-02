@@ -63,7 +63,7 @@ export default function PhotoSession() {
         stream.getTracks().forEach((track) => track.stop());
       }
     };
-  }, []);
+  }, [selectedDeviceId]);
 
   useEffect(() => {
     if (!isInitialized || !selectedDeviceId) return;
@@ -106,6 +106,7 @@ export default function PhotoSession() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error, selectedDeviceId]);
 
   const captureImage = () => {
