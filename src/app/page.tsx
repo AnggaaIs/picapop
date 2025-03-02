@@ -25,7 +25,7 @@ export default function Home() {
             }} className="btn btn-success w-[350px]">Lets Start</button>
           </div>
         </div>
-        <div className="p-10">
+        <div className="py-10">
           <p className="text-sm text-accent">&copy; LazyPeople 2025. All rights reserved.</p>
         </div>
       </div>
