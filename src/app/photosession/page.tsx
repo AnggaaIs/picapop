@@ -76,8 +76,12 @@ export default function PhotoSession() {
     const context = canvas?.getContext("2d");
 
     if (canvas && video && context) {
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
+      const videoAspectRatio = video.videoWidth / video.videoHeight;
+      const canvasWidth = video.videoWidth;
+      const canvasHeight = canvasWidth / videoAspectRatio;
+
+      canvas.width = canvasWidth;
+      canvas.height = canvasHeight;
       context.translate(canvas.width, 0);
       context.scale(-1, 1);
       context?.drawImage(video, 0, 0, canvas.width, canvas.height);
