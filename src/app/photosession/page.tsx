@@ -3,6 +3,31 @@ import { useEffect, useRef, useState } from "react";
 // import Image from "next/image";
 import Navbar from "../components/Navbar";
 import { ChevronDown } from "lucide-react";
+import { replaceBlackWithImages } from "@/utils/image";
+import { HashLoader } from "react-spinners";
+
+const templates = [
+  {
+    value: 1,
+    label: "Template 1",
+  },
+  {
+    value: 2,
+    label: "Template 2",
+  },
+  {
+    value: 3,
+    label: "Template 3",
+  },
+  {
+    value: 4,
+    label: "Template 4",
+  },
+  {
+    value: 5,
+    label: "Template 5",
+  },
+];
 
 export default function PhotoSession() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -17,6 +42,9 @@ export default function PhotoSession() {
     undefined
   );
   const [isFrontCamera, setIsFrontCamera] = useState(true);
+  const [processedImage, setProcessedImage] = useState<string | null>(null);
+  const [previewLoading, setPreviewLoading] = useState(false);
+  const [template, setTemplate] = useState(0);
 
   // filter
   const [filter, setFilter] = useState("");
@@ -155,6 +183,7 @@ export default function PhotoSession() {
   const startAutoCapture = async () => {
     if (isCapturing) return;
     setCapturedImages([]);
+    setProcessedImage(null);
     setIsCapturing(true);
     for (let i = 0; i < 3; i++) {
       for (let count = 3; count > 0; count--) {
@@ -182,6 +211,20 @@ export default function PhotoSession() {
       false;
     setIsFrontCamera(isFront);
     setSelectedDeviceId(deviceId);
+    (document.activeElement as HTMLElement)?.blur();
+  };
+
+  const handleProcessImage = () => {
+    setPreviewLoading(true);
+    replaceBlackWithImages(
+      `/template/template${template === 0 ? 1 : template}.png`,
+      capturedImages,
+      setProcessedImage
+    ).finally(() => setPreviewLoading(false));
+  };
+
+  const handleTemplateSelect = (template: number) => {
+    setTemplate(template);
     (document.activeElement as HTMLElement)?.blur();
   };
 
@@ -289,6 +332,52 @@ export default function PhotoSession() {
                 ))}
               </div>
             )}
+            {capturedImages.length === 3 && (
+              <div className="flex justify-center mt-5">
+                <div className="w-full dropdown dropdown-click z-20">
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="btn flex items-center justify-between gap-2"
+                  >
+                    {template === 0 ? "Pilih Template" : `Template ${template}`}
+                    <ChevronDown
+                      size={18}
+                      className="opacity-70 transition-transform duration-200"
+                    />
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content w-full absolute menu p-2 shadow-lg bg-base-200 rounded-box transition-all duration-200"
+                  >
+                    {templates.map((item) => (
+                      <li key={item.value}>
+                        <button
+                          className="btn btn-block btn-ghost justify-start"
+                          onClick={() => handleTemplateSelect(item.value)}
+                        >
+                          {item.label}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+            {capturedImages.length === 3 && (
+              <div className="flex mt-4 justify-between">
+                <button
+                  onClick={handleProcessImage}
+                  className="btn btn-outline w-full"
+                >
+                  {previewLoading ? (
+                    <HashLoader color="#000" size={20} />
+                  ) : (
+                    "Preview"
+                  )}
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
@@ -297,10 +386,11 @@ export default function PhotoSession() {
             <div
               tabIndex={0}
               role="button"
-              className={`btn m-1 ${isCapturing || error !== null || !selectedDeviceId
+              className={`btn m-1 ${
+                isCapturing || error !== null || !selectedDeviceId
                   ? "hidden"
                   : ""
-                }`}
+              }`}
             >
               {filter || "No Filter"}
               <svg
@@ -377,6 +467,22 @@ export default function PhotoSession() {
             {isCapturing ? "Capturing..." : "Capture"}
           </button>
         </div>
+        {processedImage && (
+          <div className="mt-5 flex flex-col items-center justify-center">
+            <img
+              src={processedImage}
+              alt="Processed"
+              className="rounded-xl w-[20rem]"
+            />
+            <a
+              href={processedImage}
+              download="PhotoBox.png"
+              className="btn btn-outline mt-4"
+            >
+              Download Image
+            </a>
+          </div>
+        )}
       </div>
     </>
   );
