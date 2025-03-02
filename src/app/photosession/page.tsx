@@ -95,6 +95,7 @@ export default function PhotoSession() {
   }, [selectedDeviceId, isInitialized]);
 
   useEffect(() => {
+    if (!selectedDeviceId || error) return;
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Enter") {
         startAutoCapture();
@@ -105,7 +106,7 @@ export default function PhotoSession() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [error, selectedDeviceId]);
 
   const captureImage = () => {
     const canvas = canvasRef.current;
@@ -249,7 +250,7 @@ export default function PhotoSession() {
                     </li>
                   ))
                 ) : (
-                  <li className="text-gray-500 px-4 py-2">No cameras found</li>
+                  <li className="text-gray-500 px-4 py-2">Tidak ada kamera</li>
                 )}
               </ul>
             </div>
@@ -365,7 +366,7 @@ export default function PhotoSession() {
             </ul>
           </div>
           <button
-            disabled={isCapturing || error != null}
+            disabled={isCapturing || error != null || !selectedDeviceId}
             onClick={startAutoCapture}
             className="w-full px-4 py-2 mt-2 btn bg-base-300 shadow-xs rounded-xl"
           >
