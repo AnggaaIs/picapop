@@ -16,6 +16,8 @@ export default function PhotoSession() {
   const [selectedDeviceId, setSelectedDeviceId] = useState<string | undefined>(
     undefined
   );
+  const [isFrontCamera, setIsFrontCamera] = useState(true);
+
   // filter
   const [filter, setFilter] = useState("");
 
@@ -117,8 +119,11 @@ export default function PhotoSession() {
 
       canvas.width = canvasWidth;
       canvas.height = canvasHeight;
-      context.translate(canvas.width, 0);
-      context.scale(-1, 1);
+
+      if (isFrontCamera) {
+        context.translate(canvas.width, 0);
+        context.scale(-1, 1);
+      }
       context?.drawImage(video, 0, 0, canvas.width, canvas.height);
 
       switch (filter) {
@@ -168,6 +173,12 @@ export default function PhotoSession() {
   };
 
   const handleCameraSelect = (deviceId: string) => {
+    const selectedDevice = devices.find((d) => d.deviceId === deviceId);
+    const isFront =
+      selectedDevice?.label?.toLowerCase().includes("front") ||
+      selectedDevice?.label?.toLowerCase().includes("user") ||
+      false;
+    setIsFrontCamera(isFront);
     setSelectedDeviceId(deviceId);
     (document.activeElement as HTMLElement)?.blur();
   };
@@ -251,7 +262,7 @@ export default function PhotoSession() {
               autoPlay
               playsInline
               className={`${filter} w-full h-full rounded-xl border-1 object-cover`}
-              style={{ transform: "scaleX(-1)" }}
+              style={{ transform: isFrontCamera ? "scaleX(-1)" : "none" }}
               onLoadedMetadata={() => {
                 if (videoRef.current) {
                   videoRef.current.width = videoRef.current.videoWidth;
