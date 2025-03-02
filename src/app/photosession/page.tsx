@@ -11,42 +11,42 @@ export default function PhotoSession() {
   const [error, setError] = useState<string | null>(null);
   const [isCapturing, setIsCapturing] = useState(false);
   const [countdown, setCountdown] = useState<number | string | null>(null);
-
-  // filter
-  const [filter, setFilter] = useState("");
-
+  const [isInitialized, setIsInitialized] = useState(false);
   const [devices, setDevices] = useState<MediaDeviceInfo[]>([]);
   const [selectedDeviceId, setSelectedDeviceId] = useState<string | undefined>(
     undefined
   );
+  // filter
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    const startCamera = async () => {
+    let stream: MediaStream | null = null;
+
+    const initializeCamera = async () => {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: { deviceId: { exact: selectedDeviceId } },
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
         });
+
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
         }
 
-        if (!navigator.mediaDevices?.enumerateDevices) {
-          setError("Device enumeration is not supported on this browser.");
-          return;
-        }
-
-        try {
+        if (navigator.mediaDevices?.enumerateDevices) {
           const allDevices = await navigator.mediaDevices.enumerateDevices();
           const videoDevices = allDevices.filter(
             (device) => device.kind === "videoinput"
           );
+
           setDevices(videoDevices);
-          if (videoDevices.length > 0) {
-            setSelectedDeviceId(videoDevices[0]?.deviceId || undefined);
+
+          if (videoDevices.length > 0 && !selectedDeviceId) {
+            setSelectedDeviceId(videoDevices[0].deviceId);
           }
-          //eslint-disable-next-line @typescript-eslint/no-unused-vars
-        } catch (err) {
-          setError("Failed to fetch devices.");
+
+          setIsInitialized(true);
+        } else {
+          setError("Device enumeration is not supported on this browser.");
         }
         //eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
@@ -54,8 +54,43 @@ export default function PhotoSession() {
       }
     };
 
-    startCamera();
-  }, [selectedDeviceId]);
+    initializeCamera();
+
+    return () => {
+      if (stream) {
+        stream.getTracks().forEach((track) => track.stop());
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isInitialized || !selectedDeviceId) return;
+
+    const switchCamera = async () => {
+      try {
+        const currentStream = videoRef.current?.srcObject as MediaStream;
+
+        if (currentStream) {
+          currentStream.getTracks().forEach((track) => track.stop());
+        }
+
+        const newStream = await navigator.mediaDevices.getUserMedia({
+          video: {
+            deviceId: { exact: selectedDeviceId },
+          },
+        });
+
+        if (videoRef.current) {
+          videoRef.current.srcObject = newStream;
+        }
+        //eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (err) {
+        setError("Failed to switch camera. Please try again.");
+      }
+    };
+
+    switchCamera();
+  }, [selectedDeviceId, isInitialized]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -131,6 +166,12 @@ export default function PhotoSession() {
     setIsCapturing(false);
     setCountdown(null);
   };
+
+  const handleCameraSelect = (deviceId: string) => {
+    setSelectedDeviceId(deviceId);
+    (document.activeElement as HTMLElement)?.blur();
+  };
+
   return (
     <>
       <Navbar />
@@ -171,7 +212,7 @@ export default function PhotoSession() {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-outline flex items-center justify-between gap-2"
+                className="btn flex items-center justify-between gap-2"
               >
                 {devices.find((d) => d.deviceId === selectedDeviceId)?.label ||
                   "Pilih Kamera"}
@@ -189,10 +230,7 @@ export default function PhotoSession() {
                     <li key={device.deviceId}>
                       <button
                         className="btn btn-ghost justify-start w-full"
-                        onClick={() => {
-                          setSelectedDeviceId(device.deviceId);
-                          (document.activeElement as HTMLElement)?.blur(); // Tutup dropdown setelah dipilih
-                        }}
+                        onClick={() => handleCameraSelect(device.deviceId)}
                       >
                         {device.label || `Camera ${device.deviceId}`}
                       </button>
@@ -211,6 +249,7 @@ export default function PhotoSession() {
             <video
               ref={videoRef}
               autoPlay
+              playsInline
               className={`${filter} w-full h-full rounded-xl border-1 object-cover`}
               style={{ transform: "scaleX(-1)" }}
               onLoadedMetadata={() => {
