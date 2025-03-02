@@ -243,8 +243,12 @@ export default function PhotoSession() {
               </h2>
             </div>
           ) : (
-            <div className="flex items-center justify-center text-6xl font-bold">
-              {countdown}
+            <div className="
+            bg-black/50 fixed inset-0 w-full left-0 z-[9999] h-full flex items-center justify-center top-0            
+            ">
+              <p className="text-6xl font-semibold">
+                {countdown}
+              </p>
             </div>
           )}
 
