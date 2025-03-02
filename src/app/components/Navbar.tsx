@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 'use client';
 
 import { useTheme } from "next-themes"
@@ -7,7 +8,7 @@ export default function Navbar() {
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">PhotoBox</a>
+        <a href="/" className="btn btn-ghost text-xl">PhotoBox</a>
       </div>
       <div className="flex-none">
         <div className="dropdown dropdown-end">

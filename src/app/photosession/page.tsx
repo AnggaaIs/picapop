@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { useEffect, useRef, useState } from "react";
 // import Image from "next/image";
@@ -5,6 +6,7 @@ import Navbar from "../components/Navbar";
 import { ChevronDown } from "lucide-react";
 import { replaceBlackWithImages } from "@/utils/image";
 import { HashLoader } from "react-spinners";
+import Footer from "../components/Footer";
 
 const templates = [
   {
@@ -231,259 +233,278 @@ export default function PhotoSession() {
   return (
     <>
       <Navbar />
-      <div className="p-5">
-        {countdown == null ? (
-          <div className="pb-5">
-            <h2 className="text-3xl font-semibold text-center">
-              Photo Session
-            </h2>
-          </div>
-        ) : (
-          <div className="flex items-center justify-center text-6xl font-bold">
-            {countdown}
-          </div>
-        )}
+      <div className="flex items-center justify-center flex-col p-5">
+        <div className="max-w-3xl">
 
-        {error && (
-          <div role="alert" className="alert alert-error">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 shrink-0 stroke-current"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <span>Error! Tidak mendapatkan akses ke kamera.</span>
-          </div>
-        )}
-        {!error && (
-          <div className="flex justify-center mt-5">
-            <div className="w-full max-w-xs dropdown dropdown-click">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn flex items-center justify-between gap-2"
-              >
-                {devices.find((d) => d.deviceId === selectedDeviceId)?.label ||
-                  "Pilih Kamera"}
-                <ChevronDown
-                  size={18}
-                  className="opacity-70 transition-transform duration-200"
-                />
-              </div>
-              <ul
-                tabIndex={0}
-                className="dropdown-content w-full menu p-2 shadow-lg bg-base-200 rounded-box max-w-xs transition-all duration-200"
-              >
-                {devices.length > 0 ? (
-                  devices.map((device) => (
-                    <li key={device.deviceId}>
-                      <button
-                        disabled={device.deviceId === selectedDeviceId}
-                        className="btn btn-block btn-ghost justify-start"
-                        onClick={() => handleCameraSelect(device.deviceId)}
-                      >
-                        {device.label || `Camera ${device.deviceId}`}
-                      </button>
-                    </li>
-                  ))
-                ) : (
-                  <li className="text-gray-500 px-4 py-2">Tidak ada kamera</li>
-                )}
-              </ul>
+          {countdown == null ? (
+            <div className="pb-5">
+              <h2 className="text-3xl font-semibold text-center">
+                Photo Session
+              </h2>
             </div>
-          </div>
-        )}
+          ) : (
+            <div className="
+            bg-black/50 fixed inset-0 w-full left-0 z-[9999] h-full flex items-center justify-center top-0            
+            ">
+              <p className="text-6xl font-semibold">
+                {countdown}
+              </p>
+            </div>
+          )}
 
-        <div className="grid sm:grid-cols-4 gap-5 mt-5">
-          <div className="aspect-4/3 relative col-span-2">
-            <video
-              ref={videoRef}
-              autoPlay
-              playsInline
-              className={`${filter} w-full h-full rounded-xl border-1 object-cover`}
-              style={{ transform: isFrontCamera ? "scaleX(-1)" : "none" }}
-              onLoadedMetadata={() => {
-                if (videoRef.current) {
-                  videoRef.current.width = videoRef.current.videoWidth;
-                  videoRef.current.height = videoRef.current.videoHeight;
-                }
-              }}
-            />
-          </div>
-          <div className="col-span-2 scale-100">
-            <canvas ref={canvasRef} className="hidden" />
-            {capturedImages.length > 0 && (
-              <div className="grid grid-cols-3 gap-5 mt-4">
-                {capturedImages.map((image, index) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    key={index}
-                    src={image}
-                    alt={`Captured ${index + 1}`}
-                    className="rounded-xl aspect-[4/3] object-cover w-full"
+          {error && (
+            <div role="alert" className="alert alert-error">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 shrink-0 stroke-current"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Error! Tidak mendapatkan akses ke kamera.</span>
+            </div>
+          )}
+          {!error && (
+            <div className="flex justify-center mt-5">
+              <div className="w-full max-w-xs dropdown dropdown-click">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn flex items-center justify-between gap-2"
+                >
+                  {devices.find((d) => d.deviceId === selectedDeviceId)?.label ||
+                    "Pilih Kamera"}
+                  <ChevronDown
+                    size={18}
+                    className="opacity-70 transition-transform duration-200"
                   />
-                ))}
-              </div>
-            )}
-            {capturedImages.length === 3 && (
-              <div className="flex justify-center mt-5">
-                <div className="w-full dropdown dropdown-click z-20">
-                  <div
-                    tabIndex={0}
-                    role="button"
-                    className="btn flex items-center justify-between gap-2"
-                  >
-                    {template === 0 ? "Pilih Template" : `Template ${template}`}
-                    <ChevronDown
-                      size={18}
-                      className="opacity-70 transition-transform duration-200"
-                    />
-                  </div>
-                  <ul
-                    tabIndex={0}
-                    className="dropdown-content w-full absolute menu p-2 shadow-lg bg-base-200 rounded-box transition-all duration-200"
-                  >
-                    {templates.map((item) => (
-                      <li key={item.value}>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content w-full menu p-2 shadow-lg bg-base-200 rounded-box max-w-xs transition-all duration-200"
+                >
+                  {devices.length > 0 ? (
+                    devices.map((device) => (
+                      <li key={device.deviceId}>
                         <button
+                          disabled={device.deviceId === selectedDeviceId}
                           className="btn btn-block btn-ghost justify-start"
-                          onClick={() => handleTemplateSelect(item.value)}
+                          onClick={() => handleCameraSelect(device.deviceId)}
                         >
-                          {item.label}
+                          {device.label || `Camera ${device.deviceId}`}
                         </button>
                       </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            )}
-            {capturedImages.length === 3 && (
-              <div className="flex mt-4 justify-between">
-                <button
-                  onClick={handleProcessImage}
-                  className="btn btn-outline w-full"
-                >
-                  {previewLoading ? (
-                    <HashLoader color="#000" size={20} />
+                    ))
                   ) : (
-                    "Preview"
+                    <li className="text-gray-500 px-4 py-2">Tidak ada kamera</li>
                   )}
-                </button>
+                </ul>
               </div>
-            )}
-          </div>
-        </div>
-
-        <div className="flex flex-wrap gap-2 mt-5">
-          <div className={`dropdown`}>
-            <div
-              tabIndex={0}
-              role="button"
-              className={`btn m-1 ${
-                isCapturing || error !== null || !selectedDeviceId
-                  ? "hidden"
-                  : ""
-              }`}
-            >
-              {filter || "No Filter"}
-              <svg
-                width="12px"
-                height="12px"
-                className="inline-block h-2 w-2 fill-current opacity-60"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 2048 2048"
-              >
-                <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
-              </svg>
             </div>
-            <ul
-              tabIndex={0}
-              className="dropdown-content bg-base-300 rounded-box z-1 w-52 p-2 shadow-2xl"
-            >
-              <li>
-                <input
-                  type="radio"
-                  name="filter"
-                  className="btn btn-sm btn-block btn-ghost justify-start"
-                  aria-label="No Filter"
-                  value="nofilter"
-                  onClick={() => setFilter("")}
-                />
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  name="filter"
-                  className="btn btn-sm btn-block btn-ghost justify-start"
-                  aria-label="GrayScale"
-                  value="GrayScale"
-                  onClick={() => setFilter("grayscale")}
-                />
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  name="filter"
-                  className="btn btn-sm btn-block btn-ghost justify-start"
-                  aria-label="Saturate"
-                  value="saurate-200"
-                  onClick={() => setFilter("saturate-200")}
-                />
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  name="filter"
-                  className="btn btn-sm btn-block btn-ghost justify-start"
-                  aria-label="Sepia"
-                  onClick={() => setFilter("sepia")}
-                  value="Sepia"
-                />
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  name="filter"
-                  className="btn btn-sm btn-block btn-ghost justify-start"
-                  aria-label="Invert"
-                  onClick={() => setFilter("invert")}
-                  value="Invert"
-                />
-              </li>
-            </ul>
+          )}
+
+          <div className="grid sm:grid-cols-4 gap-5 mt-5">
+            <div className="aspect-4/3 relative col-span-2">
+              <video
+                ref={videoRef}
+                autoPlay
+                playsInline
+                className={`${filter} w-full h-full rounded-xl border-1 object-cover`}
+                style={{ transform: isFrontCamera ? "scaleX(-1)" : "none" }}
+                onLoadedMetadata={() => {
+                  if (videoRef.current) {
+                    videoRef.current.width = videoRef.current.videoWidth;
+                    videoRef.current.height = videoRef.current.videoHeight;
+                  }
+                }}
+              />
+            </div>
+            <div className="col-span-2 scale-100">
+              <canvas ref={canvasRef} className="hidden" />
+              {capturedImages.length > 0 && (
+                <div className="grid grid-cols-3 gap-5 mt-4">
+                  {capturedImages.map((image, index) => (
+                    <img
+                      key={index}
+                      src={image}
+                      alt={`Captured ${index + 1}`}
+                      className="rounded-xl aspect-[4/3] object-cover w-full"
+                    />
+                  ))}
+                </div>
+              )}
+              {capturedImages.length === 3 && (
+                <div className="flex mt-4 justify-between">
+                  <button
+                    onClick={handleProcessImage}
+                    className="btn btn-outline w-full"
+                  >
+                    {previewLoading ? (
+                      <HashLoader color="#000" size={20} />
+                    ) : (
+                      "Preview"
+                    )}
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
-          <button
-            disabled={isCapturing || error != null || !selectedDeviceId}
-            onClick={startAutoCapture}
-            className="w-full px-4 py-2 mt-2 btn bg-base-300 shadow-xs rounded-xl"
-          >
-            {isCapturing ? "Capturing..." : "Capture"}
-          </button>
+
+          <div className="flex flex-wrap gap-2 mt-5">
+            <div className="flex w-full gap-2">
+              {capturedImages.length >= 0 && (
+                <div className="w-full">
+                  <div className={`dropdown w-full`}>
+                    <div
+                      tabIndex={0}
+                      role="button"
+                      className={`w-full btn m-1`}
+                    >
+                      {template === 0 ? "Pilih Template" : `Template ${template}`}
+                      <svg
+                        width="12px"
+                        height="12px"
+                        className="inline-block h-2 w-2 fill-current opacity-60"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 2048 2048"
+                      >
+                        <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+                      </svg>
+                    </div>
+                    <ul
+                      tabIndex={0}
+                      className="dropdown-content bg-base-300 rounded-box -z-1 w-52 p-2 shadow-2xl"
+                    >
+                      {templates.map((item) => (
+                        <li key={item.value}>
+                          <input
+                            type="radio"
+                            name="template"
+                            value={item.value}
+                            aria-label={item.label}
+                            onClick={() => handleTemplateSelect(item.value)}
+                            className="btn btn-sm btn-block btn-ghost justify-start"
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+
+
+              <div className={`dropdown w-full dropdown-end`}>
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className={`w-full btn m-1 ${isCapturing || error !== null || !selectedDeviceId
+                    ? "hidden"
+                    : ""
+                    }`}
+                >
+                  {filter || "No Filter"}
+                  <svg
+                    width="12px"
+                    height="12px"
+                    className="inline-block h-2 w-2 fill-current opacity-60"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 2048 2048"
+                  >
+                    <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+                  </svg>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content bg-base-300 rounded-box -z-1 w-48 p-2 shadow-2xl"
+                >
+                  <li>
+                    <input
+                      type="radio"
+                      name="filter"
+                      className="btn btn-sm btn-block btn-ghost justify-start"
+                      aria-label="No Filter"
+                      value="nofilter"
+                      onClick={() => setFilter("")}
+                    />
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      name="filter"
+                      className="btn btn-sm btn-block btn-ghost justify-start"
+                      aria-label="GrayScale"
+                      value="GrayScale"
+                      onClick={() => setFilter("grayscale")}
+                    />
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      name="filter"
+                      className="btn btn-sm btn-block btn-ghost justify-start"
+                      aria-label="Saturate"
+                      value="saurate-200"
+                      onClick={() => setFilter("saturate-200")}
+                    />
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      name="filter"
+                      className="btn btn-sm btn-block btn-ghost justify-start"
+                      aria-label="Sepia"
+                      onClick={() => setFilter("sepia")}
+                      value="Sepia"
+                    />
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      name="filter"
+                      className="btn btn-sm btn-block btn-ghost justify-start"
+                      aria-label="Invert"
+                      onClick={() => setFilter("invert")}
+                      value="Invert"
+                    />
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <button
+              disabled={isCapturing || error != null || !selectedDeviceId}
+              onClick={startAutoCapture}
+              className="w-full px-4 py-2 mt-2 btn btn-outline shadow-xs"
+            >
+              {isCapturing ? "Capturing..." : "Capture"}
+            </button>
+          </div>
+          {processedImage && (
+            <div className="mt-5 bg-secondary p-6 rounded-xl flex flex-col items-center justify-center">
+              <p className="mb-5 text-xl font-semibold">Hasil foto kamu</p>
+              <img
+                src={processedImage}
+                alt="Processed"
+                className="rounded-xl md:w-[10rem] w-[10rem]"
+              />
+              <a
+                href={processedImage}
+                download="PhotoBox.png"
+                className="btn btn-outline w-full mt-4"
+              >
+                Download Image
+              </a>
+            </div>
+          )}
         </div>
-        {processedImage && (
-          <div className="mt-5 flex flex-col items-center justify-center">
-            <img
-              src={processedImage}
-              alt="Processed"
-              className="rounded-xl w-[20rem]"
-            />
-            <a
-              href={processedImage}
-              download="PhotoBox.png"
-              className="btn btn-outline mt-4"
-            >
-              Download Image
-            </a>
-          </div>
-        )}
       </div>
+
+      <Footer />
     </>
   );
 }

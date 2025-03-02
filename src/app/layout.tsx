@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={`${outfit.className} antialiased`}>
         <ThemeProvider
           attribute="data-theme"
-          defaultTheme="light"
+          defaultTheme="valentine"
           enableSystem
           // disableTransitionOnChange
         >
