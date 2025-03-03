@@ -14,7 +14,7 @@ export default function GetStarted() {
       </div>
       <button onClick={() => {
         router.push("/photosession");
-      }} className="btn btn-accent btn-wide mt-10">Gaskeuunn</button>
+      }} className="btn btn-success btn-wide mt-10">Gaskeuunn</button>
     </div>
   )
 }
