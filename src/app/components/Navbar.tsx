@@ -2,6 +2,7 @@
 'use client';
 
 import { useTheme } from "next-themes"
+import { themes } from "@/utils/config";
 
 export default function Navbar() {
   const { setTheme } = useTheme()
@@ -24,51 +25,17 @@ export default function Navbar() {
             </svg>
           </div>
           <ul tabIndex={0} className="dropdown-content bg-base-300 rounded-box z-1 w-52 p-2 shadow-2xl">
-            <li>
-              <input
-                type="radio"
-                name="theme-dropdown"
-                className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                aria-label="Light"
-                onClick={() => setTheme("light")}
-                value="default" />
-            </li>
-            <li>
-              <input
-                type="radio"
-                name="theme-dropdown"
-                className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                aria-label="Retro"
-                onClick={() => setTheme("retro")}
-                value="retro" />
-            </li>
-            <li>
-              <input
-                type="radio"
-                name="theme-dropdown"
-                className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                aria-label="Cyberpunk"
-                onClick={() => setTheme("cyberpunk")}
-                value="cyberpunk" />
-            </li>
-            <li>
-              <input
-                type="radio"
-                name="theme-dropdown"
-                className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                aria-label="Valentine"
-                onClick={() => setTheme("valentine")}
-                value="valentine" />
-            </li>
-            <li>
-              <input
-                type="radio"
-                name="theme-dropdown"
-                className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                aria-label="Aqua"
-                onClick={() => setTheme("aqua")}
-                value="aqua" />
-            </li>
+            {themes.map((theme, index) => (
+              <li key={index}>
+                <input
+                  type="radio"
+                  name="theme-dropdown"
+                  className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+                  aria-label={theme.label}
+                  onClick={() => setTheme(theme.value)}
+                  value={theme.value} />
+              </li>
+            ))}
           </ul>
         </div>
 

@@ -24,3 +24,30 @@ export const templates = [
     label: "Template 6",
   }
 ];
+
+export const themes = [
+  {
+    value: "light",
+    label: "Light",
+  },
+  {
+    value: "night",
+    label: "Night",
+  },
+  {
+    label: 'Cupcake',
+    value: 'cupcake'
+  },
+  {
+    value: "retro",
+    label: "Retro",
+  },
+  {
+    value: "cyberpunk",
+    label: "Cyberpunk",
+  },
+  {
+    value: "aqua",
+    label: "Aqua",
+  },
+]
