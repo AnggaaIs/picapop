@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PhotoBox
 
-## Getting Started
+PhotoBox adalah aplikasi berbasis web yang memungkinkan pengguna untuk mengambil selfie langsung dari kamera mereka, lalu memilih berbagai template menarik untuk mempercantik foto sebelum menyimpannya.
 
-First, run the development server:
+## 🚀 Fitur Utama
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- 📸 Ambil selfie langsung dari kamera
+- 🎨 Pilih berbagai template foto
+- 💾 Simpan hasil foto dengan template
+- 🌐 Aplikasi berbasis web dengan tampilan responsif
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📂 Instalasi dan Menjalankan Proyek
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Pastikan Anda telah menginstal [Node.js](https://nodejs.org/) dan package manager seperti `npm`, `yarn`, atau `pnpm`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Clone repository ini:
+   ```bash
+   git clone https://github.com/AnggaaIs/photobox.git
+   cd photobox
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   # atau
+   yarn install
+   # atau
+   pnpm install
+   ```
+3. Jalankan server pengembangan:
+   ```bash
+   npm run dev
+   # atau
+   yarn dev
+   # atau
+   pnpm dev
+   ```
+4. Buka [http://localhost:3000](http://localhost:3000) di browser untuk melihat hasilnya.
 
-## Learn More
+## 🛠 Teknologi yang Digunakan
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js](https://nextjs.org/) - Framework React untuk pengembangan aplikasi web
+- [TypeScript](https://www.typescriptlang.org/) - Bahasa pemrograman berbasis JavaScript dengan fitur tipe statis
+- [next/font](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) - Optimasi dan pemuatan font otomatis
+- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS untuk styling yang fleksibel dan cepat
+- [DaisyUI](https://daisyui.com/) - Komponen UI berbasis Tailwind CSS untuk desain yang lebih menarik
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🌍 Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Cara termudah untuk mendeply aplikasi ini adalah dengan menggunakan [Vercel](https://vercel.com/):
 
-## Deploy on Vercel
+1. Login atau daftar di [Vercel](https://vercel.com/)
+2. Hubungkan repository proyek ini ke Vercel
+3. Deploy dengan satu klik!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Baca lebih lanjut di [dokumentasi Next.js](https://nextjs.org/docs/app/building-your-application/deploying).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📜 Lisensi
+
+Proyek ini menggunakan lisensi MIT - silakan lihat file [LICENSE](LICENSE) untuk informasi lebih lanjut.
+
+---
+
+💡 **Kontribusi**: Jika Anda ingin berkontribusi, silakan fork repository ini dan buat pull request dengan fitur atau perbaikan yang Anda tambahkan! 😊

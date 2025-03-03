@@ -213,7 +213,6 @@ export default function PhotoSession() {
       <Navbar />
       <div className="flex items-center justify-center flex-col mb-5 p-5">
         <div className="max-w-3xl">
-
           {countdown == null ? (
             <div className="pb-5">
               <h2 className="text-3xl font-semibold text-center">
@@ -221,12 +220,12 @@ export default function PhotoSession() {
               </h2>
             </div>
           ) : (
-            <div className="
+            <div
+              className="
             bg-black/50 fixed inset-0 w-full left-0 z-[9999] h-full flex items-center justify-center top-0            
-            ">
-              <p className="text-6xl font-semibold">
-                {countdown}
-              </p>
+            "
+            >
+              <p className="text-6xl font-semibold">{countdown}</p>
             </div>
           )}
 
@@ -256,8 +255,8 @@ export default function PhotoSession() {
                   role="button"
                   className="btn flex items-center justify-between gap-2"
                 >
-                  {devices.find((d) => d.deviceId === selectedDeviceId)?.label ||
-                    "Pilih Kamera"}
+                  {devices.find((d) => d.deviceId === selectedDeviceId)
+                    ?.label || "Pilih Kamera"}
                   <ChevronDown
                     size={18}
                     className="opacity-70 transition-transform duration-200"
@@ -280,7 +279,9 @@ export default function PhotoSession() {
                       </li>
                     ))
                   ) : (
-                    <li className="text-gray-500 px-4 py-2">Tidak ada kamera</li>
+                    <li className="text-gray-500 px-4 py-2">
+                      Tidak ada kamera
+                    </li>
                   )}
                 </ul>
               </div>
@@ -321,7 +322,7 @@ export default function PhotoSession() {
                 <div className="flex mt-4 justify-between">
                   <button
                     onClick={handleProcessImage}
-                    className="btn btn-outline w-full"
+                    className="btn btn-dash w-full"
                   >
                     {previewLoading ? (
                       <HashLoader color="#000" size={20} />
@@ -342,9 +343,15 @@ export default function PhotoSession() {
                     <div
                       tabIndex={0}
                       role="button"
-                      className={`w-full btn m-1`}
+                      className={`w-full btn m-1 ${
+                        isCapturing || error !== null || !selectedDeviceId
+                          ? "hidden"
+                          : ""
+                      }`}
                     >
-                      {template === 0 ? "Pilih Template" : `Template ${template}`}
+                      {template === 0
+                        ? "Pilih Template"
+                        : `Template ${template}`}
                       <svg
                         width="12px"
                         height="12px"
@@ -376,15 +383,15 @@ export default function PhotoSession() {
                 </div>
               )}
 
-
               <div className={`dropdown w-full dropdown-end`}>
                 <div
                   tabIndex={0}
                   role="button"
-                  className={`w-full btn m-1 ${isCapturing || error !== null || !selectedDeviceId
-                    ? "hidden"
-                    : ""
-                    }`}
+                  className={`w-full btn m-1 ${
+                    isCapturing || error !== null || !selectedDeviceId
+                      ? "hidden"
+                      : ""
+                  }`}
                 >
                   {filter || "No Filter"}
                   <svg
