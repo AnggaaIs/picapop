@@ -31,7 +31,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center px-10 ">
+      <div className="flex flex-col items-center px-10 mt-30">
         <div className="flex flex-col items-center max-w-2xl md:p-5 rounded-xl w-full">
           <h2 className="text-center text-4xl font-semibold">Template Foto</h2>
           <p className="text-center">
@@ -39,7 +39,8 @@ export default function Home() {
           </p>
           <div className="mt-10 place-content-around w-[100%] grid grid-cols-2 md:grid-cols-4 gap-4">
             {templates.slice(0, 4).map((template, index) => (
-              <div key={index} className="items-center justify-center flex w-full hover:bg-primary/40 transition-all ease hover:py-4 rounded-xl">
+              <div key={index} className="items-center flex-col justify-center flex w-full hover:bg-primary/40 transition-all ease hover:py-4 rounded-xl">
+                <p className="mb-2">{template.label}</p>
                 <Image className="rounded-md" src={`/template/template${template.value}.png`} alt={`${template.label}`} width={100} height={100} />
               </div>
             ))}
