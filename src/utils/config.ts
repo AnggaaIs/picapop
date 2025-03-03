@@ -27,10 +27,6 @@ export const templates = [
 
 export const themes = [
   {
-    value: "light",
-    label: "Light",
-  },
-  {
     value: "night",
     label: "Night",
   },
