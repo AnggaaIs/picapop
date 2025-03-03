@@ -7,29 +7,7 @@ import { ChevronDown } from "lucide-react";
 import { replaceBlackWithImages } from "@/utils/image";
 import { HashLoader } from "react-spinners";
 import Footer from "../components/Footer";
-
-const templates = [
-  {
-    value: 1,
-    label: "Template 1",
-  },
-  {
-    value: 2,
-    label: "Template 2",
-  },
-  {
-    value: 3,
-    label: "Template 3",
-  },
-  {
-    value: 4,
-    label: "Template 4",
-  },
-  {
-    value: 5,
-    label: "Template 5",
-  },
-];
+import { templates } from "@/utils/config";
 
 export default function PhotoSession() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -233,7 +211,7 @@ export default function PhotoSession() {
   return (
     <>
       <Navbar />
-      <div className="flex items-center justify-center flex-col p-5">
+      <div className="flex items-center justify-center flex-col mb-5 p-5">
         <div className="max-w-3xl">
 
           {countdown == null ? (
@@ -485,8 +463,8 @@ export default function PhotoSession() {
             </button>
           </div>
           {processedImage && (
-            <div className="mt-5 bg-secondary p-6 rounded-xl flex flex-col items-center justify-center">
-              <p className="mb-5 text-xl font-semibold">Hasil foto kamu</p>
+            <div className="mt-5 p-6 rounded-xl flex flex-col items-center justify-center">
+              <p className="mb-5 text-3xl font-semibold">Hasil foto kamu</p>
               <img
                 src={processedImage}
                 alt="Processed"
