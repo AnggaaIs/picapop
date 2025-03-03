@@ -318,6 +318,131 @@ export default function PhotoSession() {
                   ))}
                 </div>
               )}
+
+              <div className="flex w-full gap-2 mt-4 ">
+                {capturedImages.length >= 0 && (
+                  <div className="w-full">
+                    <div className={`dropdown w-full`}>
+                      <div
+                        tabIndex={0}
+                        role="button"
+                        className={`w-full btn m-1 ${isCapturing || error !== null || !selectedDeviceId
+                            ? "hidden"
+                            : ""
+                          }`}
+                      >
+                        {template === 0
+                          ? "Pilih Template"
+                          : `Template ${template}`}
+                        <svg
+                          width="12px"
+                          height="12px"
+                          className="inline-block h-2 w-2 fill-current opacity-60"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 2048 2048"
+                        >
+                          <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+                        </svg>
+                      </div>
+                      <ul
+                        tabIndex={0}
+                        className="dropdown-content bg-base-300 rounded-box -z-1 w-52 p-2 shadow-2xl"
+                      >
+                        {templates.map((item) => (
+                          <li key={item.value}>
+                            <input
+                              type="radio"
+                              name="template"
+                              value={item.value}
+                              aria-label={item.label}
+                              onClick={() => handleTemplateSelect(item.value)}
+                              className="btn btn-sm btn-block btn-ghost justify-start"
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+
+                <div className={`dropdown w-full dropdown-end`}>
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className={`w-full btn m-1 ${isCapturing || error !== null || !selectedDeviceId
+                        ? "hidden"
+                        : ""
+                      }`}
+                  >
+                    {filter || "No Filter"}
+                    <svg
+                      width="12px"
+                      height="12px"
+                      className="inline-block h-2 w-2 fill-current opacity-60"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 2048 2048"
+                    >
+                      <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+                    </svg>
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content bg-base-300 rounded-box -z-1 w-48 p-2 shadow-2xl"
+                  >
+                    <li>
+                      <input
+                        type="radio"
+                        name="filter"
+                        className="btn btn-sm btn-block btn-ghost justify-start"
+                        aria-label="No Filter"
+                        value="nofilter"
+                        onClick={() => setFilter("")}
+                      />
+                    </li>
+                    <li>
+                      <input
+                        type="radio"
+                        name="filter"
+                        className="btn btn-sm btn-block btn-ghost justify-start"
+                        aria-label="GrayScale"
+                        value="GrayScale"
+                        onClick={() => setFilter("grayscale")}
+                      />
+                    </li>
+                    <li>
+                      <input
+                        type="radio"
+                        name="filter"
+                        className="btn btn-sm btn-block btn-ghost justify-start"
+                        aria-label="Saturate"
+                        value="saurate-200"
+                        onClick={() => setFilter("saturate-200")}
+                      />
+                    </li>
+                    <li>
+                      <input
+                        type="radio"
+                        name="filter"
+                        className="btn btn-sm btn-block btn-ghost justify-start"
+                        aria-label="Sepia"
+                        onClick={() => setFilter("sepia")}
+                        value="Sepia"
+                      />
+                    </li>
+                    <li>
+                      <input
+                        type="radio"
+                        name="filter"
+                        className="btn btn-sm btn-block btn-ghost justify-start"
+                        aria-label="Invert"
+                        onClick={() => setFilter("invert")}
+                        value="Invert"
+                      />
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
               {capturedImages.length === 3 && (
                 <div className="flex mt-4 justify-between">
                   <button
@@ -336,131 +461,7 @@ export default function PhotoSession() {
           </div>
 
           <div className="flex flex-wrap gap-2 mt-5">
-            <div className="flex w-full gap-2">
-              {capturedImages.length >= 0 && (
-                <div className="w-full">
-                  <div className={`dropdown w-full`}>
-                    <div
-                      tabIndex={0}
-                      role="button"
-                      className={`w-full btn m-1 ${
-                        isCapturing || error !== null || !selectedDeviceId
-                          ? "hidden"
-                          : ""
-                      }`}
-                    >
-                      {template === 0
-                        ? "Pilih Template"
-                        : `Template ${template}`}
-                      <svg
-                        width="12px"
-                        height="12px"
-                        className="inline-block h-2 w-2 fill-current opacity-60"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 2048 2048"
-                      >
-                        <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
-                      </svg>
-                    </div>
-                    <ul
-                      tabIndex={0}
-                      className="dropdown-content bg-base-300 rounded-box -z-1 w-52 p-2 shadow-2xl"
-                    >
-                      {templates.map((item) => (
-                        <li key={item.value}>
-                          <input
-                            type="radio"
-                            name="template"
-                            value={item.value}
-                            aria-label={item.label}
-                            onClick={() => handleTemplateSelect(item.value)}
-                            className="btn btn-sm btn-block btn-ghost justify-start"
-                          />
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              )}
 
-              <div className={`dropdown w-full dropdown-end`}>
-                <div
-                  tabIndex={0}
-                  role="button"
-                  className={`w-full btn m-1 ${
-                    isCapturing || error !== null || !selectedDeviceId
-                      ? "hidden"
-                      : ""
-                  }`}
-                >
-                  {filter || "No Filter"}
-                  <svg
-                    width="12px"
-                    height="12px"
-                    className="inline-block h-2 w-2 fill-current opacity-60"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 2048 2048"
-                  >
-                    <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
-                  </svg>
-                </div>
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content bg-base-300 rounded-box -z-1 w-48 p-2 shadow-2xl"
-                >
-                  <li>
-                    <input
-                      type="radio"
-                      name="filter"
-                      className="btn btn-sm btn-block btn-ghost justify-start"
-                      aria-label="No Filter"
-                      value="nofilter"
-                      onClick={() => setFilter("")}
-                    />
-                  </li>
-                  <li>
-                    <input
-                      type="radio"
-                      name="filter"
-                      className="btn btn-sm btn-block btn-ghost justify-start"
-                      aria-label="GrayScale"
-                      value="GrayScale"
-                      onClick={() => setFilter("grayscale")}
-                    />
-                  </li>
-                  <li>
-                    <input
-                      type="radio"
-                      name="filter"
-                      className="btn btn-sm btn-block btn-ghost justify-start"
-                      aria-label="Saturate"
-                      value="saurate-200"
-                      onClick={() => setFilter("saturate-200")}
-                    />
-                  </li>
-                  <li>
-                    <input
-                      type="radio"
-                      name="filter"
-                      className="btn btn-sm btn-block btn-ghost justify-start"
-                      aria-label="Sepia"
-                      onClick={() => setFilter("sepia")}
-                      value="Sepia"
-                    />
-                  </li>
-                  <li>
-                    <input
-                      type="radio"
-                      name="filter"
-                      className="btn btn-sm btn-block btn-ghost justify-start"
-                      aria-label="Invert"
-                      onClick={() => setFilter("invert")}
-                      value="Invert"
-                    />
-                  </li>
-                </ul>
-              </div>
-            </div>
             <button
               disabled={isCapturing || error != null || !selectedDeviceId}
               onClick={startAutoCapture}
