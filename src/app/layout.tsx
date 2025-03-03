@@ -24,7 +24,6 @@ export default function RootLayout({
           attribute="data-theme"
           defaultTheme="valentine"
           enableSystem
-          // disableTransitionOnChange
         >
           {children}
         </ThemeProvider>
