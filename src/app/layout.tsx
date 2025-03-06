@@ -1,15 +1,25 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "./components/theme-provider";
+import { ThemeProvider } from "../components/theme-provider";
+import { Suspense } from "react";
 
 const outfit = Outfit({
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Photobox",
-  description: "Photobox Online",
+  title: "Photobox - Photostrip Kreatif",
+  description: "Buat photostrip unik dan penuh kenangan dengan berbagai template menarik!",
+  authors: [{ name: "Lazypeople" }],
+  keywords: ["photostrip", "editor foto", "kenangan", "template foto", "photobox"],
+  openGraph: {
+    title: "Photobox - Photostrip Kreatif",
+    description: "Abadikan momen spesial dengan photostrip yang aesthetic dan stylish.",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
@@ -25,7 +35,9 @@ export default function RootLayout({
           defaultTheme="retro"
           enableSystem
         >
-          {children}
+          <Suspense fallback={null}>
+            {children}
+          </Suspense>
         </ThemeProvider>
       </body>
     </html>
