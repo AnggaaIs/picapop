@@ -46,6 +46,38 @@ export const templates = [
   {
     value: 12,
     label: "Ethereal Shine",
+  },
+  {
+    value: 13,
+    label: "Powerpuff Memories"
+  },
+  {
+    value: 14,
+    label: "Denim Cute Frame"
+  },
+  {
+    value: 15,
+    label: "Meow Memo Frame"
+  },
+  {
+    value: 16,
+    label: "Polaroid Memories Frame"
+  },
+  {
+    value: 17,
+    label: "Neon Chronicles"
+  },
+  {
+    value: 18,
+    label: "Doodle Bliss"
+  },
+  {
+    value: 19,
+    label: "Whimsical Borders"
+  },
+  {
+    value: 20,
+    label: "Cloud Pop Frames"
   }
 ];
 
