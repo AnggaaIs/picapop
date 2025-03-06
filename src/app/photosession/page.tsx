@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { Suspense, useEffect, useRef, useState } from "react";
-// import Image from "next/image";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import Navbar from "../../components/Navbar";
 import { ChevronDown } from "lucide-react";
 import { replaceBlackWithImages } from "@/utils/image";
@@ -27,11 +26,10 @@ export default function PhotoSession() {
   const [processedImage, setProcessedImage] = useState<string | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
   const searchParams = useSearchParams();
-  let tmplt = searchParams.get("t") || 0;
-  if (tmplt == null) {
-    tmplt = 0;
-  }
-  const [template, setTemplate] = useState(tmplt || 0);
+  const tmplt = useMemo(() => searchParams.get("t"), [searchParams]);
+  // console.log(tmplt);
+
+  const [template, setTemplate] = useState(tmplt ? parseInt(tmplt) : 0);
 
   // filter
   const [filter, setFilter] = useState("");
@@ -210,11 +208,6 @@ export default function PhotoSession() {
     ).finally(() => setPreviewLoading(false));
   };
 
-  // const handleTemplateSelect = (template: number) => {
-  //   setTemplate(template);
-  //   (document.activeElement as HTMLElement)?.blur();
-  // };
-
   return (
     <Suspense>
       <Navbar />
@@ -332,52 +325,12 @@ export default function PhotoSession() {
                     <select className={`w-full btn m-1 ${isCapturing || error !== null || !selectedDeviceId
                       ? "hidden"
                       : ""
-                      }`} onChange={(e) => setTemplate(parseInt(e.target.value))}>
+                      }`} onChange={(e) => setTemplate(parseInt(e.target.value))} value={template}>
                       <option value="0" defaultChecked disabled>Pilih Template</option>
                       {templates.map((item) => (
                         <option key={item.value} value={item.value}>{item.label}</option>
                       ))}
                     </select>
-                    {/* <div className={`dropdown w-full`}>
-                      <div
-                        tabIndex={0}
-                        role="button"
-                        className={`w-full btn m-1 ${isCapturing || error !== null || !selectedDeviceId
-                          ? "hidden"
-                          : ""
-                          }`}
-                      >
-                        {template === 0
-                          ? "Pilih Template"
-                          : `Template ${template}`}
-                        <svg
-                          width="12px"
-                          height="12px"
-                          className="inline-block h-2 w-2 fill-current opacity-60"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 2048 2048"
-                        >
-                          <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
-                        </svg>
-                      </div>
-                      <ul
-                        tabIndex={0}
-                        className="dropdown-content bg-base-300 rounded-box -z-1 w-52 p-2 shadow-2xl"
-                      >
-                        {templates.map((item) => (
-                          <li key={item.value}>
-                            <input
-                              type="radio"
-                              name="template"
-                              value={item.value}
-                              aria-label={item.label}
-                              onClick={() => handleTemplateSelect(item.value)}
-                              className="btn btn-sm btn-block btn-ghost justify-start"
-                            />
-                          </li>
-                        ))}
-                      </ul>
-                    </div> */}
                   </div>
                 )}
 
