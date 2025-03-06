@@ -8,8 +8,17 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Photobox",
-  description: "Photobox Online",
+  title: "Photobox - Photostrip Kreatif",
+  description: "Buat photostrip unik dan penuh kenangan dengan berbagai template menarik!",
+  authors: [{ name: "Lazypeople" }],
+  keywords: ["photostrip", "editor foto", "kenangan", "template foto", "photobox"],
+  openGraph: {
+    title: "Photobox - Photostrip Kreatif",
+    description: "Abadikan momen spesial dengan photostrip yang aesthetic dan stylish.",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
