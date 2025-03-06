@@ -13,7 +13,7 @@ import { useSearchParams } from "next/navigation";
 export default function PhotoSession() {
   const searchParams = useSearchParams();
   let tmplt = searchParams.get("t") || 0;
-  if(tmplt == null) {
+  if (tmplt == null) {
     tmplt = 0;
   }
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -209,15 +209,15 @@ export default function PhotoSession() {
     ).finally(() => setPreviewLoading(false));
   };
 
-  const handleTemplateSelect = (template: number) => {
-    setTemplate(template);
-    (document.activeElement as HTMLElement)?.blur();
-  };
+  // const handleTemplateSelect = (template: number) => {
+  //   setTemplate(template);
+  //   (document.activeElement as HTMLElement)?.blur();
+  // };
 
   return (
     <>
       <Navbar />
-      <div className="flex items-center justify-center flex-col mb-15 p-5">
+      <div className="flex items-center justify-center flex-col mb-25 p-5">
         <div className="max-w-3xl">
           {countdown == null ? (
             <div className="pb-5">
@@ -328,7 +328,16 @@ export default function PhotoSession() {
               <div className="flex w-full gap-2 mt-4 ">
                 {capturedImages.length >= 0 && (
                   <div className="w-full">
-                    <div className={`dropdown w-full`}>
+                    <select className={`w-full btn m-1 ${isCapturing || error !== null || !selectedDeviceId
+                      ? "hidden"
+                      : ""
+                      }`} onChange={(e) => setTemplate(parseInt(e.target.value))}>
+                      <option value="0" defaultChecked disabled>Pilih Template</option>
+                      {templates.map((item) => (
+                        <option key={item.value} value={item.value}>{item.label}</option>
+                      ))}
+                    </select>
+                    {/* <div className={`dropdown w-full`}>
                       <div
                         tabIndex={0}
                         role="button"
@@ -367,7 +376,7 @@ export default function PhotoSession() {
                           </li>
                         ))}
                       </ul>
-                    </div>
+                    </div> */}
                   </div>
                 )}
 
