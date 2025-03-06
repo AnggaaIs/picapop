@@ -60,7 +60,7 @@ export default function Template() {
           <div className="relative w-full h-full flex items-center justify-center max-w-xl mx-auto">
             <button onClick={() => {
               router.push("/getstarted?t=" + selected);
-            }} className="btn btn-success w-full absolute left-0 bottom-0">Pakai template ini</button>
+            }} className="btn btn-success w-full absolute left-0 bottom-0">Gunakan template ini</button>
           </div>
         </div>
       )}
