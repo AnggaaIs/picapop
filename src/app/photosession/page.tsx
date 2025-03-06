@@ -8,8 +8,14 @@ import { replaceBlackWithImages } from "@/utils/image";
 import { HashLoader } from "react-spinners";
 import Footer from "../components/Footer";
 import { templates } from "@/utils/config";
+import { useSearchParams } from "next/navigation";
 
 export default function PhotoSession() {
+  const searchParams = useSearchParams();
+  let tmplt = searchParams.get("t") || 0;
+  if(tmplt == null) {
+    tmplt = 0;
+  }
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [capturedImages, setCapturedImages] = useState<string[]>([]);
@@ -24,7 +30,7 @@ export default function PhotoSession() {
   const [isFrontCamera, setIsFrontCamera] = useState(true);
   const [processedImage, setProcessedImage] = useState<string | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
-  const [template, setTemplate] = useState(0);
+  const [template, setTemplate] = useState(tmplt || 0);
 
   // filter
   const [filter, setFilter] = useState("");
@@ -327,8 +333,8 @@ export default function PhotoSession() {
                         tabIndex={0}
                         role="button"
                         className={`w-full btn m-1 ${isCapturing || error !== null || !selectedDeviceId
-                            ? "hidden"
-                            : ""
+                          ? "hidden"
+                          : ""
                           }`}
                       >
                         {template === 0
@@ -370,8 +376,8 @@ export default function PhotoSession() {
                     tabIndex={0}
                     role="button"
                     className={`w-full btn m-1 ${isCapturing || error !== null || !selectedDeviceId
-                        ? "hidden"
-                        : ""
+                      ? "hidden"
+                      : ""
                       }`}
                   >
                     {filter || "No Filter"}

@@ -49,7 +49,9 @@ export default function Home() {
       </div>
       <div className="relative w-full mb-55">
         <div className="left-0 h-[350px] -top-45 w-full items-center justify-center flex from-base-100 via-base-100 bg-gradient-to-t to-transparent absolute">
-          <button className="btn btn-success btn-wide">Lihat semua template</button>
+          <button className="btn btn-success btn-wide" onClick={() => {
+            router.push("/templates");
+          }}>Lihat semua template</button>
         </div>
       </div>
 
