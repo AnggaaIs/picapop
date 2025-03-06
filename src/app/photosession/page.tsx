@@ -2,11 +2,11 @@
 "use client";
 import { Suspense, useEffect, useRef, useState } from "react";
 // import Image from "next/image";
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
 import { ChevronDown } from "lucide-react";
 import { replaceBlackWithImages } from "@/utils/image";
 import { HashLoader } from "react-spinners";
-import Footer from "../components/Footer";
+import Footer from "../../components/Footer";
 import { templates } from "@/utils/config";
 import { useSearchParams } from "next/navigation";
 

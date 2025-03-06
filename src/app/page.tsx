@@ -2,8 +2,8 @@
 'use client';
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { templates } from "@/utils/config";
 
 export default function Home() {
