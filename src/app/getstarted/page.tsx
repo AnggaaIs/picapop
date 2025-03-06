@@ -1,8 +1,12 @@
 'use client';
 import { useRouter } from "next/navigation";
+import { useSearchParams } from 'next/navigation'
 
 export default function GetStarted() {
   const router = useRouter();
+  const searchParams = useSearchParams(); 
+  const template = searchParams.get("t");
+  
   return (
     <div className="flex flex-col justify-center items-center p-10 h-screen">
       <h2 className="text-3xl font-semibold text-error">Petunjuk Penggunaan!</h2>
@@ -13,7 +17,7 @@ export default function GetStarted() {
         <p className="text-md font-semibold">Siapkan gaya terbaik kamu!!</p>
       </div>
       <button onClick={() => {
-        router.push("/photosession");
+        router.push("/photosession" + (template ? `?t=${template}` : ""));
       }} className="btn btn-success btn-wide mt-10">Gaskeuunn</button>
     </div>
   )
