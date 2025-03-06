@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -13,7 +14,7 @@ export default function Home() {
       <div className="flex flex-col items-center p-10 mb-20 h-screen">
         <div className="flex flex-col items-center max-w-6xl md:p-5 rounded-xl w-full">
           <h2 className="text-center text-4xl font-semibold">PhotoBox</h2>
-          <p className="text-center">
+          <p className="text-center text-base">
             berikan gaya terbaikmu dalam 3 detik
           </p>
           <div className="mt-14 w-[300px] flex items-center justify-center bg-blue-300 relative">
@@ -31,10 +32,10 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center px-10 mt-30">
+      <div className="flex flex-col items-center p-10 mt-30 bg-base-200 rounded-3xl">
         <div className="flex flex-col items-center max-w-2xl md:p-5 rounded-xl w-full">
           <h2 className="text-center text-4xl font-semibold">Template Foto</h2>
-          <p className="text-center">
+          <p className="text-center text-base">
             Kami menyediakan beberapa template foto yang bisa kamu gunakan
           </p>
           <div className="mt-10 place-content-around w-[100%] grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -47,11 +48,56 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="relative w-full mb-55">
+      <div className="relative w-full mb-20">
         <div className="left-0 h-[350px] -top-45 w-full items-center justify-center flex from-base-100 via-base-100 bg-gradient-to-t to-transparent absolute">
           <button className="btn btn-success btn-wide" onClick={() => {
             router.push("/templates");
           }}>Lihat semua template</button>
+        </div>
+      </div>
+
+
+      <div className="flex flex-col items-center px-2 mt-20">
+        <div className="flex flex-col items-center max-w-7xl md:p-5 rounded-xl w-full">
+
+          <section className="body-font">
+            <div className="container px-5 py-25 mx-auto">
+              <div className="flex flex-col text-center w-full mb-10">
+                <h1 className="text-center text-4xl font-semibold">Our Team</h1>
+                <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Passionate innovators dedicated to crafting unique experiences.</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="p-2 w-full">
+                  <div className="h-full flex items-center border-gray-200/30 border p-4 rounded-2xl">
+                    <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/80x80" />
+                    <div className="flex-grow">
+                      <h2 className="title-font font-medium">Angga Islami Pasya</h2>
+                      <p className="text-sm text-accent">Backend Developer</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-2 w-full">
+                  <div className="h-full flex items-center border-gray-200/30 border p-4 rounded-2xl">
+                    <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/84x84" />
+                    <div className="flex-grow">
+                      <h2 className="title-font font-medium">Wahyu Pamungkas</h2>
+                      <p className="text-sm text-accent">UI Designer</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-2 w-full">
+                  <div className="h-full flex items-center border-gray-200/30 border p-4 rounded-2xl">
+                    <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/88x88" />
+                    <div className="flex-grow">
+                      <h2 className="title-font font-medium">Christian Jeremy</h2>
+                      <p className="text-sm text-accent">Frontend Developer</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
         </div>
       </div>
 
