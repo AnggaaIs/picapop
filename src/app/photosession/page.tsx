@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import Navbar from "../../components/Navbar";
 import { ChevronDown } from "lucide-react";
 import { replaceBlackWithImages } from "@/utils/image";
@@ -25,14 +25,22 @@ export default function PhotoSession() {
   const [isFrontCamera, setIsFrontCamera] = useState(true);
   const [processedImage, setProcessedImage] = useState<string | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
-  const searchParams = useSearchParams();
-  const tmplt = useMemo(() => searchParams.get("t"), [searchParams]);
   // console.log(tmplt);
 
-  const [template, setTemplate] = useState(tmplt ? parseInt(tmplt) : 0);
+  const [template, setTemplate] = useState(0);
 
   // filter
   const [filter, setFilter] = useState("");
+
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    const template = searchParams.get("t") || 0;
+    if (typeof template === "string") {
+      setTemplate(parseInt(template));
+    } else {
+      return
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     let stream: MediaStream | null = null;

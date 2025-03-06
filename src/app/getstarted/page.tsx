@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 export default function GetStarted() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const template = searchParams.get("t") || null;
+  const template = searchParams.get("t");
   return (
     <div className="flex flex-col justify-center items-center p-10 h-screen">
       <h2 className="text-3xl font-semibold text-error">Petunjuk Penggunaan!</h2>
