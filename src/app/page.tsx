@@ -63,8 +63,10 @@ export default function Home() {
           <section className="body-font">
             <div className="container px-5 py-25 mx-auto">
               <div className="flex flex-col text-center w-full mb-10">
-                <h1 className="text-center text-4xl font-semibold">Our Team</h1>
-                <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Passionate innovators dedicated to crafting unique experiences.</p>
+                <h1 className="text-center text-4xl font-semibold">Tim Kami</h1>
+                <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+                  Kerja bareng, bikin solusi, gas terussss!
+                </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="p-2 w-full">

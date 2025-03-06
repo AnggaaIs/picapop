@@ -217,7 +217,7 @@ export default function PhotoSession() {
   return (
     <>
       <Navbar />
-      <div className="flex items-center justify-center flex-col mb-5 p-5">
+      <div className="flex items-center justify-center flex-col mb-15 p-5">
         <div className="max-w-3xl">
           {countdown == null ? (
             <div className="pb-5">
