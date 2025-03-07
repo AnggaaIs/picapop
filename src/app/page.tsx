@@ -130,7 +130,7 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-4">
                 {Developer.map((dev) => (
                   <div key={dev.name} className="p-2 w-full">
-                    <div className="h-full flex items-center border-accent/50 border p-4 rounded-2xl">
+                    <div className="shadow-sm h-full flex items-center border-secondary/90 border p-4 rounded-2xl">
                       <img
                         alt="team"
                         className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
