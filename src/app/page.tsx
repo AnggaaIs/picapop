@@ -119,18 +119,18 @@ export default function Home() {
 
       <div className="flex flex-col items-center px-2 mt-20">
         <div className="flex flex-col items-center max-w-7xl md:p-5 rounded-xl w-full">
-          <section className="body-font">
-            <div className="container px-5 py-25 mx-auto">
+          <section className="body-font w-full">
+            <div className="container py-25">
               <div className="flex flex-col text-center w-full mb-10">
                 <h1 className="text-center text-4xl font-semibold">Tim Kami</h1>
                 <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
                   Kerja bareng, bikin solusi, gas terussss!
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-4">
                 {Developer.map((dev) => (
                   <div key={dev.name} className="p-2 w-full">
-                    <div className="h-full flex items-center border-gray-200/30 border p-4 rounded-2xl">
+                    <div className="shadow-sm h-full flex items-center border-secondary/90 border p-4 rounded-2xl">
                       <img
                         alt="team"
                         className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
