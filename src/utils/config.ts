@@ -25,7 +25,7 @@ export const templates = [
   },
   {
     value: 7,
-    label: "Indonesia",
+    label: "IndoFest Theme",
   },
   {
     value: 8,
