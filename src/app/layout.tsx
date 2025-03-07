@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
 import { Suspense } from "react";
+import { Analytics } from "@vercel/analytics/next";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -42,6 +43,7 @@ export default function RootLayout({
         <ThemeProvider attribute="data-theme" defaultTheme="retro" enableSystem>
           <Suspense fallback={null}>{children}</Suspense>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
