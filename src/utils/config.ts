@@ -25,7 +25,7 @@ export const templates = [
   },
   {
     value: 7,
-    label: "Retro Glow",
+    label: "Indonesia",
   },
   {
     value: 8,
@@ -49,36 +49,36 @@ export const templates = [
   },
   {
     value: 13,
-    label: "Powerpuff Memories"
+    label: "Powerpuff Memories",
   },
   {
     value: 14,
-    label: "Denim Cute Frame"
+    label: "Denim Cute Frame",
   },
   {
     value: 15,
-    label: "Meow Memo Frame"
+    label: "Meow Memo Frame",
   },
   {
     value: 16,
-    label: "Polaroid Memories Frame"
+    label: "Polaroid Memories Frame",
   },
   {
     value: 17,
-    label: "Neon Chronicles"
+    label: "Neon Chronicles",
   },
   {
     value: 18,
-    label: "Doodle Bliss"
+    label: "Doodle Bliss",
   },
   {
     value: 19,
-    label: "Whimsical Borders"
+    label: "Whimsical Borders",
   },
   {
     value: 20,
-    label: "Cloud Pop Frames"
-  }
+    label: "Cloud Pop Frames",
+  },
 ];
 
 export const themes = [
@@ -87,8 +87,8 @@ export const themes = [
     label: "Night",
   },
   {
-    label: 'Cupcake',
-    value: 'cupcake'
+    label: "Cupcake",
+    value: "cupcake",
   },
   {
     value: "retro",
@@ -102,4 +102,4 @@ export const themes = [
     value: "aqua",
     label: "Aqua",
   },
-]
+];
