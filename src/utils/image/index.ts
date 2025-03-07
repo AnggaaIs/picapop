@@ -56,6 +56,7 @@ export async function replaceBlackWithImages(
 
     const dataUrl = outputCanvas.toDataURL("image/png");
     setProcessedImage(dataUrl);
+    //eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {}
 }
 
@@ -154,6 +155,7 @@ async function processRegion(
     const imgRatio = image.width / image.height;
     const boxRatio = width / height;
 
+    //eslint-disable-next-line prefer-const
     let drawWidth, drawHeight, offsetX, offsetY;
 
     if (imgRatio > boxRatio) {
@@ -170,6 +172,7 @@ async function processRegion(
     tempCtx.drawImage(image, offsetX, offsetY, drawWidth, drawHeight);
 
     applyMaskAndDraw(outputCtx, region, maskData, canvasWidth, tempCanvas);
+    //eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {}
 }
 
