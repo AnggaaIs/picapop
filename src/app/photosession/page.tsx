@@ -10,7 +10,6 @@ import { templates } from "@/utils/config";
 import { useSearchParams } from "next/navigation";
 
 export default function PhotoSession() {
-
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [capturedImages, setCapturedImages] = useState<string[]>([]);
@@ -38,7 +37,7 @@ export default function PhotoSession() {
     if (typeof template === "string") {
       setTemplate(parseInt(template));
     } else {
-      return
+      return;
     }
   }, [searchParams]);
 
@@ -330,13 +329,22 @@ export default function PhotoSession() {
               <div className="flex w-full gap-2 mt-4 ">
                 {capturedImages.length >= 0 && (
                   <div className="w-full">
-                    <select className={`w-full btn m-1 ${isCapturing || error !== null || !selectedDeviceId
-                      ? "hidden"
-                      : ""
-                      }`} onChange={(e) => setTemplate(parseInt(e.target.value))} value={template}>
-                      <option value="0" defaultChecked disabled>Pilih Template</option>
+                    <select
+                      className={`w-full btn m-1 ${
+                        isCapturing || error !== null || !selectedDeviceId
+                          ? "hidden"
+                          : ""
+                      }`}
+                      onChange={(e) => setTemplate(parseInt(e.target.value))}
+                      value={template}
+                    >
+                      <option value="0" defaultChecked disabled>
+                        Pilih Template
+                      </option>
                       {templates.map((item) => (
-                        <option key={item.value} value={item.value}>{item.label}</option>
+                        <option key={item.value} value={item.value}>
+                          {item.label}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -346,10 +354,11 @@ export default function PhotoSession() {
                   <div
                     tabIndex={0}
                     role="button"
-                    className={`w-full btn m-1 ${isCapturing || error !== null || !selectedDeviceId
-                      ? "hidden"
-                      : ""
-                      }`}
+                    className={`w-full btn m-1 ${
+                      isCapturing || error !== null || !selectedDeviceId
+                        ? "hidden"
+                        : ""
+                    }`}
                   >
                     {filter || "No Filter"}
                     <svg
@@ -427,7 +436,14 @@ export default function PhotoSession() {
                     className="btn btn-dash w-full"
                   >
                     {previewLoading ? (
-                      <HashLoader color="#000" size={20} />
+                      <HashLoader
+                        color={
+                          getComputedStyle(document.documentElement)
+                            .getPropertyValue("--color-base-content")
+                            .trim() || "#000"
+                        }
+                        size={20}
+                      />
                     ) : (
                       "Preview"
                     )}
@@ -438,7 +454,6 @@ export default function PhotoSession() {
           </div>
 
           <div className="flex flex-wrap gap-2 mt-5">
-
             <button
               disabled={isCapturing || error != null || !selectedDeviceId}
               onClick={startAutoCapture}
