@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col items-center p-10 mb-20 h-screen">
+      <div className="flex flex-col items-center px-10 pt-10 min-h-screen">
         <div className="flex flex-col items-center max-w-6xl md:p-5 rounded-xl w-full">
           <h2 className="text-center text-4xl font-semibold">PhotoBox</h2>
           <p className="text-center text-base">
@@ -79,7 +79,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center p-10 mt-30 bg-base-200 rounded-3xl">
+      <div className="flex flex-col items-center p-10 mt-5 bg-base-200 rounded-3xl">
         <div className="flex flex-col items-center max-w-2xl md:p-5 rounded-xl w-full">
           <h2 className="text-center text-4xl font-semibold">Template Foto</h2>
           <p className="text-center text-base">
