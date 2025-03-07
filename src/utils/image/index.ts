@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable prefer-const */
 import { loadImage, createCanvas } from "canvas";
 import { Dispatch, SetStateAction } from "react";
 
@@ -155,7 +156,6 @@ async function processRegion(
     const imgRatio = image.width / image.height;
     const boxRatio = width / height;
 
-    //eslint-disable-next-line prefer-const
     let drawWidth, drawHeight, offsetX, offsetY;
 
     if (imgRatio > boxRatio) {
