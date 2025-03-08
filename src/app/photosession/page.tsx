@@ -45,7 +45,7 @@ export default function PhotoSession() {
   useEffect(() => {
     fetch("/api/templates")
       .then((res) => res.json())
-      .then((data) => setTemplates(data))
+      .then((data) => setTemplates(data.data))
       .catch((err) => console.error("Error fetching templates:", err));
   }, []);
 
