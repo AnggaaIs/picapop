@@ -178,15 +178,26 @@ export default function PhotoSession() {
     setCapturedImages([]);
     setProcessedImage(null);
     setIsCapturing(true);
+
+    const phrases = [
+      "Bilang Mangga",
+      "Cheese!",
+      "Smile :)",
+      "Bilang Tempe!",
+      "Bilang Ubi!",
+    ];
+
     for (let i = 0; i < 3; i++) {
       for (let count = 3; count > 0; count--) {
         setCountdown(count);
         await new Promise((resolve) => setTimeout(resolve, 1000));
       }
-      setCountdown("Smile :)");
-      setTimeout(() => captureImage(), 500);
+
+      setCountdown(phrases[Math.floor(Math.random() * phrases.length)]);
+
+      setTimeout(() => captureImage(), 1000);
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      // setCountdown(null);
+
       if (i < 2) {
         await new Promise((resolve) => setTimeout(resolve, 100));
       }
@@ -233,7 +244,7 @@ export default function PhotoSession() {
             bg-black/50 fixed inset-0 w-full left-0 z-[9999] h-full flex items-center justify-center top-0            
             "
             >
-              <p className="text-6xl font-semibold">{countdown}</p>
+              <p className="text-5xl font-semibold">{countdown}</p>
             </div>
           )}
 
