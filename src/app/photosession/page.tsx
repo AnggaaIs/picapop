@@ -115,9 +115,10 @@ export default function PhotoSession() {
   }, [selectedDeviceId, isInitialized]);
 
   useEffect(() => {
-    if (!selectedDeviceId || error) return;
+    if (!selectedDeviceId || error || isCapturing) return;
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Enter") {
+        if (isCapturing) return;
         startAutoCapture();
       }
     };
@@ -127,7 +128,7 @@ export default function PhotoSession() {
       window.removeEventListener("keydown", handleKeyDown);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [error, selectedDeviceId]);
+  }, [error, selectedDeviceId, isCapturing]);
 
   const captureImage = () => {
     const canvas = canvasRef.current;
