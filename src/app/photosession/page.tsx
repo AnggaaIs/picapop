@@ -1,12 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, use, useEffect, useRef, useState } from "react";
 import Navbar from "../../components/Navbar";
 import { ChevronDown } from "lucide-react";
 import { replaceBlackWithImages } from "@/utils/image";
 import { HashLoader } from "react-spinners";
 import Footer from "../../components/Footer";
-import { templates } from "@/utils/config";
 import { useSearchParams } from "next/navigation";
 
 export default function PhotoSession() {
@@ -26,20 +25,29 @@ export default function PhotoSession() {
   const [previewLoading, setPreviewLoading] = useState(false);
   // console.log(tmplt);
 
-  const [template, setTemplate] = useState(0);
+  const [template, setTemplate] = useState("Autumn Memories");
+  const [templates, setTemplates] =
+    useState<{ filename: string; label: string }[]>();
 
   // filter
   const [filter, setFilter] = useState("");
 
   const searchParams = useSearchParams();
   useEffect(() => {
-    const template = searchParams.get("t") || 0;
+    const template = searchParams.get("t") || "Autumn Memories";
     if (typeof template === "string") {
-      setTemplate(parseInt(template));
+      setTemplate(template);
     } else {
       return;
     }
   }, [searchParams]);
+
+  useEffect(() => {
+    fetch("/api/templates")
+      .then((res) => res.json())
+      .then((data) => setTemplates(data))
+      .catch((err) => console.error("Error fetching templates:", err));
+  }, []);
 
   useEffect(() => {
     let stream: MediaStream | null = null;
@@ -221,7 +229,7 @@ export default function PhotoSession() {
   const handleProcessImage = () => {
     setPreviewLoading(true);
     replaceBlackWithImages(
-      `/template/template${template === 0 ? 1 : template}.png`,
+      `/template/${template}.png`,
       capturedImages,
       setProcessedImage
     ).finally(() => setPreviewLoading(false));
@@ -347,14 +355,14 @@ export default function PhotoSession() {
                           ? "hidden"
                           : ""
                       }`}
-                      onChange={(e) => setTemplate(parseInt(e.target.value))}
+                      onChange={(e) => setTemplate(e.target.value)}
                       value={template}
                     >
                       <option value="0" defaultChecked disabled>
                         Pilih Template
                       </option>
-                      {templates.map((item) => (
-                        <option key={item.value} value={item.value}>
+                      {templates?.map((item) => (
+                        <option key={item.label} value={item.label}>
                           {item.label}
                         </option>
                       ))}

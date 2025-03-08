@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { templates } from "@/utils/config";
+import { useEffect, useState } from "react";
 
 const Developer = [
   {
@@ -29,6 +30,16 @@ const Developer = [
 
 export default function Home() {
   const router = useRouter();
+  const [templates, setTemplates] =
+    useState<{ label: string; filename: string }[]>();
+
+  useEffect(() => {
+    fetch("/api/templates")
+      .then((res) => res.json())
+      .then((data) => setTemplates(data.data))
+      .catch((err) => console.error("Error fetching templates:", err));
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -89,7 +100,7 @@ export default function Home() {
             Kami menyediakan beberapa template foto yang bisa kamu gunakan
           </p>
           <div className="mt-10 place-content-around w-[100%] grid grid-cols-2 md:grid-cols-4 gap-4">
-            {templates.slice(0, 4).map((template, index) => (
+            {templates?.slice(0, 4).map((template, index) => (
               <div
                 key={index}
                 className="items-center flex-col justify-center flex w-full hover:bg-primary/40 transition-all ease hover:py-4 rounded-xl"
@@ -97,7 +108,7 @@ export default function Home() {
                 <p className="mb-2">{template.label}</p>
                 <Image
                   className="rounded-md"
-                  src={`/template/template${template.value}.png`}
+                  src={`/template/${template.filename}`}
                   alt={`${template.label}`}
                   width={100}
                   height={100}
