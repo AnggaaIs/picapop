@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { Suspense, use, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import Navbar from "../../components/Navbar";
 import { ChevronDown } from "lucide-react";
 import { replaceBlackWithImages } from "@/utils/image";

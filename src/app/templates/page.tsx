@@ -1,5 +1,4 @@
 "use client";
-import { templates } from "@/utils/config";
 import { useRouter } from "next/navigation";
 import Footer from "../../components/Footer";
 import Image from "next/image";

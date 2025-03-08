@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { templates } from "@/utils/config";
 import { useEffect, useState } from "react";
 
 const Developer = [
