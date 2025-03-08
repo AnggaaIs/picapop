@@ -11,16 +11,19 @@ const Developer = [
     name: "Angga Islami Pasya",
     role: "Backend Developer",
     image: "/dev/angga.jpeg",
+    github: "https://github.com/AnggaaIs",
   },
   {
     name: "Wahyu Pamungkas",
-    role: "UI Designer",
+    role: "UI / UX Designer",
     image: "/dev/wahyu.jpeg",
+    github: "https://github.com/Devstore120",
   },
   {
     name: "Christian Jeremy",
     role: "Frontend Developer",
     image: "/dev/jeremy.jpeg",
+    github: "https://github.com/jeremy776",
   },
 ];
 
@@ -137,8 +140,18 @@ export default function Home() {
                         src={dev.image}
                       />
                       <div className="flex-grow">
-                        <h2 className="title-font font-medium">{dev.name}</h2>
+                        <h2 className="title-font font-medium text-bold">
+                          {dev.name}
+                        </h2>
                         <p className="text-sm text-accent">{dev.role}</p>
+                        <a
+                          href={dev.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm underline"
+                        >
+                          GitHub
+                        </a>
                       </div>
                     </div>
                   </div>
