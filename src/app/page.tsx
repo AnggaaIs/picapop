@@ -2,8 +2,6 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 
 const Developer = [
@@ -41,7 +39,6 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
       <div className="flex flex-col items-center px-10 pt-10 min-h-screen">
         <div className="flex flex-col items-center max-w-6xl md:p-5 rounded-xl w-full">
           <h2 className="text-center text-4xl font-semibold">PhotoBox</h2>
@@ -49,7 +46,6 @@ export default function Home() {
             berikan gaya terbaikmu dalam 3 detik
           </p>
           <div className="mt-14 w-[300px] flex items-center justify-center bg-blue-300 relative">
-            {/* <p>ok</p> */}
             <Image
               className="absolute left-0 top-0 -rotate-12"
               src="/example/template1.png"
@@ -82,11 +78,11 @@ export default function Home() {
           <div className="mt-106 pb-20 w-full flex items-center justify-center">
             <button
               onClick={() => {
-                router.push("/getstarted");
+                router.push("/templates");
               }}
               className="btn btn-success w-[350px]"
             >
-              Lets Start
+              Pilih bingkai
             </button>
           </div>
         </div>
@@ -137,7 +133,7 @@ export default function Home() {
               <div className="flex flex-col text-center w-full mb-10">
                 <h1 className="text-center text-4xl font-semibold">Tim Kami</h1>
                 <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                  Kerja bareng, bikin solusi, gas terussss!
+                  Kerja bareng, bikin solusi, selesai bersama
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-4">
@@ -158,7 +154,7 @@ export default function Home() {
                           href={dev.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm underline"
+                          className="text-sm"
                         >
                           GitHub
                         </a>
@@ -171,8 +167,6 @@ export default function Home() {
           </section>
         </div>
       </div>
-
-      <Footer />
     </>
   );
 }

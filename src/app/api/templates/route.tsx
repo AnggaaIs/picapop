@@ -22,15 +22,40 @@ export async function GET() {
     const templates = files
       .filter((file) => file.endsWith(".png"))
       .map((file) => {
-        const label = file.replace(".png", "").replace(/-/g, " ");
+        const namaFile = file.replace(".png", "").replace(/-/g, " ");
+        const label = namaFile.replace(/\s*\(\d{2} \d{2} \d{4}\)$/, "");
+        const dateMatch = namaFile.match(/\((\d{2}) (\d{2}) (\d{4})\)/);
+        let date;
+        if (dateMatch) {
+          const day = parseInt(dateMatch[1], 10);
+          const month = parseInt(dateMatch[2], 10) - 1; // JavaScript Date() menggunakan index bulan 0-11
+          const year = parseInt(dateMatch[3], 10);
+
+          date = new Date(year, month, day);
+        }
         return {
           label,
+          date,
           filename: file,
         };
       });
 
+    // Hitung batas waktu seminggu yang lalu
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+    // Urutkan dari terbaru ke terlama
+    const sortedTemplates = templates
+      .map(item => ({
+        ...item,
+        isNew: item.date ? new Date(item.date) > oneWeekAgo : false // Cek apakah item lebih baru dari 7 hari terakhir
+      }))
+      .sort((a, b) => (b.date ? new Date(b.date).getTime() : 0) - (a.date ? new Date(a.date).getTime() : 0));
+
+      console.log(sortedTemplates)
+
     return NextResponse.json(
-      { statusCode: 200, success: true, data: templates },
+      { statusCode: 200, success: true, data: sortedTemplates },
       { status: 200 }
     );
   } catch (error) {

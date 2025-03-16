@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="footer sm:footer-horizontal rounded-t-xl footer-center bg-base-200 text-base-content p-4">
-      <aside>
+      <aside className="-space-y-2">
         <p>
           Copyright © {new Date().getFullYear()} - All rights reserved by
           LazyPeople.
@@ -12,7 +12,7 @@ export default function Footer() {
             href="https://github.com/AnggaaIs/photobox"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline font-bold"
+            className="font-bold hover:underline transition-all ease-linear"
           >
             GitHub
           </a>
