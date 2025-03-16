@@ -82,11 +82,11 @@ export default function Home() {
           <div className="mt-106 pb-20 w-full flex items-center justify-center">
             <button
               onClick={() => {
-                router.push("/getstarted");
+                router.push("/templates");
               }}
               className="btn btn-success w-[350px]"
             >
-              Lets Start
+              Pilih bingkai
             </button>
           </div>
         </div>

@@ -18,7 +18,6 @@ export async function GET() {
     }
 
     const files = fs.readdirSync(templateDir);
-    // console.log(files)
 
     const templates = files
       .filter((file) => file.endsWith(".png"))
