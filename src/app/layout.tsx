@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
 import { Suspense } from "react";
 import { Analytics } from "@vercel/analytics/next";
+import Navbar from "@/components/Navbar";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -41,7 +42,10 @@ export default function RootLayout({
     <html lang="en" data-theme="light" suppressHydrationWarning>
       <body className={`${outfit.className} antialiased`}>
         <ThemeProvider attribute="data-theme" defaultTheme="retro" enableSystem>
-          <Suspense fallback={null}>{children}</Suspense>
+          <Suspense fallback={null}>
+            <Navbar />
+            {children}
+          </Suspense>
         </ThemeProvider>
         <Analytics />
       </body>

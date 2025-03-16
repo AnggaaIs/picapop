@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { Suspense, useEffect, useRef, useState } from "react";
-import Navbar from "../../components/Navbar";
 import { ChevronDown } from "lucide-react";
 import { replaceBlackWithImages } from "@/utils/image";
 import { HashLoader } from "react-spinners";
@@ -256,7 +255,6 @@ export default function PhotoSession() {
 
   return (
     <Suspense>
-      <Navbar />
       <div className="flex items-center justify-center flex-col mb-25 p-5">
         <div className="max-w-3xl">
           {countdown == null ? (

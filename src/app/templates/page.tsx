@@ -2,7 +2,6 @@
 import { useRouter } from "next/navigation";
 import Footer from "../../components/Footer";
 import Image from "next/image";
-import Navbar from "../../components/Navbar";
 import { useEffect, useState } from "react";
 
 export default function Template() {
@@ -23,7 +22,6 @@ export default function Template() {
   const router = useRouter();
 
   return <>
-    <Navbar />
     <div className="flex flex-col items-center py-10 mb-20 min-h-screen">
       <div className="flex flex-col items-center max-w-6xl md:py-5 rounded-xl w-full">
         <h2 className="text-center text-4xl font-semibold">Template Foto</h2>
