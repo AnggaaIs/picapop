@@ -1,6 +1,5 @@
 "use client";
 import { useRouter } from "next/navigation";
-import Footer from "../../components/Footer";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -79,12 +78,10 @@ export default function Template() {
             }}
             className="btn btn-success w-full absolute left-0 bottom-0"
           >
-            Gunakan template ini
+            Pake template ini
           </button>
         </div>
       </div>
     )}
-
-    <Footer />
   </>;
 }

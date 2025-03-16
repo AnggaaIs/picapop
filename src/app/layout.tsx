@@ -5,6 +5,7 @@ import { ThemeProvider } from "../components/theme-provider";
 import { Suspense } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -45,6 +46,7 @@ export default function RootLayout({
           <Suspense fallback={null}>
             <Navbar />
             {children}
+            <Footer />
           </Suspense>
         </ThemeProvider>
         <Analytics />

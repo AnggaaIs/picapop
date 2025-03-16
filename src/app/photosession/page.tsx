@@ -4,7 +4,6 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { replaceBlackWithImages } from "@/utils/image";
 import { HashLoader } from "react-spinners";
-import Footer from "../../components/Footer";
 import { useSearchParams, useRouter } from "next/navigation";
 import { applyGrayscale, applyInvert, applySaturate, applySepia } from "@/utils/filter";
 
@@ -521,8 +520,6 @@ export default function PhotoSession() {
           )}
         </div>
       </div>
-
-      <Footer />
     </Suspense>
   );
 }
