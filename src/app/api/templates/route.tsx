@@ -18,13 +18,25 @@ export async function GET() {
     }
 
     const files = fs.readdirSync(templateDir);
+    // console.log(files)
 
     const templates = files
       .filter((file) => file.endsWith(".png"))
       .map((file) => {
-        const label = file.replace(".png", "").replace(/-/g, " ");
+        const namaFile = file.replace(".png", "").replace(/-/g, " ");
+        const label = namaFile.replace(/\s*\(\d{2} \d{2} \d{4}\)$/, "");
+        const dateMatch = namaFile.match(/\((\d{2}) (\d{2}) (\d{4})\)/);
+        let date;
+        if (dateMatch) {
+          const day = parseInt(dateMatch[1], 10);
+          const month = parseInt(dateMatch[2], 10) - 1; // JavaScript Date() menggunakan index bulan 0-11
+          const year = parseInt(dateMatch[3], 10);
+        
+          date = new Date(year, month, day);
+        }
         return {
           label,
+          date,
           filename: file,
         };
       });
