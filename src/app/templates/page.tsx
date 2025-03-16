@@ -9,7 +9,6 @@ export default function Template() {
   const [selected, setSelected] = useState<string | null>(null);
   const [templates, setTemplates] =
     useState<{ label: string; filename: string; isNew: boolean; date: Date; }[]>();
-
   const onSelect = (value: string) => {
     setSelected(value);
   };
