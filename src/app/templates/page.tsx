@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export default function Template() {
   const [selected, setSelected] = useState<string | null>(null);
   const [templates, setTemplates] =
-    useState<{ label: string; filename: string }[]>();
+    useState<{ label: string; filename: string; isNew: boolean; date: Date; }[]>();
 
   const onSelect = (value: string) => {
     setSelected(value);
@@ -36,14 +36,20 @@ export default function Template() {
           {templates?.map((template, index) => (
             <div
               key={index}
-              className={`w-full cursor-pointer transition-all ease-in-out rounded-xl border border-gray-200/20 p-4 shadow-md ${selected === template.label
+              className={`w-full cursor-pointer transition-all ease-in-out rounded-xl border border-gray-200/20 p-4 shadow-md 
+                ${selected === template.label
                   ? "bg-primary/40"
                   : "hover:bg-primary/20"
                 }`}
               onClick={() => onSelect(template.label)}
             >
               <div className="flex flex-col items-center justify-center gap-5">
-                <p className="text-md text-center font-medium">{template.label}</p>
+                <div className="text-center ">
+                  <p className="text-md text-center font-medium">{template.label}</p>
+                  {template.isNew && (
+                    <div className="badge badge-success badge-xs">Baru ditambahkan</div>
+                  )}
+                </div>
                 <div>
                   <input
                     type="radio"

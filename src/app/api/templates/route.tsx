@@ -31,7 +31,7 @@ export async function GET() {
           const day = parseInt(dateMatch[1], 10);
           const month = parseInt(dateMatch[2], 10) - 1; // JavaScript Date() menggunakan index bulan 0-11
           const year = parseInt(dateMatch[3], 10);
-        
+
           date = new Date(year, month, day);
         }
         return {
@@ -41,8 +41,22 @@ export async function GET() {
         };
       });
 
+    // Hitung batas waktu seminggu yang lalu
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+    // Urutkan dari terbaru ke terlama
+    const sortedTemplates = templates
+      .map(item => ({
+        ...item,
+        isNew: item.date ? new Date(item.date) > oneWeekAgo : false // Cek apakah item lebih baru dari 7 hari terakhir
+      }))
+      .sort((a, b) => (b.date ? new Date(b.date).getTime() : 0) - (a.date ? new Date(a.date).getTime() : 0));
+
+      console.log(sortedTemplates)
+
     return NextResponse.json(
-      { statusCode: 200, success: true, data: templates },
+      { statusCode: 200, success: true, data: sortedTemplates },
       { status: 200 }
     );
   } catch (error) {
