@@ -6,9 +6,10 @@ import { ChevronDown } from "lucide-react";
 import { replaceBlackWithImages } from "@/utils/image";
 import { HashLoader } from "react-spinners";
 import Footer from "../../components/Footer";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 
 export default function PhotoSession() {
+  const router = useRouter();
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [capturedImages, setCapturedImages] = useState<string[]>([]);
@@ -355,7 +356,12 @@ export default function PhotoSession() {
                           ? "hidden"
                           : ""
                       }`}
-                      onChange={(e) => setTemplate(e.target.value)}
+                      onChange={(e) => {
+                        setTemplate(e.target.value);
+                        const prms = new URLSearchParams(searchParams);
+                        prms.set('t', e.target.value);
+                        router.push(`?${prms.toString()}`, { scroll: false })
+                      }}
                       value={template}
                     >
                       <option value="0" defaultChecked disabled>
