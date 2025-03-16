@@ -24,7 +24,6 @@ export default function PhotoSession() {
   const [isFrontCamera, setIsFrontCamera] = useState(true);
   const [processedImage, setProcessedImage] = useState<string | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
-  // console.log(tmplt);
 
   const [template, setTemplate] = useState("Autumn Memories");
   const [templates, setTemplates] =
@@ -79,8 +78,8 @@ export default function PhotoSession() {
         } else {
           setError("Device enumeration is not supported on this browser.");
         }
-        //eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
+        console.log(err)
         setError("Error accessing camera. Make sure permissions are allowed.");
       }
     };
@@ -114,8 +113,8 @@ export default function PhotoSession() {
         if (videoRef.current) {
           videoRef.current.srcObject = newStream;
         }
-        //eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
+        console.log(err);
         setError("Failed to switch camera. Please try again.");
       }
     };
