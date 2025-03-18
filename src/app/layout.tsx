@@ -12,10 +12,10 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "PicaPop: A Fun & Creative Web App for Capturing and Customizing Selfies",
+  title: "📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies",
   description:
-    " Capture selfies instantly with PicaPop, the ultimate free online photo booth! Choose from aesthetic photostrip templates, add filters, and save your creative selfies in seconds. No app download needed – start now!",
-  authors: [{ name: "Lazypeople" }],
+    "✨ Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share! 🚀",
+  authors: [{ name: "LazyPeople" }],
   keywords: [
     "photo booth online",
     "selfie photo booth",
@@ -34,17 +34,34 @@ export const metadata: Metadata = {
     "selfie with template",
     "fun photo editor",
     "photobooth camera app",
-    "digital photobooth"
+    "digital photobooth",
   ],
+  icons: {
+    icon: "/picapop.png",
+    shortcut: "/picapop.png",
+  },
   openGraph: {
-    title: "PicaPop: A Fun & Creative Web App for Capturing and Customizing Selfies",
+    title: "📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies",
     description:
-      " Capture selfies instantly with PicaPop, the ultimate free online photo booth! Choose from aesthetic photostrip templates, add filters, and save your creative selfies in seconds. No app download needed – start now!",
+      "✨ Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share! 🚀",
+    images: [
+      {
+        url: "/picapop.png",
+        width: 1200,
+        height: 630,
+        alt: "PicaPop - Fun & Creative Photo Booth",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    title: "📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies",
+    description:
+      "✨ Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share! 🚀",
+    images: ["/twitter-image.png"],
   },
 };
+
 
 export default function RootLayout({
   children,
