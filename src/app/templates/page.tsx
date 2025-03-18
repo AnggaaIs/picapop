@@ -33,11 +33,11 @@ export default function Template() {
             <div
               key={index}
               className={`w-full cursor-pointer transition-all ease-in-out rounded-xl border border-gray-200/20 p-4 shadow-md 
-                ${selected === template.label
+                ${selected === template.filename
                   ? "bg-primary/40"
                   : "hover:bg-primary/20"
                 }`}
-              onClick={() => onSelect(template.label)}
+              onClick={() => onSelect(template.filename)}
             >
               <div className="flex flex-col items-center justify-center gap-5">
                 <div className="text-center ">
