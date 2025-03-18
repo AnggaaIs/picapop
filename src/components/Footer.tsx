@@ -9,7 +9,7 @@ export default function Footer() {
         <p>
           Open source on{" "}
           <a
-            href="https://github.com/AnggaaIs/photobox"
+            href="https://github.com/AnggaaIs/picapop"
             target="_blank"
             rel="noopener noreferrer"
             className="font-bold hover:underline transition-all ease-linear"
