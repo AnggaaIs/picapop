@@ -41,7 +41,7 @@ export default function Home() {
     <>
       <div className="flex flex-col items-center px-10 pt-10 min-h-screen">
         <div className="flex flex-col items-center max-w-6xl md:p-5 rounded-xl w-full">
-          <h2 className="text-center text-4xl font-semibold">PhotoBox</h2>
+          <h2 className="text-center text-4xl font-semibold">PicaPop</h2>
           <p className="text-center text-base">
             berikan gaya terbaikmu dalam 3 detik
           </p>

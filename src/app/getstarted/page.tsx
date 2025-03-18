@@ -11,7 +11,7 @@ export default function GetStarted() {
       <h2 className="text-3xl font-semibold text-error">Petunjuk Penggunaan!</h2>
       <div className="my-5 text-center">
         <p>Kamu hanya memiliki <b>3 detik</b> setiap cuplikan foto</p>
-        <p className="mt-2">Photobox online ini hanya mengambil <b>3 foto</b> dalam satu sesi</p>
+        <p className="mt-2">Sesi foto online ini hanya mengambil <b>3 foto</b> dalam satu sesi</p>
         <br />
         <p className="text-md font-semibold">Siapkan gaya terbaik kamu!!</p>
       </div>

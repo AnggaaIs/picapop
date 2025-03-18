@@ -12,22 +12,34 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Photobox - Photostrip Kreatif",
+  title: "PicaPop: A Fun & Creative Web App for Capturing and Customizing Selfies",
   description:
-    "Buat photostrip unik dan penuh kenangan dengan berbagai template menarik!",
+    " Capture selfies instantly with PicaPop, the ultimate free online photo booth! Choose from aesthetic photostrip templates, add filters, and save your creative selfies in seconds. No app download needed – start now!",
   authors: [{ name: "Lazypeople" }],
   keywords: [
-    "photostrip",
-    "editor foto",
-    "kenangan",
-    "template foto",
-    "photobox",
-    "photobooth",
+    "photo booth online",
+    "selfie photo booth",
+    "free online photobooth",
+    "selfie camera web",
+    "fun selfie maker",
+    "photostrip template",
+    "photo booth filter",
+    "aesthetic photostrip",
+    "instant photo editor",
+    "online selfie editor",
+    "webcam photo booth",
+    "cute photo booth",
+    "retro photostrip",
+    "PicaPop",
+    "selfie with template",
+    "fun photo editor",
+    "photobooth camera app",
+    "digital photobooth"
   ],
   openGraph: {
-    title: "Photobox - Photostrip Kreatif",
+    title: "PicaPop: A Fun & Creative Web App for Capturing and Customizing Selfies",
     description:
-      "Abadikan momen spesial dengan photostrip yang aesthetic dan stylish.",
+      " Capture selfies instantly with PicaPop, the ultimate free online photo booth! Choose from aesthetic photostrip templates, add filters, and save your creative selfies in seconds. No app download needed – start now!",
   },
   twitter: {
     card: "summary_large_image",
