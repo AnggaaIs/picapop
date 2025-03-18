@@ -5,7 +5,12 @@ import { ChevronDown } from "lucide-react";
 import { replaceBlackWithImages } from "@/utils/image";
 import { HashLoader } from "react-spinners";
 import { useSearchParams, useRouter } from "next/navigation";
-import { applyGrayscale, applyInvert, applySaturate, applySepia } from "@/utils/filter";
+import {
+  applyGrayscale,
+  applyInvert,
+  applySaturate,
+  applySepia,
+} from "@/utils/filter";
 
 export default function PhotoSession() {
   const router = useRouter();
@@ -24,14 +29,14 @@ export default function PhotoSession() {
   const [processedImage, setProcessedImage] = useState<string | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
 
-  const [template, setTemplate] = useState("Autumn Memories");
+  const [template, setTemplate] = useState("Autumn Memories (07-03-2025)");
   const [templates, setTemplates] =
     useState<{ filename: string; label: string }[]>();
   const [filter, setFilter] = useState("");
 
   const searchParams = useSearchParams();
   useEffect(() => {
-    const template = searchParams.get("t") || "Autumn Memories";
+    const template = searchParams.get("t") || "Autumn Memories (07-03-2025)";
     if (typeof template === "string") {
       setTemplate(template);
     } else {
@@ -43,9 +48,9 @@ export default function PhotoSession() {
     fetch("/api/templates")
       .then((res) => res.json())
       .then((data) => {
-        setTemplates(data.data)
-        console.log(data.data)
-  })
+        setTemplates(data.data);
+        console.log(data.data);
+      })
       .catch((err) => console.error("Error fetching templates:", err));
   }, []);
 
@@ -79,7 +84,7 @@ export default function PhotoSession() {
           setError("Device enumeration is not supported on this browser.");
         }
       } catch (err) {
-        console.log(err)
+        console.log(err);
         setError("Error accessing camera. Make sure permissions are allowed.");
       }
     };
@@ -369,15 +374,16 @@ export default function PhotoSession() {
                 {capturedImages.length >= 0 && (
                   <div className="w-full">
                     <select
-                      className={`w-full btn m-1 ${isCapturing || error !== null || !selectedDeviceId
+                      className={`w-full btn m-1 ${
+                        isCapturing || error !== null || !selectedDeviceId
                           ? "hidden"
                           : ""
-                        }`}
+                      }`}
                       onChange={(e) => {
                         setTemplate(e.target.value);
                         const prms = new URLSearchParams(searchParams);
-                        prms.set('t', e.target.value);
-                        router.push(`?${prms.toString()}`, { scroll: false })
+                        prms.set("t", e.target.value);
+                        router.push(`?${prms.toString()}`, { scroll: false });
                       }}
                       value={template}
                     >
@@ -397,10 +403,11 @@ export default function PhotoSession() {
                   <div
                     tabIndex={0}
                     role="button"
-                    className={`w-full btn m-1 ${isCapturing || error !== null || !selectedDeviceId
+                    className={`w-full btn m-1 ${
+                      isCapturing || error !== null || !selectedDeviceId
                         ? "hidden"
                         : ""
-                      }`}
+                    }`}
                   >
                     {filter || "No Filter"}
                     <svg
