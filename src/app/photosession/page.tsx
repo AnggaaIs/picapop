@@ -42,7 +42,10 @@ export default function PhotoSession() {
   useEffect(() => {
     fetch("/api/templates")
       .then((res) => res.json())
-      .then((data) => setTemplates(data.data))
+      .then((data) => {
+        setTemplates(data.data)
+        console.log(data.data)
+  })
       .catch((err) => console.error("Error fetching templates:", err));
   }, []);
 
@@ -246,7 +249,7 @@ export default function PhotoSession() {
   const handleProcessImage = () => {
     setPreviewLoading(true);
     replaceBlackWithImages(
-      `/template/${template}.png`,
+      `/template/${template}`,
       capturedImages,
       setProcessedImage
     ).finally(() => setPreviewLoading(false));
@@ -382,7 +385,7 @@ export default function PhotoSession() {
                         Pilih Template
                       </option>
                       {templates?.map((item) => (
-                        <option key={item.label} value={item.label}>
+                        <option key={item.label} value={item.filename}>
                           {item.label}
                         </option>
                       ))}
@@ -511,7 +514,7 @@ export default function PhotoSession() {
               />
               <a
                 href={processedImage}
-                download="PhotoBox.png"
+                download="PicaPop.png"
                 className="btn btn-outline w-full mt-4"
               >
                 Download Image

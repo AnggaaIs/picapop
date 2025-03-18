@@ -1,6 +1,6 @@
-# PhotoBox
+# PicPop
 
-PhotoBox adalah aplikasi berbasis web yang memungkinkan pengguna untuk mengambil selfie langsung dari kamera mereka, lalu memilih berbagai template menarik untuk mempercantik foto sebelum menyimpannya.
+PicPop adalah aplikasi berbasis web yang memungkinkan pengguna untuk mengambil selfie langsung dari kamera mereka, lalu memilih berbagai template menarik untuk mempercantik foto sebelum menyimpannya.
 
 ## 🚀 Fitur Utama
 
@@ -15,8 +15,8 @@ Pastikan Anda telah menginstal [Node.js](https://nodejs.org/) dan package manage
 
 1. Clone repository ini:
    ```bash
-   git clone https://github.com/AnggaaIs/photobox.git
-   cd photobox
+   git clone https://github.com/AnggaaIs/picapop.git
+   cd picapop
    ```
 2. Install dependencies:
    ```bash

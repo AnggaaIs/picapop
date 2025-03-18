@@ -51,8 +51,8 @@ export default function Template() {
                     type="radio"
                     name={'template'}
                     className='radio hidden'
-                    checked={selected === template.label}
-                    onChange={() => onSelect(template.label)}
+                    checked={selected === template.filename}
+                    onChange={() => onSelect(template.filename)}
                   />
                   <Image
                     className="rounded-md"
