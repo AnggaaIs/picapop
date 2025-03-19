@@ -16,6 +16,18 @@ export const metadata: Metadata = {
   description:
     "✨ Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share! 🚀",
   authors: [{ name: "LazyPeople" }],
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet':-1, 
+      'max-image-preview':'large', 
+      'max-video-preview':-1
+    },
+  },
   keywords: [
     "photo booth online",
     "selfie photo booth",
@@ -40,8 +52,17 @@ export const metadata: Metadata = {
     icon: "/picapop.png",
     shortcut: "/picapop.png",
   },
+  category: 'Community',
+  verification: {
+    google: 'google',
+    yandex: 'yandex',
+    yahoo: 'yahoo',
+  },
   openGraph: {
     title: "📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies",
+    type: 'website',
+    siteName: 'PicaPop',
+    url: 'https://picapop.com',
     description:
       "✨ Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share! 🚀",
     images: [
