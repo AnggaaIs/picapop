@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     title: "📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies",
     type: 'website',
     siteName: 'PicaPop',
-    url: 'https://picapop.com',
+    url: 'https://picapop.vercel.app/',
     description:
       "✨ Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share! 🚀",
     images: [
