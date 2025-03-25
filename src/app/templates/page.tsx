@@ -23,7 +23,7 @@ export default function Template() {
   return <>
     <div className="flex flex-col items-center py-10 mb-20 min-h-screen">
       <div className="flex flex-col items-center max-w-6xl md:py-5 rounded-xl w-full">
-        <h2 className="text-center text-4xl font-semibold">Template Foto</h2>
+        <h1 className="text-center text-4xl font-semibold">Template Foto</h1>
         <p className="text-center">
           Kami menyediakan beberapa template foto yang bisa kamu gunakan
         </p>

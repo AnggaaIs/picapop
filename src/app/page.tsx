@@ -41,7 +41,7 @@ export default function Home() {
     <>
       <div className="flex flex-col items-center px-10 pt-10 min-h-screen">
         <div className="flex flex-col items-center max-w-6xl md:p-5 rounded-xl w-full">
-          <h2 className="text-center text-4xl font-semibold">PicaPop</h2>
+          <h1 className="text-center text-4xl font-semibold">PicaPop</h1>
           <p className="text-center text-base">
             berikan gaya terbaikmu dalam 3 detik
           </p>
@@ -90,7 +90,7 @@ export default function Home() {
 
       <div className="flex flex-col items-center p-10 mt-5 bg-base-200 rounded-3xl">
         <div className="flex flex-col items-center max-w-2xl md:p-5 rounded-xl w-full">
-          <h2 className="text-center text-4xl font-semibold">Template Foto</h2>
+          <h1 className="text-center text-4xl font-semibold">Template Foto</h1>
           <p className="text-center text-base">
             Kami menyediakan beberapa template foto yang bisa kamu gunakan
           </p>
@@ -131,7 +131,7 @@ export default function Home() {
           <section className="body-font w-full">
             <div className="container py-25">
               <div className="flex flex-col text-center w-full mb-10">
-                <h1 className="text-center text-4xl font-semibold">Tim Kami</h1>
+                <h2 className="text-center text-4xl font-semibold">Tim Kami</h2>
                 <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
                   Kerja bareng, bikin solusi, selesai bersama
                 </p>

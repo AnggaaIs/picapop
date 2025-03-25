@@ -36,6 +36,7 @@ export const metadata: Metadata = {
     "fun selfie maker",
     "photostrip template",
     "photo booth filter",
+    "picapop vercel",
     "aesthetic photostrip",
     "instant photo editor",
     "online selfie editor",
