@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -131,7 +130,7 @@ export default function Home() {
           <section className="body-font w-full">
             <div className="container py-25">
               <div className="flex flex-col text-center w-full mb-10">
-                <h2 className="text-center text-4xl font-semibold">Tim Kami</h2>
+                <h3 className="text-center text-4xl font-semibold">Tim Kami</h3>
                 <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
                   Kerja bareng, bikin solusi, selesai bersama
                 </p>
@@ -140,7 +139,7 @@ export default function Home() {
                 {Developer.map((dev) => (
                   <div key={dev.name} className="p-2 w-full">
                     <div className="shadow-sm h-full flex items-center border-secondary/90 border p-4 rounded-2xl">
-                      <img
+                      <Image
                         alt="team"
                         className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
                         src={dev.image}
