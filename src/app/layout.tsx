@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
 import { Suspense } from "react";
 import { Analytics } from "@vercel/analytics/next";
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager  } from '@next/third-parties/google'
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -103,7 +103,7 @@ export default function RootLayout({
         </ThemeProvider>
         <Analytics />
       </body>
-      <GoogleAnalytics gaId="GTM-TP8W9HZ4" />
+      <GoogleTagManager gtmId="GTM-TP8W9HZ4" />
       <GoogleAnalytics gaId="G-ZDCX80L3G0" />
     </html>
   );
