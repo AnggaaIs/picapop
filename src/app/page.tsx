@@ -97,7 +97,7 @@ export default function Home() {
             {templates?.slice(0, 4).map((template, index) => (
               <div
                 key={index}
-                className="items-center flex-col justify-center flex w-full hover:bg-primary/40 transition-all ease rounded-xl"
+                className="items-center p-2 flex-col justify-center flex w-full hover:bg-primary/40 transition-all ease hover:py-4 rounded-xl"
               >
                 <p className="mb-2 text-center">{template.label}</p>
                 <Image
@@ -138,9 +138,11 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-4">
                 {Developer.map((dev) => (
                   <div key={dev.name} className="p-2 w-full">
-                    <div className="shadow-sm h-full flex items-center border p-4 rounded-2xl">
+                    <div className="shadow-sm h-full flex items-center border-secondary/90 border p-4 rounded-2xl">
                       <Image
                         alt="team"
+                        width={50}
+                        height={50}
                         className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
                         src={dev.image}
                       />
@@ -153,7 +155,7 @@ export default function Home() {
                           href={dev.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm hover:underline"
+                          className="text-sm"
                         >
                           GitHub
                         </a>
