@@ -13,7 +13,10 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies",
+  title: {
+    template: "%s | 📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies",
+    default: "📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies"
+  },
   description:
     "✨ Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share! 🚀",
   authors: [{ name: "LazyPeople" }],
@@ -61,7 +64,11 @@ export const metadata: Metadata = {
     yahoo: 'yahoo',
   },
   openGraph: {
-    title: "📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies",
+    title: {
+      template: "%s | 📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies",
+      default: "📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies"
+    },
+    locale: "id_ID",
     type: 'website',
     siteName: 'PicaPop',
     url: 'https://picapop.vercel.app/',
@@ -78,7 +85,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies",
+    title: {
+      template: "%s | PicaPop",
+      default: "📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies"
+    },
     description:
       "✨ Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share! 🚀",
     images: ["/twitter-image.png"],
