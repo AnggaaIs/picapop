@@ -52,10 +52,29 @@ export async function GET() {
       }))
       .sort((a, b) => (b.date ? new Date(b.date).getTime() : 0) - (a.date ? new Date(a.date).getTime() : 0));
 
-      console.log(sortedTemplates)
+      const filterSpecialTemplate = sortedTemplates.map((item) => {
+        // console.log(item.label)
+        if(['Eid Mubarak', 'Blessed Ramadhan', 'Happy Ramadan'].includes(item.label)) {
+          console.log(item.label)
+          return {
+            ...item,
+            isSpecial: true,
+          };
+        } else {
+          return {
+            ...item,
+            isSpecial: false,
+          };
+        }
+      })
+
+      // filter template spesial diletakan di paling atas
+      const specialTemplate = filterSpecialTemplate.filter((item) => item.isSpecial);
+      const normalTemplate = filterSpecialTemplate.filter((item) => !item.isSpecial);
+      const sortedTemplate = [...specialTemplate, ...normalTemplate];
 
     return NextResponse.json(
-      { statusCode: 200, success: true, data: sortedTemplates },
+      { statusCode: 200, success: true, data: sortedTemplate },
       { status: 200 }
     );
   } catch (error) {

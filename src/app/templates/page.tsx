@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 export default function Template() {
   const [selected, setSelected] = useState<string | null>(null);
   const [templates, setTemplates] =
-    useState<{ label: string; filename: string; isNew: boolean; date: Date; }[]>();
+    useState<{ label: string; filename: string; isNew: boolean; date: Date; isSpecial: boolean; }[]>();
   const onSelect = (value: string) => {
     setSelected(value);
   };
@@ -32,19 +32,22 @@ export default function Template() {
           {templates?.map((template, index) => (
             <div
               key={index}
-              className={`w-full cursor-pointer transition-all ease-in-out rounded-xl border border-gray-200/20 p-4 shadow-md 
-                ${selected === template.filename
-                  ? "bg-primary/40"
-                  : "hover:bg-primary/20"
+              className={`w-full cursor-pointer transition-all ease-in-out rounded-xl border border-gray-200/20 p-4 
+                shadow-md ${selected === template.filename
+                    ? "bg-primary/40 shadow-md"
+                    : "hover:bg-primary/20 shadow-sm"
                 }`}
+              
               onClick={() => onSelect(template.filename)}
             >
               <div className="flex flex-col items-center justify-center gap-5">
                 <div className="text-center ">
                   <p className="text-md text-center font-medium">{template.label}</p>
-                  {template.isNew && (
+                  {template.isSpecial ? (
+                    <div className="badge badge-warning text-white font-semibold badge-xs">Special Ramadhan</div>
+                  ) : template.isNew ? (
                     <div className="badge badge-success badge-xs">Baru ditambahkan</div>
-                  )}
+                  ) : null}
                 </div>
                 <div>
                   <input
