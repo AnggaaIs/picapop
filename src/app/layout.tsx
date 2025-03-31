@@ -14,11 +14,11 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | 📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies",
-    default: "📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies"
+    template: "%s | PicaPop - Fun & Creative Photo Booth for Unique Selfies",
+    default: "PicaPop - Fun & Creative Photo Booth for Unique Selfies"
   },
   description:
-    "✨ Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share! 🚀",
+    "Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share! 🚀",
   authors: [{ name: "LazyPeople" }],
   robots: {
     index: true,
@@ -65,15 +65,15 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: {
-      template: "%s | 📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies",
-      default: "📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies"
+      template: "%s | PicaPop - Fun & Creative Photo Booth for Unique Selfies",
+      default: "PicaPop - Fun & Creative Photo Booth for Unique Selfies"
     },
     locale: "id_ID",
     type: 'website',
     siteName: 'PicaPop',
     url: 'https://picapop.vercel.app/',
     description:
-      "✨ Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share! 🚀",
+      "Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share! 🚀",
     images: [
       {
         url: "/picapop.png",
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: {
       template: "%s | PicaPop",
-      default: "📸 PicaPop - Fun & Creative Photo Booth for Unique Selfies"
+      default: "PicaPop - Fun & Creative Photo Booth for Unique Selfies"
     },
     description:
       "✨ Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share! 🚀",
