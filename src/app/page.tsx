@@ -41,7 +41,7 @@ export default function Home() {
       <div className="flex justify-center flex-col items-center px-10 pt-10 min-h-[80vh]">
         <div className="flex h-full flex-col gap-10 md:gap-0 md:flex-row justify-between items-center max-w-6xl md:p-5 rounded-xl w-full">
           <div className="w-full items-center md:items-start flex justify-center flex-col">
-            <h1 className="md:text-5xl text-3xl text-center md:text-left font-semibold">Bingkai Instan, Gaya Maksimal!</h1>
+            <h1 className="md:text-5xl text-3xl text-center md:text-left font-semibold">Satu Klik, Foto Makin Aesthetic!</h1>
             <p className="text-md md:text-lg text-center md:text-left mt-2">
               Pilih template, ambil foto, dan bagikan hasilnya dalam sekejap!
             </p>
