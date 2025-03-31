@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     default: "PicaPop - Fun & Creative Photo Booth for Unique Selfies"
   },
   description:
-    "Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share! 🚀",
+    "Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share!",
   authors: [{ name: "LazyPeople" }],
   robots: {
     index: true,
@@ -71,9 +71,9 @@ export const metadata: Metadata = {
     locale: "id_ID",
     type: 'website',
     siteName: 'PicaPop',
-    url: 'https://picapop.vercel.app/',
+    url: 'https://picapop.my.id/',
     description:
-      "Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share! 🚀",
+      "Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share!",
     images: [
       {
         url: "/picapop.png",
@@ -90,7 +90,7 @@ export const metadata: Metadata = {
       default: "PicaPop - Fun & Creative Photo Booth for Unique Selfies"
     },
     description:
-      "✨ Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share! 🚀",
+      "Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share!",
     images: ["/twitter-image.png"],
   },
 };
