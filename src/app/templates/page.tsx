@@ -5,7 +5,8 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Pilih Template Foto",
   openGraph: {
-    title: "Pilih template foto yang kamu suka",  }
+    title: "Pilih template foto yang kamu suka",
+  }
 };
 
 export default function Template() {
