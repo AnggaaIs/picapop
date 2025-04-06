@@ -54,23 +54,26 @@ export async function GET() {
 
       const filterSpecialTemplate = sortedTemplates.map((item) => {
         // console.log(item.label)
-        if(['Eid Mubarak', 'Blessed Ramadhan', 'Happy Ramadan'].includes(item.label)) {
+        if(['Affection Unveiled', 'Phantom of My Heart'].includes(item.label)) {
           console.log(item.label)
           return {
             ...item,
-            isSpecial: true,
+            isPartner: {
+              status: true,
+              partner_name: 'Teras48'
+            },
           };
         } else {
           return {
             ...item,
-            isSpecial: false,
+            isPartner: {},
           };
         }
       })
 
       // filter template spesial diletakan di paling atas
-      const specialTemplate = filterSpecialTemplate.filter((item) => item.isSpecial);
-      const normalTemplate = filterSpecialTemplate.filter((item) => !item.isSpecial);
+      const specialTemplate = filterSpecialTemplate.filter((item) => item.isPartner.status);
+      const normalTemplate = filterSpecialTemplate.filter((item) => !item.isPartner.status);
       const sortedTemplate = [...specialTemplate, ...normalTemplate];
 
     return NextResponse.json(
