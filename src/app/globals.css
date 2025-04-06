@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: aqua --default, cupcake, cyberpunk, night, retro;
+  themes: aqua --default, night;
   root: ":root";
   logs: true;
 }

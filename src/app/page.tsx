@@ -4,26 +4,26 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const Developer = [
-  {
-    name: "Angga Islami Pasya",
-    role: "Backend Developer",
-    image: "/dev/angga.jpeg",
-    github: "https://github.com/AnggaaIs",
-  },
-  {
-    name: "Wahyu Pamungkas",
-    role: "UI / UX Designer",
-    image: "/dev/wahyu.jpeg",
-    github: "https://github.com/Devstore120",
-  },
-  {
-    name: "Christian Jeremy",
-    role: "Frontend Developer",
-    image: "/dev/jeremy.jpeg",
-    github: "https://github.com/jeremy776",
-  },
-];
+// const Developer = [
+//   {
+//     name: "Angga Islami Pasya",
+//     role: "Backend Developer",
+//     image: "/dev/angga.jpeg",
+//     github: "https://github.com/AnggaaIs",
+//   },
+//   {
+//     name: "Wahyu Pamungkas",
+//     role: "UI / UX Designer",
+//     image: "/dev/wahyu.jpeg",
+//     github: "https://github.com/Devstore120",
+//   },
+//   {
+//     name: "Christian Jeremy",
+//     role: "Frontend Developer",
+//     image: "/dev/jeremy.jpeg",
+//     github: "https://github.com/jeremy776",
+//   },
+// ];
 
 export default function Home() {
   const router = useRouter();
@@ -103,13 +103,66 @@ export default function Home() {
             </svg>
           </Link>
           <Link href="https://teras48.com" className="flex justify-center items-center">
-              <Image src={"https://teras48.com/images/teras-horizontal.svg"} className="mix-blend-luminosity grayscale brightness-100 contrast-75 hover:grayscale-0 hover:brightness-200 hover:contrast-100" alt="Teras48" width={250} height={30}  />
+            <Image src={"https://teras48.com/images/teras-horizontal.svg"} className="mix-blend-luminosity grayscale brightness-100 contrast-75 hover:grayscale-0 hover:brightness-200 hover:contrast-100" alt="Teras48" width={250} height={30} />
           </Link>
         </div>
       </div>
     </section>
 
-    <div className="flex flex-col items-center p-10 mt-5 bg-base-200 rounded-3xl">
+    <section className="flex flex-col items-center p-10 mt-15 bg-base-200 rounded-3xl">
+      <div className="flex flex-col items-center max-w-5xl md:p-5 rounded-xl w-full">
+        <div className="mb-16 lg:mb-16 text-center">
+          <h2 className="text-2xl mb-1 md:font-extrabold font-semibold tracking-tight leading-tight text-center md:text-3xl">Pose ngawur, hasil tetap keren</h2>
+          <p className="text-base-content/80">Kamu yang kaku depan kamera? Nggak masalah. Di PicaPop, asal jepret aja. Sisanya? Biar template lucu kami yang bantu kamu tampil memukau.</p>
+        </div>
+        <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+          <div>
+            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300 lucide lucide-camera-icon lucide-camera" fill="none"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" /><circle cx="12" cy="13" r="3" /></svg>
+            </div>
+            <h3 className="mb-2 text-xl font-bold dark:text-white">Fotografi Instan</h3>
+            <p className="text-gray-300">Ambil selfie langsung dari browser, pilih template, dan biarkan kreativitasmu bicara. Semua bisa dilakukan dalam hitungan detik.</p>
+          </div>
+          <div>
+            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300 lucide lucide-palette-icon lucide-palette"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor" /><circle cx="17.5" cy="10.5" r=".5" fill="currentColor" /><circle cx="8.5" cy="7.5" r=".5" fill="currentColor" /><circle cx="6.5" cy="12.5" r=".5" fill="currentColor" /><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z" /></svg>
+            </div>
+            <h3 className="mb-2 text-xl font-bold dark:text-white">Desain Kreatif</h3>
+            <p className="text-gray-300">Jelajahi berbagai template unik dan bergaya. Dari yang minimalis sampai colorful – semua dirancang untuk membuat hasil fotomu makin standout.</p>
+          </div>
+          <div>
+            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+              <svg className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path></svg>
+            </div>
+            <h3 className="mb-2 text-xl font-bold dark:text-white">Pengalaman Personal</h3>
+            <p className="text-gray-300">Setiap foto punya cerita. Kami bantu kamu untuk menjadikannya personal dan bermakna lewat fitur kustomisasi.</p>
+          </div>
+          <div>
+            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300 lucide lucide-settings-icon lucide-settings "><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h3 className="mb-2 text-xl font-bold dark:text-white">Otomatisasi Simpel</h3>
+            <p className="text-gray-300">Dari pengambilan foto hingga penyimpanan – semuanya otomatis dan mudah, tanpa ribet.</p>
+          </div>
+          <div>
+            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300 lucide lucide-save-all-icon lucide-save-all"><path d="M10 2v3a1 1 0 0 0 1 1h5"/><path d="M18 18v-6a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6"/><path d="M18 22H4a2 2 0 0 1-2-2V6"/><path d="M8 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9.172a2 2 0 0 1 1.414.586l2.828 2.828A2 2 0 0 1 22 6.828V16a2 2 0 0 1-2.01 2z"/></svg>
+            </div>
+            <h3 className="mb-2 text-xl font-bold dark:text-white">Simpan & Bagikan</h3>
+            <p className="text-gray-300">Unduh hasil fotomu dalam format berkualitas tinggi atau langsung bagikan ke media sosial favoritmu.</p>
+          </div>
+          <div>
+            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300 lucide lucide-brain-icon lucide-brain"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M19.938 10.5a4 4 0 0 1 .585.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M19.967 17.484A4 4 0 0 1 18 18"/></svg>
+            </div>
+            <h3 className="mb-2 text-xl font-bold dark:text-white">Tim Kolaboratif</h3>
+            <p className="text-gray-300">Bekerja bareng teman, tim, atau komunitas? Kami bantu permudah kolaborasi untuk proyek kreatif kamu.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div className="flex flex-col items-center p-10 mt-20 rounded-3xl">
       <div className="flex flex-col items-center max-w-2xl md:p-5 rounded-xl w-full">
         <h1 className="text-center text-4xl font-semibold">Template Foto</h1>
         <p className="text-center text-base">
@@ -134,7 +187,7 @@ export default function Home() {
         </div>
       </div>
     </div>
-    <div className="relative w-full mb-20">
+    <div className="relative w-full mb-2">
       <div className="left-0 h-[350px] -top-45 w-full items-center justify-center flex from-base-100 via-base-100 bg-gradient-to-t to-transparent absolute">
         <button
           className="btn btn-success btn-wide"
@@ -147,7 +200,9 @@ export default function Home() {
       </div>
     </div>
 
-    <div className="flex flex-col items-center px-2 mt-20">
+    <div className="mt-64"></div>
+
+    {/* <div className="flex flex-col items-center px-2 mt-20">
       <div className="flex flex-col items-center max-w-7xl md:p-5 rounded-xl w-full">
         <section className="body-font w-full">
           <div className="container py-25">
@@ -189,6 +244,7 @@ export default function Home() {
           </div>
         </section>
       </div>
-    </div>
+    </div> */}
+
   </>;
 }
