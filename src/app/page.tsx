@@ -185,50 +185,5 @@ export default function Home() {
     </div>
 
     <div className="mt-64"></div>
-
-    {/* <div className="flex flex-col items-center px-2 mt-20">
-      <div className="flex flex-col items-center max-w-7xl md:p-5 rounded-xl w-full">
-        <section className="body-font w-full">
-          <div className="container py-25">
-            <div className="flex flex-col text-center w-full mb-10">
-              <h3 className="text-center text-4xl font-semibold">Tim Kami</h3>
-              <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                Kerja bareng, bikin solusi, selesai bersama
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-4">
-              {Developer.map((dev) => (
-                <div key={dev.name} className="p-2 w-full">
-                  <div className="shadow-sm h-full flex items-center border-secondary/90 border p-4 rounded-2xl">
-                    <Image
-                      alt="team"
-                      width={50}
-                      height={50}
-                      className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                      src={dev.image}
-                    />
-                    <div className="flex-grow">
-                      <h2 className="title-font font-medium text-bold">
-                        {dev.name}
-                      </h2>
-                      <p className="text-sm text-accent">{dev.role}</p>
-                      <a
-                        href={dev.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm"
-                      >
-                        GitHub
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </div>
-    </div> */}
-
   </>;
 }
