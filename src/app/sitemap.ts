@@ -13,6 +13,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.8,
+    },
+    {
+      url: 'https://picapop.my.id/privacy-policy',
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.7,
     }
   ]
 }
