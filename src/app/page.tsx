@@ -4,27 +4,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-// const Developer = [
-//   {
-//     name: "Angga Islami Pasya",
-//     role: "Backend Developer",
-//     image: "/dev/angga.jpeg",
-//     github: "https://github.com/AnggaaIs",
-//   },
-//   {
-//     name: "Wahyu Pamungkas",
-//     role: "UI / UX Designer",
-//     image: "/dev/wahyu.jpeg",
-//     github: "https://github.com/Devstore120",
-//   },
-//   {
-//     name: "Christian Jeremy",
-//     role: "Frontend Developer",
-//     image: "/dev/jeremy.jpeg",
-//     github: "https://github.com/jeremy776",
-//   },
-// ];
-
 export default function Home() {
   const router = useRouter();
   const [templates, setTemplates] =
@@ -114,7 +93,7 @@ export default function Home() {
       </div>
     </section>
 
-    <section className="flex flex-col items-center p-10 mt-15 bg-base-200 rounded-3xl">
+    <section className="flex flex-col items-center p-10 mt-15 bg-gradient-to-t from-base-100 to-base-200/70 rounded-4xl">
       <div className="flex flex-col items-center max-w-5xl md:p-5 rounded-xl w-full">
         <div className="mb-16 lg:mb-16 text-center">
           <h2 className="text-2xl mb-1 md:font-extrabold font-semibold tracking-tight leading-tight text-center md:text-3xl">Pose ngawur, hasil tetap keren</h2>
