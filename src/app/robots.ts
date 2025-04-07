@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: ['/', '/templates/'],
+        allow: ['/', '/templates/', '/privacy-policy'],
         disallow: ['/api/', '/getstarted/', '/photosession/'],
       },
     ],
