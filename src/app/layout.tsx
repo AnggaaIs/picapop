@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Script from "next/script";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -142,6 +143,7 @@ export default function RootLayout({
           </Suspense>
         </ThemeProvider>
         <Analytics />
+        <Script defer src="https://cloud.umami.is/script.js" data-website-id="0ace1615-3fde-428e-9244-2e1f7ed9e8ac" async strategy="lazyOnload" data-domains="picapop.my.id" />
       </body>
       <GoogleTagManager gtmId="GTM-TP8W9HZ4" />
       <GoogleAnalytics gaId="G-ZDCX80L3G0" />
