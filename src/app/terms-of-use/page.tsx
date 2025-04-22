@@ -84,5 +84,4 @@ const TermsOfUse = () => {
     </div>
   );
 };
-
 export default TermsOfUse;
