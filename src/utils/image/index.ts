@@ -216,11 +216,9 @@ function createOptimizedMask(
   const width = maxX - minX + 1;
   const height = maxY - minY + 1;
 
-  // Create a bitmap to store the mask
   const bitmapSize = (width * height + 7) >>> 3;
   const bitmap = new Uint8Array(bitmapSize);
 
-  // Convert the mask data to a bitmap
   for (let y = minY; y <= maxY; y++) {
     for (let x = minX; x <= maxX; x++) {
       const localX = x - minX;
@@ -298,8 +296,8 @@ function findBlackRegionsWithFloodFill(
   let queueStart = 0;
   let queueEnd = 0;
 
-  const dx = [1, -1, 0, 0];
-  const dy = [0, 0, 1, -1];
+  const dx = [1, -1, 0, 0, 1, 1, -1, -1];
+  const dy = [0, 0, 1, -1, 1, -1, 1, -1];
 
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
@@ -344,7 +342,7 @@ function findBlackRegionsWithFloodFill(
               const nIdx = nPixelIndex * 4;
 
               if (
-                !(data[nIdx] | data[nIdx + 1] | data[nIdx + 2]) &&
+                isBlackish(data[nIdx], data[nIdx + 1], data[nIdx + 2]) &&
                 !visited[nPixelIndex]
               ) {
                 queue[queueEnd++] = nx;
@@ -374,4 +372,8 @@ function findBlackRegionsWithFloodFill(
   });
 
   return regions;
+}
+
+function isBlackish(r: number, g: number, b: number, tolerance = 3): boolean {
+  return r <= tolerance && g <= tolerance && b <= tolerance;
 }

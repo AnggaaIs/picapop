@@ -296,6 +296,7 @@ export default function PhotoSession() {
 
   const handleProcessImage = async () => {
     setPreviewLoading(true);
+    setProcessedImages(null);
 
     try {
       const processed: (string | null)[] = new Array(templates!.length).fill(
