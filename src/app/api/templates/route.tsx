@@ -28,7 +28,7 @@ export async function GET() {
         let date;
         if (dateMatch) {
           const day = parseInt(dateMatch[1], 10);
-          const month = parseInt(dateMatch[2], 10) - 1; // JavaScript Date() menggunakan index bulan 0-11
+          const month = parseInt(dateMatch[2], 10) - 1;
           const year = parseInt(dateMatch[3], 10);
 
           date = new Date(year, month, day);
@@ -46,35 +46,43 @@ export async function GET() {
 
     // Urutkan dari terbaru ke terlama
     const sortedTemplates = templates
-      .map(item => ({
+      .map((item) => ({
         ...item,
-        isNew: item.date ? new Date(item.date) > oneWeekAgo : false // Cek apakah item lebih baru dari 7 hari terakhir
+        isNew: item.date ? new Date(item.date) > oneWeekAgo : false, // Cek apakah item lebih baru dari 7 hari terakhir
       }))
-      .sort((a, b) => (b.date ? new Date(b.date).getTime() : 0) - (a.date ? new Date(a.date).getTime() : 0));
+      .sort(
+        (a, b) =>
+          (b.date ? new Date(b.date).getTime() : 0) -
+          (a.date ? new Date(a.date).getTime() : 0)
+      );
 
-      const filterSpecialTemplate = sortedTemplates.map((item) => {
-        // console.log(item.label)
-        if(['Affection Unveiled', 'Phantom of My Heart'].includes(item.label)) {
-          console.log(item.label)
-          return {
-            ...item,
-            isPartner: {
-              status: true,
-              partner_name: 'Teras48'
-            },
-          };
-        } else {
-          return {
-            ...item,
-            isPartner: {},
-          };
-        }
-      })
+    const filterSpecialTemplate = sortedTemplates.map((item) => {
+      // console.log(item.label)
+      if (["Affection Unveiled", "Phantom of My Heart"].includes(item.label)) {
+        console.log(item.label);
+        return {
+          ...item,
+          isPartner: {
+            status: true,
+            partner_name: "Teras48",
+          },
+        };
+      } else {
+        return {
+          ...item,
+          isPartner: {},
+        };
+      }
+    });
 
-      // filter template spesial diletakan di paling atas
-      const specialTemplate = filterSpecialTemplate.filter((item) => item.isPartner.status);
-      const normalTemplate = filterSpecialTemplate.filter((item) => !item.isPartner.status);
-      const sortedTemplate = [...specialTemplate, ...normalTemplate];
+    // filter template spesial diletakan di paling atas
+    const specialTemplate = filterSpecialTemplate.filter(
+      (item) => item.isPartner.status
+    );
+    const normalTemplate = filterSpecialTemplate.filter(
+      (item) => !item.isPartner.status
+    );
+    const sortedTemplate = [...specialTemplate, ...normalTemplate];
 
     return NextResponse.json(
       { statusCode: 200, success: true, data: sortedTemplate },

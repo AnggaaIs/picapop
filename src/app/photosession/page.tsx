@@ -4,16 +4,15 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { replaceBlackWithImages } from "@/utils/image";
 import { HashLoader } from "react-spinners";
-import { useSearchParams, useRouter } from "next/navigation";
 import {
   applyGrayscale,
   applyInvert,
   applySaturate,
   applySepia,
 } from "@/utils/filter";
+import dynamic from "next/dynamic";
 
 export default function PhotoSession() {
-  const router = useRouter();
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [capturedImages, setCapturedImages] = useState<string[]>([]);
@@ -26,30 +25,28 @@ export default function PhotoSession() {
     undefined
   );
   const [isFrontCamera, setIsFrontCamera] = useState(true);
-  const [processedImage, setProcessedImage] = useState<string | null>(null);
+  const [processedImages, setProcessedImages] = useState<string[] | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
 
-  const [template, setTemplate] = useState("Autumn Memories (07-03-2025)");
+  //const [template, setTemplate] = useState("Autumn Memories (07-03-2025)");
   const [templates, setTemplates] =
     useState<{ filename: string; label: string }[]>();
   const [filter, setFilter] = useState("");
+  //eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [capturedImageFilters, setCapturedImageFilters] = useState<string[]>(
+    []
+  );
 
-  const searchParams = useSearchParams();
-  useEffect(() => {
-    const template = searchParams.get("t") || "Autumn Memories (07-03-2025)";
-    if (typeof template === "string") {
-      setTemplate(template);
-    } else {
-      return;
-    }
-  }, [searchParams]);
+  const DynamicCanvasComponent = dynamic(
+    () => Promise.resolve(() => <canvas ref={canvasRef} className="hidden" />),
+    { ssr: false }
+  );
 
   useEffect(() => {
     fetch("/api/templates")
       .then((res) => res.json())
       .then((data) => {
         setTemplates(data.data);
-        console.log(data.data);
       })
       .catch((err) => console.error("Error fetching templates:", err));
   }, []);
@@ -183,13 +180,67 @@ export default function PhotoSession() {
         ...prevImages,
         canvas.toDataURL("image/png"),
       ]);
+      setCapturedImageFilters((prevFilters) => [...prevFilters, filter]);
     }
+  };
+
+  const applyFilterToAllImages = (newFilter: string) => {
+    if (capturedImages.length === 0) {
+      setFilter(newFilter);
+      return;
+    }
+
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+
+    // Proses setiap gambar dengan filter baru
+    const updatedImages = capturedImages.map((imageData) => {
+      const img = new Image();
+      img.src = imageData;
+
+      // Memasang ukuran canvas sesuai gambar
+      canvas.width = img.width || 800;
+      canvas.height = img.height || 600;
+
+      // Membersihkan canvas
+      context?.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Menggambar gambar ke canvas
+      context?.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      // Menerapkan filter yang dipilih
+      switch (newFilter) {
+        case "grayscale":
+          applyGrayscale(context!, canvas);
+          break;
+        case "sepia":
+          applySepia(context!, canvas);
+          break;
+        case "saturate-200":
+          applySaturate(context!, canvas, 2);
+          break;
+        case "invert":
+          applyInvert(context!, canvas);
+          break;
+        default:
+          // Jika tidak ada filter/reset filter
+          break;
+      }
+
+      // Mengembalikan data URL dari canvas
+      return canvas.toDataURL("image/png");
+    });
+
+    // Update state dengan gambar yang sudah difilter
+    setCapturedImages(updatedImages);
+    setCapturedImageFilters(new Array(updatedImages.length).fill(newFilter));
+    setFilter(newFilter);
   };
 
   const startAutoCapture = async () => {
     if (isCapturing) return;
     setCapturedImages([]);
-    setProcessedImage(null);
+    setProcessedImages(null);
     setIsCapturing(true);
 
     const phrases = [
@@ -251,13 +302,40 @@ export default function PhotoSession() {
     (document.activeElement as HTMLElement)?.blur();
   };
 
-  const handleProcessImage = () => {
+  // const handleProcessImage = () => {
+  //   setPreviewLoading(true);
+  //   replaceBlackWithImages(
+  //     `/template/${template}`,
+  //     capturedImages,
+  //     setProcessedImage
+  //   ).finally(() => setPreviewLoading(false));
+  // };
+
+  const handleProcessImage2 = async () => {
     setPreviewLoading(true);
-    replaceBlackWithImages(
-      `/template/${template}`,
-      capturedImages,
-      setProcessedImage
-    ).finally(() => setPreviewLoading(false));
+    setProcessedImages([]); // clear sebelumnya
+
+    try {
+      const placeholders = new Array(templates!.length).fill(null);
+      setProcessedImages(placeholders);
+
+      for (let i = 0; i < templates!.length; i++) {
+        const image = await replaceBlackWithImages(
+          `/template/${templates![i].filename}`,
+          capturedImages
+        );
+
+        setProcessedImages((prev) => {
+          const updated = [...prev!];
+          updated[i] = image;
+          return updated;
+        });
+      }
+    } catch (error) {
+      console.error("Error processing images:", error);
+    } finally {
+      setPreviewLoading(false);
+    }
   };
 
   return (
@@ -356,7 +434,7 @@ export default function PhotoSession() {
               />
             </div>
             <div className="col-span-2 scale-100">
-              <canvas ref={canvasRef} className="hidden" />
+              <DynamicCanvasComponent />
               {capturedImages.length > 0 && (
                 <div className="grid grid-cols-3 gap-5 mt-4">
                   {capturedImages.map((image, index) => (
@@ -371,34 +449,6 @@ export default function PhotoSession() {
               )}
 
               <div className="flex w-full gap-2 mt-4 ">
-                {capturedImages.length >= 0 && (
-                  <div className="w-full">
-                    <select
-                      className={`w-full btn m-1 ${
-                        isCapturing || error !== null || !selectedDeviceId
-                          ? "hidden"
-                          : ""
-                      }`}
-                      onChange={(e) => {
-                        setTemplate(e.target.value);
-                        const prms = new URLSearchParams(searchParams);
-                        prms.set("t", e.target.value);
-                        router.push(`?${prms.toString()}`, { scroll: false });
-                      }}
-                      value={template}
-                    >
-                      <option value="0" defaultChecked disabled>
-                        Pilih Template
-                      </option>
-                      {templates?.map((item) => (
-                        <option key={item.label} value={item.filename}>
-                          {item.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                )}
-
                 <div className={`dropdown w-full dropdown-end`}>
                   <div
                     tabIndex={0}
@@ -422,7 +472,7 @@ export default function PhotoSession() {
                   </div>
                   <ul
                     tabIndex={0}
-                    className="dropdown-content bg-base-300 rounded-box -z-1 w-48 p-2 shadow-2xl"
+                    className="dropdown-content bg-base-300 rounded-box -z-1 w-full p-2 shadow-2xl"
                   >
                     <li>
                       <input
@@ -431,7 +481,7 @@ export default function PhotoSession() {
                         className="btn btn-sm btn-block btn-ghost justify-start"
                         aria-label="No Filter"
                         value="nofilter"
-                        onClick={() => setFilter("")}
+                        onClick={() => applyFilterToAllImages("")}
                       />
                     </li>
                     <li>
@@ -441,7 +491,7 @@ export default function PhotoSession() {
                         className="btn btn-sm btn-block btn-ghost justify-start"
                         aria-label="GrayScale"
                         value="GrayScale"
-                        onClick={() => setFilter("grayscale")}
+                        onClick={() => applyFilterToAllImages("grayscale")}
                       />
                     </li>
                     <li>
@@ -451,7 +501,7 @@ export default function PhotoSession() {
                         className="btn btn-sm btn-block btn-ghost justify-start"
                         aria-label="Saturate"
                         value="saurate-200"
-                        onClick={() => setFilter("saturate-200")}
+                        onClick={() => applyFilterToAllImages("saturate-200")}
                       />
                     </li>
                     <li>
@@ -460,7 +510,7 @@ export default function PhotoSession() {
                         name="filter"
                         className="btn btn-sm btn-block btn-ghost justify-start"
                         aria-label="Sepia"
-                        onClick={() => setFilter("sepia")}
+                        onClick={() => applyFilterToAllImages("sepia")}
                         value="Sepia"
                       />
                     </li>
@@ -470,7 +520,7 @@ export default function PhotoSession() {
                         name="filter"
                         className="btn btn-sm btn-block btn-ghost justify-start"
                         aria-label="Invert"
-                        onClick={() => setFilter("invert")}
+                        onClick={() => applyFilterToAllImages("invert")}
                         value="Invert"
                       />
                     </li>
@@ -481,7 +531,7 @@ export default function PhotoSession() {
               {capturedImages.length === 3 && (
                 <div className="flex mt-4 justify-between">
                   <button
-                    onClick={handleProcessImage}
+                    onClick={handleProcessImage2}
                     className="btn btn-dash w-full"
                   >
                     {previewLoading ? (
@@ -511,21 +561,49 @@ export default function PhotoSession() {
               {isCapturing ? "Capturing..." : "Capture"}
             </button>
           </div>
-          {processedImage && (
-            <div className="mt-5 p-6 rounded-xl flex flex-col items-center justify-center">
-              <p className="mb-5 text-3xl font-semibold">Hasil foto kamu</p>
-              <img
-                src={processedImage}
-                alt="Processed"
-                className="rounded-xl md:w-[10rem] w-[10rem]"
-              />
-              <a
-                href={processedImage}
-                download="PicaPop.png"
-                className="btn btn-outline w-full mt-4"
-              >
-                Download Image
-              </a>
+          {processedImages && (
+            <div className="mt-10 p-6 rounded-xl flex flex-col items-center justify-center">
+              <p className="mb-6 text-3xl font-semibold text-center">
+                Hasil Foto Kamu
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl">
+                {processedImages.map((image, index) => (
+                  <div
+                    key={index}
+                    className="group rounded-xl overflow-hidden border border-base-200 shadow-sm transition-all hover:ring-2 hover:ring-primary/30"
+                  >
+                    <div className="relative aspect-[4/5] w-full">
+                      {image ? (
+                        <img
+                          src={image}
+                          alt={`Processed ${index}`}
+                          className="object-contain w-full h-full bg-base-200"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-base-200">
+                          <HashLoader
+                            size={20}
+                            color={
+                              getComputedStyle(document.documentElement)
+                                .getPropertyValue("--color-base-content")
+                                .trim() || "#000"
+                            }
+                          />
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-3 bg-base-100">
+                      <a
+                        href={image}
+                        download={`PicaPop-${index + 1}.png`}
+                        className="btn btn-outline w-full"
+                      >
+                        Download Image
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>

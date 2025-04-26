@@ -1,7 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prefer-const */
-import { loadImage, createCanvas } from "canvas";
-import { Dispatch, SetStateAction } from "react";
+
+const loadImage = (src: string): Promise<HTMLImageElement> => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => resolve(img);
+    img.onerror = (e) => reject(e);
+    img.src = src;
+  });
+};
 
 interface Bounds {
   minX: number;
@@ -12,39 +20,46 @@ interface Bounds {
 
 interface Region {
   bounds: Bounds;
-  maskCanvas: any;
+  maskCanvas: HTMLCanvasElement;
 }
 
 export async function replaceBlackWithImages(
   templatePath: string,
-  replacementImagePaths: string[],
-  setProcessedImage: Dispatch<SetStateAction<string | null>>
-) {
+  replacementImagePaths: string[]
+): Promise<string> {
   try {
     const templateImage = await loadImage(templatePath);
     const { width, height } = templateImage;
 
-    const canvas = createCanvas(width, height);
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
     const ctx = canvas.getContext("2d");
-    ctx.drawImage(templateImage, 0, 0);
 
+    if (!ctx) {
+      throw new Error("Could not get canvas context");
+    }
+
+    ctx.drawImage(templateImage, 0, 0);
     const imageData = ctx.getImageData(0, 0, width, height);
 
-    const replacementImagesPromises = replacementImagePaths.map((path) =>
-      loadImage(path)
-    );
-    const replacementImages = await Promise.all(replacementImagesPromises);
-
-    const regions = findBlackRegionsWithFloodFill(
-      imageData as unknown as ImageData,
-      width,
-      height
+    const replacementImages = await Promise.all(
+      replacementImagePaths.map((path) => loadImage(path))
     );
 
-    const outputCanvas = createCanvas(width, height);
+    const regions = findBlackRegionsWithFloodFill(imageData, width, height);
+
+    const outputCanvas = document.createElement("canvas");
+    outputCanvas.width = width;
+    outputCanvas.height = height;
     const outputCtx = outputCanvas.getContext("2d");
 
+    if (!outputCtx) {
+      throw new Error("Could not get output canvas context");
+    }
+
     outputCtx.drawImage(templateImage, 0, 0);
+
     makeBlackAreasTransparent(outputCtx, width, height);
 
     await placeImagesInRegions(
@@ -56,13 +71,15 @@ export async function replaceBlackWithImages(
     );
 
     const dataUrl = outputCanvas.toDataURL("image/png");
-    setProcessedImage(dataUrl);
-    //eslint-disable-next-line @typescript-eslint/no-unused-vars
-  } catch (error) {}
+    return dataUrl;
+  } catch (error) {
+    console.error("replaceBlackWithImages failed:", error);
+    throw error;
+  }
 }
 
 function makeBlackAreasTransparent(
-  ctx: any,
+  ctx: CanvasRenderingContext2D,
   width: number,
   height: number
 ): void {
@@ -81,18 +98,25 @@ function makeBlackAreasTransparent(
 
 async function placeImagesInRegions(
   regions: Region[],
-  images: any[],
+  images: HTMLImageElement[],
   canvasWidth: number,
   canvasHeight: number,
-  outputCtx: any
+  outputCtx: CanvasRenderingContext2D
 ): Promise<void> {
   const count = Math.min(regions.length, images.length);
-  const tempCanvas = createCanvas(canvasWidth, canvasHeight);
+
+  const tempCanvas = document.createElement("canvas");
+  tempCanvas.width = canvasWidth;
+  tempCanvas.height = canvasHeight;
   const tempCtx = tempCanvas.getContext("2d");
 
+  if (!tempCtx) {
+    throw new Error("Could not get temp canvas context");
+  }
+
   const REGION_SIZE_THRESHOLD = 100000;
-  const largeRegions: { region: Region; image: any }[] = [];
-  const smallRegions: { region: Region; image: any }[] = [];
+  const largeRegions: { region: Region; image: HTMLImageElement }[] = [];
+  const smallRegions: { region: Region; image: HTMLImageElement }[] = [];
 
   for (let i = 0; i < count; i++) {
     const region = regions[i];
@@ -136,12 +160,12 @@ async function placeImagesInRegions(
 
 async function processRegion(
   region: Region,
-  image: any,
+  image: HTMLImageElement,
   canvasWidth: number,
   canvasHeight: number,
-  outputCtx: any,
-  tempCanvas: any,
-  tempCtx: any
+  outputCtx: CanvasRenderingContext2D,
+  tempCanvas: HTMLCanvasElement,
+  tempCtx: CanvasRenderingContext2D
 ): Promise<void> {
   try {
     const width = region.bounds.maxX - region.bounds.minX - 2;
@@ -172,8 +196,9 @@ async function processRegion(
     tempCtx.drawImage(image, offsetX, offsetY, drawWidth, drawHeight);
 
     applyMaskAndDraw(outputCtx, region, maskData, canvasWidth, tempCanvas);
-    //eslint-disable-next-line @typescript-eslint/no-unused-vars
-  } catch (error) {}
+  } catch (error) {
+    console.error("Error processing region:", error);
+  }
 }
 
 function createOptimizedMask(
@@ -181,16 +206,21 @@ function createOptimizedMask(
   canvasWidth: number,
   canvasHeight: number
 ): Uint8Array {
-  const maskData = region.maskCanvas
-    .getContext("2d")
-    .getImageData(0, 0, canvasWidth, canvasHeight);
+  const maskCtx = region.maskCanvas.getContext("2d");
+  if (!maskCtx) {
+    throw new Error("Could not get mask canvas context");
+  }
+
+  const maskData = maskCtx.getImageData(0, 0, canvasWidth, canvasHeight);
   const { minX, minY, maxX, maxY } = region.bounds;
   const width = maxX - minX + 1;
   const height = maxY - minY + 1;
 
+  // Create a bitmap to store the mask
   const bitmapSize = (width * height + 7) >>> 3;
   const bitmap = new Uint8Array(bitmapSize);
 
+  // Convert the mask data to a bitmap
   for (let y = minY; y <= maxY; y++) {
     for (let x = minX; x <= maxX; x++) {
       const localX = x - minX;
@@ -210,11 +240,11 @@ function createOptimizedMask(
 }
 
 function applyMaskAndDraw(
-  outputCtx: any,
+  outputCtx: CanvasRenderingContext2D,
   region: Region,
   maskData: Uint8Array,
   _canvasWidth: number,
-  tempCanvas: any
+  tempCanvas: HTMLCanvasElement
 ): void {
   const { minX, minY, maxX, maxY } = region.bounds;
   const width = maxX - minX + 1;
@@ -281,8 +311,15 @@ function findBlackRegionsWithFloodFill(
         !visited[pixelIndex]
       ) {
         const bounds: Bounds = { minX: x, maxX: x, minY: y, maxY: y };
-        const maskCanvas = createCanvas(width, height);
+
+        const maskCanvas = document.createElement("canvas");
+        maskCanvas.width = width;
+        maskCanvas.height = height;
         const maskCtx = maskCanvas.getContext("2d");
+
+        if (!maskCtx) {
+          throw new Error("Could not get mask canvas context");
+        }
 
         queue[queueEnd++] = x;
         queue[queueEnd++] = y;
