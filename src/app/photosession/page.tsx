@@ -193,22 +193,17 @@ export default function PhotoSession() {
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
 
-    // Proses setiap gambar dengan filter baru
     const updatedImages = capturedImages.map((imageData) => {
       const img = new Image();
       img.src = imageData;
 
-      // Memasang ukuran canvas sesuai gambar
       canvas.width = img.width || 800;
       canvas.height = img.height || 600;
 
-      // Membersihkan canvas
       context?.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Menggambar gambar ke canvas
       context?.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-      // Menerapkan filter yang dipilih
       switch (newFilter) {
         case "grayscale":
           applyGrayscale(context!, canvas);
@@ -223,15 +218,12 @@ export default function PhotoSession() {
           applyInvert(context!, canvas);
           break;
         default:
-          // Jika tidak ada filter/reset filter
           break;
       }
 
-      // Mengembalikan data URL dari canvas
       return canvas.toDataURL("image/png");
     });
 
-    // Update state dengan gambar yang sudah difilter
     setCapturedImages(updatedImages);
     setCapturedImageFilters(new Array(updatedImages.length).fill(newFilter));
     setFilter(newFilter);
@@ -302,35 +294,20 @@ export default function PhotoSession() {
     (document.activeElement as HTMLElement)?.blur();
   };
 
-  // const handleProcessImage = () => {
-  //   setPreviewLoading(true);
-  //   replaceBlackWithImages(
-  //     `/template/${template}`,
-  //     capturedImages,
-  //     setProcessedImage
-  //   ).finally(() => setPreviewLoading(false));
-  // };
-
-  const handleProcessImage2 = async () => {
+  const handleProcessImage = async () => {
     setPreviewLoading(true);
-    setProcessedImages([]); // clear sebelumnya
+    setProcessedImages([]);
 
     try {
       const placeholders = new Array(templates!.length).fill(null);
       setProcessedImages(placeholders);
 
-      for (let i = 0; i < templates!.length; i++) {
-        const image = await replaceBlackWithImages(
-          `/template/${templates![i].filename}`,
-          capturedImages
-        );
+      const imagePromises = templates!.map((template) =>
+        replaceBlackWithImages(`/template/${template.filename}`, capturedImages)
+      );
 
-        setProcessedImages((prev) => {
-          const updated = [...prev!];
-          updated[i] = image;
-          return updated;
-        });
-      }
+      const processed = await Promise.all(imagePromises);
+      setProcessedImages(processed);
     } catch (error) {
       console.error("Error processing images:", error);
     } finally {
@@ -531,7 +508,7 @@ export default function PhotoSession() {
               {capturedImages.length === 3 && (
                 <div className="flex mt-4 justify-between">
                   <button
-                    onClick={handleProcessImage2}
+                    onClick={handleProcessImage}
                     className="btn btn-dash w-full"
                   >
                     {previewLoading ? (
