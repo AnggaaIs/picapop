@@ -296,18 +296,26 @@ export default function PhotoSession() {
 
   const handleProcessImage = async () => {
     setPreviewLoading(true);
-    setProcessedImages([]);
 
     try {
-      const placeholders = new Array(templates!.length).fill(null);
-      setProcessedImages(placeholders);
-
-      const imagePromises = templates!.map((template) =>
-        replaceBlackWithImages(`/template/${template.filename}`, capturedImages)
+      const processed: (string | null)[] = new Array(templates!.length).fill(
+        null
       );
 
-      const processed = await Promise.all(imagePromises);
-      setProcessedImages(processed);
+      for (let i = 0; i < templates!.length; i++) {
+        const template = templates![i];
+        const result = await replaceBlackWithImages(
+          `/template/${template.filename}`,
+          capturedImages
+        );
+
+        processed[i] = result;
+
+        setProcessedImages((prevImages) => [
+          ...(prevImages ? prevImages.filter((image) => image !== null) : []),
+          result,
+        ]);
+      }
     } catch (error) {
       console.error("Error processing images:", error);
     } finally {
