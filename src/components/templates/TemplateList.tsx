@@ -6,8 +6,11 @@ import { useEffect, useState } from "react";
 export default function TemplateList() {
   const [selected, setSelected] = useState<string | null>(null);
   const [templates, setTemplates] =
-    useState<{ label: string; filename: string; isNew: boolean; date: Date; isPartner: {
-      status: boolean; partner_name: string; } | null }[]>([]);
+    useState<{
+      label: string; filename: string; isNew: boolean; date: Date; isPartner: {
+        status: boolean; partner_name: string;
+      } | null
+    }[]>([]);
   const onSelect = (value: string) => {
     setSelected(value);
   };
@@ -38,7 +41,9 @@ export default function TemplateList() {
               <div className="text-center ">
                 <p className="text-md text-center font-medium">{template.label}</p>
                 {template.isPartner?.status ? (
-                  <div className="badge badge-warning text-white font-semibold badge-xs">Special Template</div>
+                  <div className="w-full justify-center flex mt-2">
+                    <div className="bg-red-600 font-normal px-3 rounded-xl w-fit text-white font-semibold text-[10px]">Special Partner</div>
+                  </div>
                 ) : template.isNew ? (
                   <div className="badge badge-success badge-xs">Baru ditambahkan</div>
                 ) : null}
