@@ -57,8 +57,9 @@ export async function GET() {
       );
 
     const filterSpecialTemplate = sortedTemplates.map((item) => {
-      // console.log(item.label)
-      if (["Affection Unveiled", "Phantom of My Heart"].includes(item.label)) {
+      
+      // Partner template
+      if (["Affection Unveiled", "Phantom of My Heart", "Teras JKT48"].includes(item.label)) {
         console.log(item.label);
         return {
           ...item,
