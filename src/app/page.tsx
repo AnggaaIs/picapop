@@ -34,7 +34,7 @@ export default function Home() {
               }}
               className="btn mt-4 btn-success w-full md:w-1/2 btn-wide"
             >
-              Langsung foto
+              Cobain sekarang!
             </button>
           </div>
           <div className="hidden w-full md:flex items-center justify-center md:items-end md:justify-end">
