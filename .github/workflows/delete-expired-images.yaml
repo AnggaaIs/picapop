@@ -11,6 +11,8 @@ jobs:
 
     steps:
       - name: Call delete expired images API
+        env:
+          ADMIN_API_ACCESS_TOKEN: ${{ secrets.ADMIN_API_ACCESS_TOKEN }}
         run: |
           curl -X GET "https://picapop.my.id/api/delete-expired-images" \
-          -H "Authorization: Bearer ${secrets.ADMIN_API_ACCESS_TOKEN}"
+          -H "Authorization: Bearer $ADMIN_API_ACCESS_TOKEN"
