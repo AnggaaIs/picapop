@@ -108,7 +108,7 @@ export default function PreviewCard({
             >
               <div
                 ref={qrRef}
-                className="w-50 h-50 rounded-md flex items-center justify-center"
+                className="max-w-xs w-[90%] aspect-square rounded-md flex items-center justify-center mx-auto"
               />
             </motion.div>
           ) : (
