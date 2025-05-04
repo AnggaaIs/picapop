@@ -319,7 +319,7 @@ export default function PhotoSession() {
             selectedDeviceId={selectedDeviceId}
             previewLoading={previewLoading}
             processingIndex={processingIndex}
-            templatesLength={templates!.length}
+            templatesLength={templates?.length ?? 0}
             applyFilterToAllImages={applyFilterToAllImages}
           />
 
