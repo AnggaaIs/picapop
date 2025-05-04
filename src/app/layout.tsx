@@ -133,9 +133,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning>
-      <body className={`${outfit.className} antialiased`}>
-        <ThemeProvider attribute="data-theme" defaultTheme="retro" enableSystem>
+    <html lang="en" data-theme="light" className="light" suppressHydrationWarning>
+      <body className={`${outfit.className} antialiased light`}>
+        <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem>
           <Suspense fallback={null}>
             <Navbar />
             {children}

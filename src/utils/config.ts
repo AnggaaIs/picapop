@@ -1,15 +1,3 @@
-export const themes = [
-  {
-    value: "night",
-    label: "Night",
-  },
-  {
-    value: "aqua",
-    label: "Aqua",
-  },
-];
-
-
 export const phrases = [
   "Bilang Mangga",
   "Cheese!",
@@ -17,8 +5,6 @@ export const phrases = [
   "Bilang Tempe!",
   "Bilang Ubi!",
   "Senyum Dulu!",
-  "Klik Klik!",
-  "Pose Dulu!",
   "Say Happy!",
   "Ciluk Baa!",
   "Wefie Time!",

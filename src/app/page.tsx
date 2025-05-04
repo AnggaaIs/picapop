@@ -21,7 +21,7 @@ export default function Home() {
       <div className="flex justify-center flex-col items-center px-10 pt-10 min-h-[80vh]">
         <div className="flex h-full flex-col gap-10 md:gap-0 md:flex-row justify-between items-center max-w-6xl md:p-5 rounded-xl w-full">
           <div className="w-full items-center md:items-start flex justify-center flex-col">
-            <h1 className="md:text-5xl text-3xl text-center md:text-left font-semibold">
+            <h1 className="md:text-5xl text-3xl text-black text-center md:text-left font-semibold">
               Satu Klik, Foto Makin Aesthetic!
             </h1>
             <p className="text-md md:text-lg text-center md:text-left mt-2">
@@ -32,7 +32,7 @@ export default function Home() {
               onClick={() => {
                 router.push("/getstarted");
               }}
-              className="btn mt-4 btn-success w-full md:w-1/2 btn-wide"
+              className="btn mt-4 btn-secondary w-full md:w-1/2 btn-wide"
             >
               Cobain sekarang!
             </button>
@@ -85,12 +85,12 @@ export default function Home() {
           </div>
           <div
             className={
-              "grid grid-cols-2 gap-8 text-gray-400 sm:gap-12 md:flex md:justify-center md:items-center md:flex-wrap dark:text-gray-400"
+              "grid grid-cols-2 gap-8 text-gray-400 sm:gap-12 md:flex md:justify-center md:items-center md:flex-wrap "
             }
           >
             <Link href="/" className="flex justify-center items-center">
               <svg
-                className="h-14 hover:text-gray-900 dark:hover:text-white"
+                className="h-14 hover:text-gray-900 "
                 viewBox="0 0 1082 239"
                 fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +120,7 @@ export default function Home() {
               className="flex justify-center items-center"
             >
               <svg
-                className="h-14 hover:text-gray-900 dark:hover:text-white"
+                className="h-14 hover:text-gray-900"
                 viewBox="0 0 1727 411"
                 fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
@@ -163,10 +163,10 @@ export default function Home() {
                   <circle cx="12" cy="13" r="3" />
                 </svg>
               </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">
+              <h3 className="mb-2 text-xl font-bold">
                 Fotografi Instan
               </h3>
-              <p className="text-gray-300">
+              <p className="text-gray-500">
                 Ambil selfie langsung dari browser, pilih template, dan biarkan
                 kreativitasmu bicara. Semua bisa dilakukan dalam hitungan detik.
               </p>
@@ -192,10 +192,10 @@ export default function Home() {
                   <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z" />
                 </svg>
               </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">
+              <h3 className="mb-2 text-xl font-bold ">
                 Desain Kreatif
               </h3>
-              <p className="text-gray-300">
+              <p className="text-gray-500">
                 Jelajahi berbagai template unik dan bergaya. Dari yang minimalis
                 sampai colorful – semua dirancang untuk membuat hasil fotomu
                 makin standout.
@@ -217,10 +217,10 @@ export default function Home() {
                   <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path>
                 </svg>
               </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">
+              <h3 className="mb-2 text-xl font-bold ">
                 Pengalaman Personal
               </h3>
-              <p className="text-gray-300">
+              <p className="text-gray-500">
                 Setiap foto punya cerita. Kami bantu kamu untuk menjadikannya
                 personal dan bermakna lewat fitur kustomisasi.
               </p>
@@ -243,10 +243,10 @@ export default function Home() {
                   <circle cx="12" cy="12" r="3" />
                 </svg>
               </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">
+              <h3 className="mb-2 text-xl font-bold ">
                 Otomatisasi Simpel
               </h3>
-              <p className="text-gray-300">
+              <p className="text-gray-500">
                 Dari pengambilan foto hingga penyimpanan – semuanya otomatis dan
                 mudah, tanpa ribet.
               </p>
@@ -271,10 +271,10 @@ export default function Home() {
                   <path d="M8 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9.172a2 2 0 0 1 1.414.586l2.828 2.828A2 2 0 0 1 22 6.828V16a2 2 0 0 1-2.01 2z" />
                 </svg>
               </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">
+              <h3 className="mb-2 text-xl font-bold ">
                 Simpan & Bagikan
               </h3>
-              <p className="text-gray-300">
+              <p className="text-gray-500">
                 Unduh hasil fotomu dalam format berkualitas tinggi atau langsung
                 bagikan ke media sosial favoritmu.
               </p>
@@ -304,10 +304,10 @@ export default function Home() {
                   <path d="M19.967 17.484A4 4 0 0 1 18 18" />
                 </svg>
               </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">
+              <h3 className="mb-2 text-xl font-bold ">
                 Tim Kolaboratif
               </h3>
-              <p className="text-gray-300">
+              <p className="text-gray-500">
                 Bekerja bareng teman, tim, atau komunitas? Kami bantu permudah
                 kolaborasi untuk proyek kreatif kamu.
               </p>
@@ -326,7 +326,7 @@ export default function Home() {
             {templates?.slice(0, 4).map((template, index) => (
               <div
                 key={index}
-                className="items-center p-2 flex-col justify-center flex w-full hover:bg-primary/40 transition-all ease hover:py-4 rounded-xl"
+                className="items-center p-2 flex-col justify-center flex w-full bg-indigo-700/10 hover:bg-primary/40 transition-all ease hover:py-4 rounded-xl"
               >
                 <p className="mb-2 text-center">{template.label}</p>
                 <Image
