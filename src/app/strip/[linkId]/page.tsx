@@ -38,7 +38,7 @@ export default async function StripPage({
     <main className="min-h-screen flex flex-col items-center justify-center p-6 bg-base-200">
       <div className="bg-base-100 shadow-xl rounded-lg p-6">
         <h1 className="text-xl font-bold mb-4 text-center">Shared Image</h1>
-        <Image
+        <img
           src={imageBase64}
           alt="Shared"
           className="max-w-full max-h-[80vh] object-contain rounded-md border"
