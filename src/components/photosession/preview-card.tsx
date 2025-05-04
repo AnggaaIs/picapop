@@ -1,6 +1,10 @@
+"use client";
+
 import { HashLoader } from "react-spinners";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { ClipboardCopy } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import QRCodeStyling from "qr-code-styling";
 
 /* eslint-disable @next/next/no-img-element */
 export default function PreviewCard({
@@ -16,6 +20,8 @@ export default function PreviewCard({
 }) {
   const [link, setLink] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [showQR, setShowQR] = useState(false);
+  const qrRef = useRef<HTMLDivElement | null>(null);
 
   const handleGetLink = async () => {
     if (!image) return;
@@ -49,28 +55,94 @@ export default function PreviewCard({
 
   const getLinkUrl = () => `${window.location.origin}/strip/${link}`;
 
+  const generateQrCode = (url: string, container: HTMLDivElement) => {
+    container.innerHTML = "";
+
+    const qrCodeInstance = new QRCodeStyling({
+      width: 300,
+      height: 300,
+      type: "svg",
+      data: url,
+      margin: 10,
+      qrOptions: {
+        typeNumber: 0,
+        mode: "Byte",
+        errorCorrectionLevel: "Q",
+      },
+      cornersSquareOptions: {
+        type: "extra-rounded",
+        color: "#000000",
+      },
+      dotsOptions: {
+        type: "classy",
+        color: "#000000",
+      },
+      backgroundOptions: {
+        round: 0.1,
+        color: "#ffffff",
+      },
+    });
+
+    qrCodeInstance.append(container);
+    return qrCodeInstance;
+  };
+
   return (
     <div className="group rounded-xl overflow-hidden border border-base-200 shadow-sm transition-all hover:ring-2 hover:ring-primary/30">
       <div className="relative aspect-[4/5] w-full">
-        {image ? (
-          <img
-            src={image}
-            alt={`Processed ${index}`}
-            className="object-contain w-full h-full bg-base-200"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center bg-base-200">
-            <HashLoader
-              size={20}
-              color={
-                getComputedStyle(document.documentElement)
-                  .getPropertyValue("--color-base-content")
-                  .trim() || "#000"
-              }
-            />
-          </div>
-        )}
+        <AnimatePresence mode="wait">
+          {showQR && link ? (
+            <motion.div
+              key="qr"
+              className="flex items-center justify-center w-full h-full bg-base-200"
+              initial={{ opacity: 0, rotateY: 180 }}
+              animate={{ opacity: 1, rotateY: 0 }}
+              exit={{ opacity: 0, rotateY: -180 }}
+              transition={{ duration: 0.5 }}
+              onAnimationComplete={() => {
+                if (qrRef.current && link) {
+                  const url = getLinkUrl();
+                  generateQrCode(url, qrRef.current);
+                }
+              }}
+            >
+              <div
+                ref={qrRef}
+                className="w-50 h-50 rounded-md flex items-center justify-center"
+              />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="image"
+              className="w-full h-full"
+              initial={{ opacity: 0, rotateY: 180 }}
+              animate={{ opacity: 1, rotateY: 0 }}
+              exit={{ opacity: 0, rotateY: -180 }}
+              transition={{ duration: 0.5 }}
+            >
+              {image ? (
+                <img
+                  src={image}
+                  alt={`Processed ${index}`}
+                  className="object-contain w-full h-full bg-base-200"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-base-200">
+                  <HashLoader
+                    size={20}
+                    color={
+                      getComputedStyle(document.documentElement)
+                        .getPropertyValue("--color-base-content")
+                        .trim() || "#000"
+                    }
+                  />
+                </div>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
+
       <div className="p-3 bg-base-100 space-y-2">
         {isApplied && link && (
           <div className="flex space-x-2 items-center">
@@ -107,13 +179,24 @@ export default function PreviewCard({
         )}
 
         {isApplied && (
-          <a
-            href={image}
-            download={`PicaPop-${index + 1}.png`}
-            className="btn btn-outline w-full"
-          >
-            Download
-          </a>
+          <>
+            <a
+              href={image}
+              download={`PicaPop-${index + 1}.png`}
+              className="btn btn-outline w-full"
+            >
+              Download
+            </a>
+
+            {link && (
+              <button
+                onClick={() => setShowQR((prev) => !prev)}
+                className="btn btn-accent w-full"
+              >
+                {showQR ? "Hide QR" : "See QR"}
+              </button>
+            )}
+          </>
         )}
       </div>
     </div>
