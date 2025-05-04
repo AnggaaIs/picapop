@@ -88,7 +88,20 @@ export default function PreviewCard({
   };
 
   return (
-    <div className="group rounded-xl overflow-hidden border border-base-200 shadow-sm transition-all hover:ring-2 hover:ring-primary/30">
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, scale: 0.95 },
+        visible: {
+          opacity: 1,
+          scale: 1,
+          transition: {
+            duration: 0.4,
+            ease: 'easeOut'            // transisi lembut (ease-out):contentReference[oaicite:4]{index=4}
+          }
+        }
+      }}
+
+      className="group rounded-xl overflow-hidden border border-base-200 shadow-sm transition-all hover:ring-2 hover:ring-primary/30" >
       <div className="relative aspect-[4/5] w-full">
         <AnimatePresence mode="wait">
           {showQR && link ? (
@@ -115,9 +128,9 @@ export default function PreviewCard({
             <motion.div
               key="image"
               className="w-full h-full"
-              initial={{ opacity: 0, rotateY: 180 }}
-              animate={{ opacity: 1, rotateY: 0 }}
-              exit={{ opacity: 0, rotateY: -180 }}
+              // initial={{ opacity: 0, rotateY: 180 }}
+              // animate={{ opacity: 1, rotateY: 0 }}
+              // exit={{ opacity: 0, rotateY: -180 }}
               transition={{ duration: 0.5 }}
             >
               {image ? (
@@ -199,6 +212,6 @@ export default function PreviewCard({
           </>
         )}
       </div>
-    </div>
+    </motion.div >
   );
 }
