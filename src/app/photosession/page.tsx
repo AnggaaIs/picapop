@@ -28,6 +28,7 @@ export default function PhotoSession() {
   const [isFrontCamera, setIsFrontCamera] = useState(true);
   const [processedImages, setProcessedImages] = useState<string[] | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
+  const [appliedImages, setAppliedImages] = useState<(string | null)[]>([]);
 
   const [templates, setTemplates] =
     useState<{ filename: string; label: string }[]>();
@@ -134,6 +135,25 @@ export default function PhotoSession() {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error, selectedDeviceId, isCapturing]);
+
+  const handleApply = async (index: number) => {
+    if (!processedImages || !processedImages[index]) return;
+
+    try {
+      const result = await replaceBlackWithImages(
+        processedImages[index], // ini adalah path template
+        capturedImages
+      );
+
+      setAppliedImages((prev) => {
+        const updated = [...prev];
+        updated[index] = result;
+        return updated;
+      });
+    } catch (err) {
+      console.error("Error applying image at index", index, err);
+    }
+  };
 
   const captureImage = () => {
     const canvas = canvasRef.current;
@@ -264,30 +284,16 @@ export default function PhotoSession() {
   const handleProcessImage = async () => {
     setPreviewLoading(true);
     setProcessingIndex(0);
-    setProcessedImages(null);
+    setProcessedImages([]);
 
     try {
-      const processed: (string | null)[] = new Array(templates!.length).fill(
-        null
+      // Simpan hanya path ke template, belum diproses
+      const placeholders = templates!.map(
+        (template) => `/template/${template.filename}`
       );
-
-      for (let i = 0; i < templates!.length; i++) {
-        setProcessingIndex(i + 1);
-
-        const template = templates![i];
-        const result = await replaceBlackWithImages(
-          `/template/${template.filename}`,
-          capturedImages
-        );
-        processed[i] = result;
-
-        setProcessedImages((prevImages) => [
-          ...(prevImages ? prevImages.filter((image) => image !== null) : []),
-          result,
-        ]);
-      }
+      setProcessedImages(placeholders);
     } catch (error) {
-      console.error("Error processing images:", error);
+      console.error("Error processing templates:", error);
     } finally {
       setPreviewLoading(false);
       setProcessingIndex(null);
@@ -339,8 +345,14 @@ export default function PhotoSession() {
                 Hasil Foto Kamu
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl">
-                {processedImages.map((image, index) => (
-                  <PreviewCard image={image} index={index} key={index} />
+                {processedImages.map((templateImage, index) => (
+                  <PreviewCard
+                    key={index}
+                    image={appliedImages[index] || templateImage} // tampilkan hasil gabungan kalau sudah apply
+                    index={index}
+                    onApply={() => handleApply(index)}
+                    isApplied={!!appliedImages[index]}
+                  />
                 ))}
               </div>
             </div>
