@@ -5,14 +5,9 @@ import { createResponse } from "@/utils/response";
 
 export async function GET(
   request: Request,
-  { params }: { params: { linkId: string } }
+  { params }: { params: Promise<{ linkId: string }> }
 ) {
-  console.log("[GET_IMAGE_REQUEST]", params);
-
-  const { linkId } = params;
-
-  // Add additional logging to debug the issue
-  console.log("[GET_IMAGE_LINKID]", linkId);
+  const { linkId } = await params;
 
   if (!linkId) {
     return NextResponse.json(createResponse(400, "Missing linkId parameter"), {

@@ -1,6 +1,6 @@
 import { HashLoader } from "react-spinners";
 import { useState } from "react";
-import { ClipboardCopy, Download } from "lucide-react";
+import { ClipboardCopy } from "lucide-react";
 
 /* eslint-disable @next/next/no-img-element */
 export default function PreviewCard({
