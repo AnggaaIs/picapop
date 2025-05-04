@@ -14,6 +14,8 @@ export default function MainLayout({
   handleProcessImage,
   selectedDeviceId,
   previewLoading,
+  processingIndex,
+  templatesLength,
   applyFilterToAllImages,
 }: {
   videoRef: React.RefObject<HTMLVideoElement | null>;
@@ -26,6 +28,8 @@ export default function MainLayout({
   handleProcessImage: () => void;
   selectedDeviceId: string | undefined;
   previewLoading: boolean;
+  processingIndex: number | null;
+  templatesLength: number | null;
   applyFilterToAllImages: (filter: string) => void;
 }) {
   const DynamicCanvasComponent = dynamic(
@@ -80,15 +84,20 @@ export default function MainLayout({
               onClick={handleProcessImage}
               className="btn btn-dash w-full"
             >
-              {previewLoading ? (
-                <HashLoader
-                  color={
-                    getComputedStyle(document.documentElement)
-                      .getPropertyValue("--color-base-content")
-                      .trim() || "#000"
-                  }
-                  size={20}
-                />
+              {previewLoading && processingIndex !== null ? (
+                <div className="flex items-center gap-2">
+                  <HashLoader
+                    color={
+                      getComputedStyle(document.documentElement)
+                        .getPropertyValue("--color-base-content")
+                        .trim() || "#000"
+                    }
+                    size={15}
+                  />
+                  <span className="text-sm font-medium">
+                    {processingIndex} / {templatesLength}
+                  </span>
+                </div>
               ) : (
                 "Preview"
               )}

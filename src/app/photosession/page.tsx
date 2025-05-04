@@ -24,6 +24,7 @@ export default function PhotoSession() {
   const [selectedDeviceId, setSelectedDeviceId] = useState<string | undefined>(
     undefined
   );
+  const [processingIndex, setProcessingIndex] = useState<number | null>(null);
   const [isFrontCamera, setIsFrontCamera] = useState(true);
   const [processedImages, setProcessedImages] = useState<string[] | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
@@ -262,6 +263,7 @@ export default function PhotoSession() {
 
   const handleProcessImage = async () => {
     setPreviewLoading(true);
+    setProcessingIndex(0);
     setProcessedImages(null);
 
     try {
@@ -270,13 +272,13 @@ export default function PhotoSession() {
       );
 
       for (let i = 0; i < templates!.length; i++) {
+        setProcessingIndex(i + 1);
+
         const template = templates![i];
         const result = await replaceBlackWithImages(
           `/template/${template.filename}`,
           capturedImages
         );
-        console.log("Processed image:", result);
-
         processed[i] = result;
 
         setProcessedImages((prevImages) => [
@@ -284,12 +286,11 @@ export default function PhotoSession() {
           result,
         ]);
       }
-
-      console.log("Processed images:", processed);
     } catch (error) {
       console.error("Error processing images:", error);
     } finally {
       setPreviewLoading(false);
+      setProcessingIndex(null);
     }
   };
 
@@ -317,6 +318,8 @@ export default function PhotoSession() {
             handleProcessImage={handleProcessImage}
             selectedDeviceId={selectedDeviceId}
             previewLoading={previewLoading}
+            processingIndex={processingIndex}
+            templatesLength={templates!.length}
             applyFilterToAllImages={applyFilterToAllImages}
           />
 
