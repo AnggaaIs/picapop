@@ -275,6 +275,7 @@ export default function PhotoSession() {
           `/template/${template.filename}`,
           capturedImages
         );
+        console.log("Processed image:", result);
 
         processed[i] = result;
 
@@ -283,6 +284,8 @@ export default function PhotoSession() {
           result,
         ]);
       }
+
+      console.log("Processed images:", processed);
     } catch (error) {
       console.error("Error processing images:", error);
     } finally {
@@ -294,7 +297,13 @@ export default function PhotoSession() {
     <Suspense>
       <div className="flex items-center justify-center flex-col mb-25 p-5">
         <div className="max-w-3xl">
-          <HeaderLayout error={error} countdown={countdown} devices={devices} selectedDeviceId={selectedDeviceId} handleCameraSelect={handleCameraSelect} />
+          <HeaderLayout
+            error={error}
+            countdown={countdown}
+            devices={devices}
+            selectedDeviceId={selectedDeviceId}
+            handleCameraSelect={handleCameraSelect}
+          />
 
           {/* component camera */}
           <MainLayout
@@ -308,7 +317,8 @@ export default function PhotoSession() {
             handleProcessImage={handleProcessImage}
             selectedDeviceId={selectedDeviceId}
             previewLoading={previewLoading}
-            applyFilterToAllImages={applyFilterToAllImages} />
+            applyFilterToAllImages={applyFilterToAllImages}
+          />
 
           <div className="flex flex-wrap gap-2 mt-5">
             <button

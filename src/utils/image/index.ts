@@ -251,8 +251,7 @@ function applyMaskAndDraw(
   outputCtx.beginPath();
 
   for (let y = minY; y <= maxY; y++) {
-    let lastX = -1;
-    let currentRun = 0;
+    let startX = -1;
 
     for (let x = minX; x <= maxX; x++) {
       const localX = x - minX;
@@ -260,22 +259,20 @@ function applyMaskAndDraw(
       const localIdx = localY * width + localX;
       const byteIndex = localIdx >>> 3;
       const bitPosition = localIdx & 7;
+      const isPixelInMask = (maskData[byteIndex] & (1 << bitPosition)) !== 0;
 
-      if (maskData[byteIndex] & (1 << bitPosition)) {
-        if (lastX === x - 1) {
-          currentRun++;
-        } else {
-          if (currentRun > 0) {
-            outputCtx.rect(lastX - currentRun + 1, y, currentRun, 1);
-          }
-          lastX = x;
-          currentRun = 1;
+      if (isPixelInMask) {
+        if (startX === -1) {
+          startX = x;
         }
+      } else if (startX !== -1) {
+        outputCtx.rect(startX, y, x - startX, 1);
+        startX = -1;
       }
     }
 
-    if (currentRun > 0) {
-      outputCtx.rect(lastX - currentRun + 1, y, currentRun, 1);
+    if (startX !== -1) {
+      outputCtx.rect(startX, y, maxX - startX + 1, 1);
     }
   }
 
@@ -296,8 +293,8 @@ function findBlackRegionsWithFloodFill(
   let queueStart = 0;
   let queueEnd = 0;
 
-  const dx = [1, -1, 0, 0, 1, 1, -1, -1];
-  const dy = [0, 0, 1, -1, 1, -1, 1, -1];
+  const dx = [1, -1, 0, 0];
+  const dy = [0, 0, 1, -1];
 
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {

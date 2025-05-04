@@ -14,9 +14,8 @@ export default function MainLayout({
   handleProcessImage,
   selectedDeviceId,
   previewLoading,
-  applyFilterToAllImages
+  applyFilterToAllImages,
 }: {
-  
   videoRef: React.RefObject<HTMLVideoElement | null>;
   filter: string;
   isFrontCamera: boolean;
@@ -29,11 +28,11 @@ export default function MainLayout({
   previewLoading: boolean;
   applyFilterToAllImages: (filter: string) => void;
 }) {
-    const DynamicCanvasComponent = dynamic(
-      () => Promise.resolve(() => <canvas ref={canvasRef} className="hidden" />),
-      { ssr: false }
-    );
-    
+  const DynamicCanvasComponent = dynamic(
+    () => Promise.resolve(() => <canvas ref={canvasRef} className="hidden" />),
+    { ssr: false }
+  );
+
   return (
     <div className="grid sm:grid-cols-4 gap-5 mt-5">
       <div className="aspect-4/3 relative col-span-2">
@@ -67,7 +66,13 @@ export default function MainLayout({
         )}
 
         {/* filter */}
-        <FilterImage isCapturing={isCapturing} error={error} selectedDeviceId={selectedDeviceId} filter={filter} applyFilterToAllImages={applyFilterToAllImages} />
+        <FilterImage
+          isCapturing={isCapturing}
+          error={error}
+          selectedDeviceId={selectedDeviceId}
+          filter={filter}
+          applyFilterToAllImages={applyFilterToAllImages}
+        />
 
         {capturedImages.length === 3 && (
           <div className="flex mt-4 justify-between">
@@ -92,5 +97,5 @@ export default function MainLayout({
         )}
       </div>
     </div>
-  )
+  );
 }
