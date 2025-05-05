@@ -157,7 +157,7 @@ export default function PreviewCard({
         </AnimatePresence>
       </div>
 
-      <div className="p-3 bg-base-100 space-y-2">
+      <div className="p-3 bg-white space-y-2">
         {isApplied && link && (
           <div className="flex space-x-2 items-center">
             <input

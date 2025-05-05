@@ -82,7 +82,7 @@ export default function MainLayout({
           <div className="flex mt-4 justify-between">
             <button
               onClick={handleProcessImage}
-              className="btn btn-dash w-full"
+              className="btn btn-dash w-full text-[#34364a]"
             >
               {previewLoading && processingIndex !== null ? (
                 <div className="flex items-center gap-2">
