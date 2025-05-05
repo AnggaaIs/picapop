@@ -31,44 +31,44 @@ const PrivacyPolicy = () => {
     return (
         <div className="min-h-screen px-6 py-12 text-base-content">
             <div className="max-w-3xl mx-auto">
-                <h1 className="text-4xl font-bold mb-6 text-center">Kebijakan Privasi - PicaPop</h1>
+                <h1 className="text-4xl font-bold mb-6 text-center text-[#34364a]">Kebijakan Privasi - PicaPop</h1>
 
-                <p className="mb-4">
+                <p className="mb-4 text-[#34364a]">
                     Selamat datang di PicaPop! Privasi Anda sangat penting bagi kami. Kebijakan
                     privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan
                     melindungi informasi pribadi Anda saat menggunakan aplikasi kami.
                 </p>
 
-                <h2 className="text-2xl font-semibold mt-8 mb-2">1. Informasi yang Kami Kumpulkan</h2>
-                <p className="mb-4">
+                <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">1. Informasi yang Kami Kumpulkan</h2>
+                <p className="mb-4 text-[#34364a]">
                     Kami dapat mengumpulkan informasi seperti foto yang Anda unggah, preferensi
                     template, serta data teknis seperti jenis perangkat dan browser yang digunakan.
                     Kami tidak mengumpulkan informasi pribadi yang sensitif seperti nama lengkap atau
                     alamat kecuali secara eksplisit diberikan oleh pengguna.
                 </p>
 
-                <h2 className="text-2xl font-semibold mt-8 mb-2">2. Penggunaan Informasi</h2>
-                <p className="mb-4">
+                <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">2. Penggunaan Informasi</h2>
+                <p className="mb-4 text-[#34364a]">
                     Informasi yang dikumpulkan digunakan untuk meningkatkan layanan, menyediakan
                     pengalaman pengguna yang lebih personal, serta untuk keperluan analitik internal.
                     Kami tidak menjual atau membagikan informasi pribadi Anda kepada pihak ketiga.
                 </p>
 
-                <h2 className="text-2xl font-semibold mt-8 mb-2">3. Keamanan Data</h2>
-                <p className="mb-4">
+                <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">3. Keamanan Data</h2>
+                <p className="mb-4 text-[#34364a]">
                     Kami menggunakan langkah-langkah keamanan teknis dan organisasi untuk melindungi
                     data Anda dari akses yang tidak sah, kehilangan, atau pengubahan.
                 </p>
 
-                <h2 className="text-2xl font-semibold mt-8 mb-2">4. Hak Pengguna</h2>
-                <p className="mb-4">
+                <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">4. Hak Pengguna</h2>
+                <p className="mb-4 text-[#34364a]">
                     Anda memiliki hak untuk mengakses, memperbarui, atau menghapus informasi pribadi
                     Anda yang disimpan oleh kami. Jika Anda memiliki pertanyaan atau permintaan terkait
                     data pribadi, silakan hubungi kami.
                 </p>
 
-                <h2 className="text-2xl font-semibold mt-8 mb-2">5. Perubahan Kebijakan</h2>
-                <p className="mb-4">
+                <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">5. Perubahan Kebijakan</h2>
+                <p className="mb-4 text-[#34364a]">
                     Kami dapat memperbarui kebijakan privasi ini dari waktu ke waktu. Setiap perubahan
                     akan diinformasikan melalui aplikasi atau website kami.
                 </p>

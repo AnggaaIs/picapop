@@ -44,7 +44,7 @@ export default function MainLayout({
           ref={videoRef}
           autoPlay
           playsInline
-          className={`${filter} w-full h-full rounded-xl border-1 object-cover`}
+          className={`${filter} w-full h-full rounded-lg border-1 object-cover`}
           style={{ transform: isFrontCamera ? "scaleX(-1)" : "none" }}
           onLoadedMetadata={() => {
             if (videoRef.current) {

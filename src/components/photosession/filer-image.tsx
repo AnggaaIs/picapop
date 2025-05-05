@@ -17,7 +17,7 @@ export default function FilterImage({
         <div
           tabIndex={0}
           role="button"
-          className={`w-full btn m-1 ${isCapturing || error !== null || !selectedDeviceId
+          className={`w-full border-0 flex justify-between text-[#34364a] rounded-lg bg-white hover:bg-white btn m-1 ${isCapturing || error !== null || !selectedDeviceId
               ? "hidden"
               : ""
             }`}
@@ -26,7 +26,7 @@ export default function FilterImage({
           <svg
             width="12px"
             height="12px"
-            className="inline-block h-2 w-2 fill-current opacity-60"
+            className="inline-block h-2 w-2 fill-current opacity-70"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 2048 2048"
           >
@@ -35,13 +35,13 @@ export default function FilterImage({
         </div>
         <ul
           tabIndex={0}
-          className="dropdown-content bg-base-300 rounded-box -z-1 w-full p-2 shadow-2xl"
+          className="dropdown-content bg-white rounded-box -z-1 w-full p-2 shadow-2xl"
         >
           <li>
             <input
               type="radio"
               name="filter"
-              className="btn btn-sm btn-block btn-ghost justify-start"
+              className="btn btn-sm btn-block bg-white outline-0 selected:bg-red-900 focus:outline-0 focus:border-2 hover:border-blue-700 rounded-lg shadow-none btn-ghost justify-start"
               aria-label="No Filter"
               value="nofilter"
               onClick={() => applyFilterToAllImages("")}

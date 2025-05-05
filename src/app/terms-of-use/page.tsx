@@ -31,49 +31,49 @@ const TermsOfUse = () => {
   return (
     <div className="min-h-screen px-6 py-12 text-base-content">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold mb-6 text-center">Syarat dan Ketentuan Penggunaan - PicaPop</h1>
+        <h1 className="text-4xl font-extrabold mb-6 text-center text-[#34364a]">Syarat dan Ketentuan Penggunaan - PicaPop</h1>
 
-        <p className="mb-4">
+        <p className="mb-4 text-[#34364a]">
           Dengan mengakses dan menggunakan PicaPop, Anda menyetujui untuk terikat pada syarat
           dan ketentuan berikut. Jika Anda tidak setuju dengan ketentuan ini, mohon untuk tidak
           menggunakan layanan kami.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-2">1. Penggunaan Layanan</h2>
-        <p className="mb-4">
+        <h2 className="text-2xl font-semibold mt-8 mb-2 text-[#34364a]">1. Penggunaan Layanan</h2>
+        <p className="mb-4 text-[#34364a]">
           Layanan PicaPop hanya boleh digunakan untuk keperluan pribadi dan non-komersial.
           Penggunaan layanan secara ilegal atau yang melanggar hukum berlaku tidak diperbolehkan.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-2">2. Hak Kekayaan Intelektual</h2>
-        <p className="mb-4">
+        <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">2. Hak Kekayaan Intelektual</h2>
+        <p className="mb-4 text-[#34364a]">
           Seluruh konten, termasuk namun tidak terbatas pada teks, gambar, desain, dan kode
           milik PicaPop dilindungi oleh hak cipta dan tidak boleh disalin atau digunakan tanpa
           izin tertulis dari kami.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-2">3. Konten yang Dihasilkan Pengguna</h2>
-        <p className="mb-4">
+        <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">3. Konten yang Dihasilkan Pengguna</h2>
+        <p className="mb-4 text-[#34364a]">
           Anda bertanggung jawab penuh atas konten (seperti foto) yang Anda unggah atau hasilkan
           melalui layanan ini. Dilarang mengunggah konten yang mengandung unsur kekerasan,
           kebencian, pornografi, atau melanggar hukum.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-2">4. Batasan Tanggung Jawab</h2>
-        <p className="mb-4">
+        <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">4. Batasan Tanggung Jawab</h2>
+        <p className="mb-4 text-[#34364a]">
           Kami tidak bertanggung jawab atas kerugian langsung maupun tidak langsung yang
           diakibatkan oleh penggunaan layanan ini. PicaPop disediakan &quot;apa adanya&quot; tanpa
           jaminan apapun.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-2">5. Perubahan Ketentuan</h2>
-        <p className="mb-4">
+        <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">5. Perubahan Ketentuan</h2>
+        <p className="mb-4 text-[#34364a]">
           Kami berhak mengubah syarat dan ketentuan ini kapan saja. Perubahan akan diumumkan
           melalui situs web dan berlaku segera setelah dipublikasikan.
         </p>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-2">6. Hukum yang Berlaku</h2>
-        <p className="mb-4">
+        <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">6. Hukum yang Berlaku</h2>
+        <p className="mb-4 text-[#34364a]">
           Ketentuan ini tunduk dan ditafsirkan sesuai dengan hukum yang berlaku di Indonesia.
         </p>
 
