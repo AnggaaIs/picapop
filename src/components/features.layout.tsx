@@ -16,7 +16,7 @@ export default function FeaturesLayout() {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-primary-300 lucide lucide-camera-icon lucide-camera"
+          className="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 lucide lucide-camera-icon lucide-camera"
           fill="none"
         >
           <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
@@ -35,7 +35,7 @@ export default function FeaturesLayout() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-primary-300 lucide lucide-palette-icon lucide-palette"
+            className="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 lucide lucide-palette-icon lucide-palette"
           >
             <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
             <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
@@ -52,7 +52,7 @@ export default function FeaturesLayout() {
       <FeaturesItem
         icon={
           <svg
-            className="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-primary-300"
+            className="w-5 h-5 text-blue-600 lg:w-6 lg:h-6"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +82,7 @@ export default function FeaturesLayout() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-primary-300 lucide lucide-settings-icon lucide-settings "
+            className="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 lucide lucide-settings-icon lucide-settings "
           >
             <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
             <circle cx="12" cy="12" r="3" />
@@ -105,7 +105,7 @@ export default function FeaturesLayout() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-primary-300 lucide lucide-save-all-icon lucide-save-all"
+            className="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 lucide lucide-save-all-icon lucide-save-all"
           >
             <path d="M10 2v3a1 1 0 0 0 1 1h5" />
             <path d="M18 18v-6a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6" />
@@ -130,7 +130,7 @@ export default function FeaturesLayout() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-primary-300 lucide lucide-brain-icon lucide-brain"
+            className="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 lucide lucide-brain-icon lucide-brain"
           >
             <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
             <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z" />
