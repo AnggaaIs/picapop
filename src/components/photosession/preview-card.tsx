@@ -5,6 +5,7 @@ import { useState, useRef } from "react";
 import { ClipboardCopy } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import QRCodeStyling from "qr-code-styling";
+import Button from "../button";
 
 /* eslint-disable @next/next/no-img-element */
 export default function PreviewCard({
@@ -88,13 +89,26 @@ export default function PreviewCard({
   };
 
   return (
-    <div className="group rounded-xl overflow-hidden border border-base-200 shadow-sm transition-all hover:ring-2 hover:ring-primary/30">
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, scale: 0.95 },
+        visible: {
+          opacity: 1,
+          scale: 1,
+          transition: {
+            duration: 0.4,
+            ease: 'easeOut'            // transisi lembut (ease-out):contentReference[oaicite:4]{index=4}
+          }
+        }
+      }}
+
+      className="group rounded-xl overflow-hidden bg-white transition-all hover:ring-2 hover:ring-blue-700" >
       <div className="relative aspect-[4/5] w-full">
         <AnimatePresence mode="wait">
           {showQR && link ? (
             <motion.div
               key="qr"
-              className="flex items-center justify-center w-full h-full bg-base-200"
+              className="flex items-center justify-center w-full h-full"
               initial={{ opacity: 0, rotateY: 180 }}
               animate={{ opacity: 1, rotateY: 0 }}
               exit={{ opacity: 0, rotateY: -180 }}
@@ -115,16 +129,16 @@ export default function PreviewCard({
             <motion.div
               key="image"
               className="w-full h-full"
-              initial={{ opacity: 0, rotateY: 180 }}
-              animate={{ opacity: 1, rotateY: 0 }}
-              exit={{ opacity: 0, rotateY: -180 }}
+              // initial={{ opacity: 0, rotateY: 180 }}
+              // animate={{ opacity: 1, rotateY: 0 }}
+              // exit={{ opacity: 0, rotateY: -180 }}
               transition={{ duration: 0.5 }}
             >
               {image ? (
                 <img
                   src={image}
                   alt={`Processed ${index}`}
-                  className="object-contain w-full h-full bg-base-200"
+                  className="object-contain w-full h-full"
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-base-200">
@@ -163,19 +177,19 @@ export default function PreviewCard({
         )}
 
         {!isApplied && onApply && (
-          <button onClick={onApply} className="btn btn-primary w-full">
+          <Button onClick={onApply} className=" w-full">
             Apply
-          </button>
+          </Button>
         )}
 
         {isApplied && !link && (
-          <button
+          <Button
             onClick={handleGetLink}
-            className={`btn w-full ${loading ? "btn-disabled" : "btn-primary"}`}
+            className={`btn w-full ${loading ? "btn-disabled" : ""}`}
             disabled={loading}
           >
             {loading ? "Saving..." : "Get Link"}
-          </button>
+          </Button>
         )}
 
         {isApplied && (
@@ -183,7 +197,7 @@ export default function PreviewCard({
             <a
               href={image}
               download={`PicaPop-${index + 1}.png`}
-              className="btn btn-outline w-full"
+              className="btn btn-outline rounded-lg w-full"
             >
               Download
             </a>
@@ -199,6 +213,6 @@ export default function PreviewCard({
           </>
         )}
       </div>
-    </div>
+    </motion.div >
   );
 }

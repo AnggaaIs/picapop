@@ -11,6 +11,7 @@ import PreviewCard from "@/components/photosession/preview-card";
 import { phrases } from "@/utils/config";
 import MainLayout from "@/components/photosession/main-layout";
 import HeaderLayout from "@/components/photosession/header-layout";
+import { motion } from "framer-motion";
 
 export default function PhotoSession() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -251,7 +252,7 @@ export default function PhotoSession() {
     setIsCapturing(true);
 
     for (let i = 0; i < 3; i++) {
-      for (let count = 3; count > 0; count--) {
+      for (let count = 1; count > 0; count--) {
         setCountdown(count);
         await new Promise((resolve) => setTimeout(resolve, 1000));
       }
@@ -344,7 +345,19 @@ export default function PhotoSession() {
               <p className="mb-6 text-3xl font-semibold text-center">
                 Hasil Foto Kamu
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl">
+              <motion.div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl"
+                variants={{
+                  hidden: { opacity: 0 },    // keadaan awal container (mis. tersembunyi)
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      when: 'beforeChildren',    // animasi container sebelum anak-anaknya
+                      staggerChildren: 0.2       // jeda 0.2s antar item anak
+                    }
+                  }
+                }}
+                initial="hidden"
+                animate="visible">
                 {processedImages.map((templateImage, index) => (
                   <PreviewCard
                     key={index}
@@ -354,11 +367,11 @@ export default function PhotoSession() {
                     isApplied={!!appliedImages[index]}
                   />
                 ))}
-              </div>
+              </motion.div>
             </div>
           )}
         </div>
       </div>
-    </Suspense>
+    </Suspense >
   );
 }

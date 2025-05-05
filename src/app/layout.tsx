@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Onest } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
 import { Suspense } from "react";
@@ -9,7 +9,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Script from "next/script";
 
-const outfit = Outfit({
+const onest = Onest({
   subsets: ["latin"],
 });
 
@@ -133,9 +133,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning>
-      <body className={`${outfit.className} antialiased`}>
-        <ThemeProvider attribute="data-theme" defaultTheme="retro" enableSystem>
+    <html lang="en" data-theme="light" className="light" suppressHydrationWarning>
+      <body className={`${onest.className} antialiased bg-[#f6f8fd]`}>
+        <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem>
           <Suspense fallback={null}>
             <Navbar />
             {children}

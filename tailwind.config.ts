@@ -7,7 +7,8 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+
   },
+  darkMode: 'class',
   plugins: [],
 } satisfies Config;

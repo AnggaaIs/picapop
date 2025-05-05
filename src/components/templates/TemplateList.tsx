@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Button from "../button";
 
 export default function TemplateList() {
   const [selected, setSelected] = useState<string | null>(null);
@@ -29,10 +30,10 @@ export default function TemplateList() {
         {templates?.map((template, index) => (
           <div
             key={index}
-            className={`w-full cursor-pointer transition-all ease-in-out rounded-xl border border-gray-200/20 p-4 
-                shadow-md ${selected === template.filename
-                ? "bg-primary/40 shadow-md"
-                : "hover:bg-primary/20 shadow-sm"
+            className={`w-full cursor-pointer hover:border-2 hover:border-blue-700 border-2 transition-all ease-in rounded-xl p-4 
+                 ${selected === template.filename
+                ? "bg-white border-blue-700 border-2"
+                : "bg-white border-transparent"
               }`}
 
             onClick={() => onSelect(template.filename)}
@@ -42,7 +43,7 @@ export default function TemplateList() {
                 <p className="text-md text-center font-medium">{template.label}</p>
                 {template.isPartner?.status ? (
                   <div className="w-full justify-center flex mt-2">
-                    <div className="bg-red-600 font-normal px-3 rounded-xl w-fit text-white font-semibold text-[10px]">Special Partner</div>
+                    <div className="bg-[#dee3ff] px-3 rounded-xl w-fit text-[#677ffb] font-semibold text-[10px]">Special Partner</div>
                   </div>
                 ) : template.isNew ? (
                   <div className="badge badge-success badge-xs">Baru ditambahkan</div>
@@ -73,14 +74,22 @@ export default function TemplateList() {
       {selected && (
         <div className="bg-gradient-to-t mb-2 via-base-200 h-[100px] rounded-2xl from-base-200 sticky bottom-0 w-full p-5">
           <div className="relative w-full h-full flex items-center justify-center max-w-xl mx-auto">
-            <button
+            {/* <button
               onClick={() => {
                 router.push("/getstarted?t=" + selected);
               }}
               className="btn btn-success w-full absolute left-0 bottom-0"
             >
               Pake template ini
-            </button>
+            </button> */}
+            <Button
+              onClick={() => {
+                router.push("/getstarted?t=" + selected);
+              }}
+              className="absolute w-full left-0 bottom-0"
+            >
+              Gunakan template ini
+            </Button>
           </div>
         </div>
       )}
