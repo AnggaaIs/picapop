@@ -72,7 +72,7 @@ export default function TemplateList() {
       </div>
 
       {selected && (
-        <div className="bg-gradient-to-t mb-2 via-base-200 h-[100px] rounded-2xl from-base-200 sticky bottom-0 w-full p-5">
+        <div className="bg-gradient-to-t mb-2 via-white h-[100px] rounded-2xl from-white sticky bottom-0 w-full p-5">
           <div className="relative w-full h-full flex items-center justify-center max-w-xl mx-auto">
             {/* <button
               onClick={() => {
