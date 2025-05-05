@@ -40,7 +40,7 @@ export default function TemplateList() {
           >
             <div className="flex flex-col items-center justify-center gap-5">
               <div className="text-center ">
-                <p className="text-md text-center font-medium">{template.label}</p>
+                <p className="text-md text-center font-medium text-[#34364a]">{template.label}</p>
                 {template.isPartner?.status ? (
                   <div className="w-full justify-center flex mt-2">
                     <div className="bg-[#dee3ff] px-3 rounded-xl w-fit text-[#677ffb] font-semibold text-[10px]">Special Partner</div>
@@ -72,16 +72,8 @@ export default function TemplateList() {
       </div>
 
       {selected && (
-        <div className="bg-gradient-to-t mb-2 via-base-200 h-[100px] rounded-2xl from-base-200 sticky bottom-0 w-full p-5">
+        <div className="bg-gradient-to-t mb-2 via-white h-[100px] rounded-2xl from-white sticky bottom-0 w-full p-5">
           <div className="relative w-full h-full flex items-center justify-center max-w-xl mx-auto">
-            {/* <button
-              onClick={() => {
-                router.push("/getstarted?t=" + selected);
-              }}
-              className="btn btn-success w-full absolute left-0 bottom-0"
-            >
-              Pake template ini
-            </button> */}
             <Button
               onClick={() => {
                 router.push("/getstarted?t=" + selected);

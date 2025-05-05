@@ -11,7 +11,7 @@ export default function CameraAvailable({
 }) {
   return (
     <div className="flex justify-center mt-5">
-      <div className="w-full max-w-md dropdown dropdown-click">
+      <div className="w-full shadow-none max-w-md dropdown dropdown-click">
         <div
           tabIndex={0}
           role="button"

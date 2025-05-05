@@ -8,7 +8,7 @@ export default function GetStarted() {
   const searchParams = useSearchParams();
   const template = searchParams.get("t");
   return (
-    <div className="flex flex-col justify-center items-center p-10 h-screen">
+    <div className="flex flex-col justify-center items-center py-10 px-8 h-screen">
       <h2 className="text-3xl font-extrabold text-[#34364a]">Petunjuk Penggunaan!</h2>
       <div className="my-5 text-center text-[#34364a]">
         <p>Kamu hanya memiliki <b>3 detik</b> setiap cuplikan foto</p>

@@ -6,7 +6,7 @@ export default function PartnersItems() {
     <>
       <Link href="/" className="flex justify-center items-center px-4 py-2 bg-white rounded-lg">
         <svg
-          className="h-14"
+          className="h-14 text-[#34364a]"
           viewBox="0 0 1082 239"
           fill="currentColor"
           xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +36,7 @@ export default function PartnersItems() {
         className="flex justify-center items-center bg-white rounded-lg py-2 px-4"
       >
         <svg
-          className="h-14"
+          className="h-14 text-[#34364a]"
           viewBox="0 0 1727 411"
           fill="currentColor"
           xmlns="http://www.w3.org/2000/svg"

@@ -12,8 +12,8 @@ export default function FilterImage({
   applyFilterToAllImages: (filter: string) => void;
 }) {
   return (
-    <div className="flex w-full gap-2 mt-4 ">
-      <div className={`dropdown w-full dropdown-end`}>
+    <div className="flex w-full gap-2 mt-4">
+      <div className={`dropdown w-full shadow-none dropdown-end`}>
         <div
           tabIndex={0}
           role="button"

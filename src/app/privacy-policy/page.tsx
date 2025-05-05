@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 const PrivacyPolicy = () => {
     return (
-        <div className="min-h-screen px-6 py-12 text-base-content">
+        <div className="min-h-screen px-6 py-12">
             <div className="max-w-3xl mx-auto">
                 <h1 className="text-4xl font-bold mb-6 text-center text-[#34364a]">Kebijakan Privasi - PicaPop</h1>
 
