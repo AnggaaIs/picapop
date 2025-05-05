@@ -44,10 +44,10 @@ export const metadata: Metadata = {
 
 export default function Template() {
   return <>
-    <div className="flex flex-col items-center py-10 mb-20 min-h-screen">
-      <div className="flex px-5 flex-col items-center max-w-6xl md:py-5 rounded-xl w-full">
-        <h1 className="text-center text-4xl font-semibold">Template Foto</h1>
-        <p className="text-center">
+    <div className="flex flex-col items-center py-10 mt-10 mb-20 min-h-screen">
+      <div className="flex px-6 flex-col items-center max-w-6xl md:py-5 rounded-xl w-full">
+        <h1 className="text-center text-4xl text-[#34364a] font-extrabold">Template Foto</h1>
+        <p className="text-center text-[#34364a] mt-5">
           Kami menyediakan beberapa template foto yang bisa kamu gunakan
         </p>
 

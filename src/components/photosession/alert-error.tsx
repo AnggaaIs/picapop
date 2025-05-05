@@ -1,9 +1,9 @@
 export default function AlertError() {
   return (
-    <div role="alert" className="alert alert-error">
+    <div role="alert" className="bg-red-300 flex items-center justify-center gap-3 py-3 rounded-lg">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-6 w-6 shrink-0 stroke-current"
+        className="h-6 w-6 shrink-0 stroke-current text-red-600"
         fill="none"
         viewBox="0 0 24 24"
       >
@@ -14,7 +14,7 @@ export default function AlertError() {
           d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
         />
       </svg>
-      <span>Error! Tidak mendapatkan akses ke kamera.</span>
+      <span className="text-red-600 text-sm font-semibold tracking-wide">Error! Tidak mendapatkan akses ke kamera.</span>
     </div>
   )
 }

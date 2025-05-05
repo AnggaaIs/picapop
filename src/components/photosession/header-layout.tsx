@@ -18,7 +18,7 @@ export default function HeaderLayout({
     <>
       {countdown == null ? (
         <div className="pb-5">
-          <h2 className="text-3xl font-semibold text-center">
+          <h2 className="text-3xl tracking-wide text-[#34364a] font-extrabold text-center">
             Photo Session
           </h2>
         </div>

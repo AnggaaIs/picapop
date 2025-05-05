@@ -30,7 +30,7 @@ export default function Home() {
               Pilih template, ambil foto, dan bagikan hasilnya dalam sekejap!
             </p>
 
-            <Button className="mt-10" onClick={() => router.push('/getstarted')}>
+            <Button className="mt-10 md:w-1/2 max-w-[250px]" onClick={() => router.push('/getstarted')}>
               Cobain Sekarang!
             </Button>
           </div>
@@ -135,7 +135,7 @@ export default function Home() {
       </div>
       <div className="relative w-full mb-2">
         <div className="left-0 z-[6] h-[350px] -top-45 w-full items-center justify-center flex from-[#f6f8fd] via-[#f6f8fd] bg-gradient-to-t to-transparent absolute">
-          <Button onClick={() => router.push("/templates")}>
+          <Button className="md:w-1/2 max-w-[350px]" onClick={() => router.push("/templates")}>
             Lihat semua template
           </Button>
         </div>
