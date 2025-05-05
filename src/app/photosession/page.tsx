@@ -252,7 +252,7 @@ export default function PhotoSession() {
     setIsCapturing(true);
 
     for (let i = 0; i < 3; i++) {
-      for (let count = 1; count > 0; count--) {
+      for (let count = 3; count > 0; count--) {
         setCountdown(count);
         await new Promise((resolve) => setTimeout(resolve, 1000));
       }

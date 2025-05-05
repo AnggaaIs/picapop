@@ -168,7 +168,7 @@ export default function PreviewCard({
             />
             <button
               onClick={() => navigator.clipboard.writeText(getLinkUrl())}
-              className="btn btn-ghost p-2"
+              className="btn btn-ghost text-[#34364a] p-2"
               title="Copy to clipboard"
             >
               <ClipboardCopy size={18} />
@@ -197,7 +197,7 @@ export default function PreviewCard({
             <a
               href={image}
               download={`PicaPop-${index + 1}.png`}
-              className="btn btn-outline rounded-lg w-full"
+              className="btn btn-outline text-[#34364a] rounded-lg w-full"
             >
               Download
             </a>
