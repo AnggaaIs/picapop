@@ -21,7 +21,7 @@ export default function StripPageClient() {
         );
 
         if (!res.ok) {
-          router.replace("/404");
+          // router.replace("/404");
           return;
         }
 
@@ -29,7 +29,7 @@ export default function StripPageClient() {
         setImageBase64(data?.data?.imageBase64 || null);
       } catch (error) {
         console.error("[FETCH_IMAGE_ERROR]", error);
-        router.replace("/404");
+        // router.replace("/404");
       } finally {
         setLoading(false);
       }
@@ -41,8 +41,8 @@ export default function StripPageClient() {
   }, [linkId, router]);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-6 bg-base-200">
-      <div className="bg-base-100 shadow-xl rounded-lg p-6 w-full max-w-sm">
+    <main className="min-h-screen flex flex-col items-center justify-center p-6 pb-20 bg-base-200">
+      <div className="bg-base-100 rounded-lg p-6 w-full max-w-sm">
         <h1 className="text-xl font-bold mb-4 text-center">Shared Image</h1>
 
         {loading ? (
@@ -69,7 +69,14 @@ export default function StripPageClient() {
             </div>
           </>
         ) : (
-          <p className="text-center text-red-500">Image not found.</p>
+          <>
+            <p className="text-center text-red-500">
+              Image not found or has been removed.
+            </p>
+            <p className="text-center text-sm text-gray-500 mt-2">
+              The image you are looking for does not exist or has been removed.
+            </p>
+          </>
         )}
       </div>
     </main>
