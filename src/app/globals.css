@@ -2,4 +2,5 @@
 @plugin "daisyui" {
   root: ":root";
   logs: true;
+  themes: light --default;
 }
