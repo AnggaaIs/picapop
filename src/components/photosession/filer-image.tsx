@@ -17,7 +17,7 @@ export default function FilterImage({
         <div
           tabIndex={0}
           role="button"
-          className={`w-full border-0 flex justify-between text-[#34364a] rounded-lg bg-white hover:bg-white btn m-1 ${isCapturing || error !== null || !selectedDeviceId
+          className={`w-full border-0 flex justify-between text-[#34364a] rounded-xl bg-white hover:bg-white btn m-1 ${isCapturing || error !== null || !selectedDeviceId
               ? "hidden"
               : ""
             }`}
@@ -35,13 +35,13 @@ export default function FilterImage({
         </div>
         <ul
           tabIndex={0}
-          className="dropdown-content bg-white rounded-box -z-1 w-full p-2 shadow-2xl"
+          className="dropdown-content bg-white rounded-xl -z-1 w-full p-2 shadow-2xl"
         >
           <li>
             <input
               type="radio"
               name="filter"
-              className="btn btn-sm btn-block bg-white outline-0 selected:bg-red-900 focus:outline-0 focus:border-2 hover:border-blue-700 rounded-lg shadow-none btn-ghost justify-start"
+              className="btn btn-sm btn-block bg-white outline-0 selected:bg-red-900 focus:outline-0 focus:border-2 hover:border-blue-700 rounded-xl shadow-none btn-ghost justify-start"
               aria-label="No Filter"
               value="nofilter"
               onClick={() => applyFilterToAllImages("")}

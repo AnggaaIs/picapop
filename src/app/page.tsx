@@ -118,7 +118,7 @@ export default function Home() {
             {templates?.slice(0, 4).map((template, index) => (
               <div
                 key={index}
-                className="items-center bg-white py-5 flex-col justify-center flex w-full transition-all ease rounded-xl"
+                className="items-center bg-white py-5 px-2 flex-col justify-around flex w-full transition-all ease rounded-xl"
               >
                 <p className="mb-2 text-center text-[#34364a] font-bold text-sm">{template.label}</p>
                 <Image
