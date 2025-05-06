@@ -1,6 +1,6 @@
 export default function AlertError() {
   return (
-    <div role="alert" className="bg-red-300 flex items-center justify-center gap-3 py-3 rounded-lg">
+    <div role="alert" className="bg-red-300 flex items-center justify-center gap-3 py-3 px-3 rounded-lg">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-6 w-6 shrink-0 stroke-current text-red-600"

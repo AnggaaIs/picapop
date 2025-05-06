@@ -334,7 +334,7 @@ export default function PhotoSession() {
             <button
               disabled={isCapturing || error != null || !selectedDeviceId}
               onClick={startAutoCapture}
-              className="w-full px-4 py-2 mt-2 btn btn-outline shadow-xs text-[#34364a]"
+              className="w-full px-4 border-0 bg-blue-700 py-2 mt-2 btn btn-outline text-white rounded-xl hover:bg-blue-600 transition-all duration-200 ease-in-out"
             >
               {isCapturing ? "Capturing..." : "Capture"}
             </button>
@@ -343,7 +343,7 @@ export default function PhotoSession() {
           {processedImages && (
             <div className="mt-10 p-6 rounded-xl flex flex-col items-center justify-center">
               <p className="mb-6 text-3xl font-semibold text-center text-[#34364a]">
-                Hasil Foto Kamu
+                Pilih template strip
               </p>
               <motion.div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl"
                 variants={{

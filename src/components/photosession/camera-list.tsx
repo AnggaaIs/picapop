@@ -15,7 +15,7 @@ export default function CameraAvailable({
         <div
           tabIndex={0}
           role="button"
-          className="btn text-[#34364a] bg-white rounded-lg border-0 hover:bg-transparent flex items-center justify-between gap-2"
+          className="btn text-[#34364a] bg-white rounded-xl border-0 hover:bg-transparent flex items-center justify-between gap-2"
         >
           {devices.find((d) => d.deviceId === selectedDeviceId)
             ?.label || "Pilih Kamera"}
@@ -26,7 +26,7 @@ export default function CameraAvailable({
         </div>
         <ul
           tabIndex={0}
-          className="dropdown-content w-full menu p-2 shadow-lg bg-white rounded-box max-w-md transition-all duration-200"
+          className="dropdown-content w-full menu p-2 shadow-lg bg-white rounded-xl max-w-md transition-all duration-200"
         >
           {devices.length > 0 ? (
             devices.map((device) => (

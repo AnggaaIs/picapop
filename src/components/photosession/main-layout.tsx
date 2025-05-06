@@ -44,7 +44,7 @@ export default function MainLayout({
           ref={videoRef}
           autoPlay
           playsInline
-          className={`${filter} w-full h-full rounded-lg border-1 object-cover`}
+          className={`${filter} w-full h-full rounded-xl border-1 object-cover`}
           style={{ transform: isFrontCamera ? "scaleX(-1)" : "none" }}
           onLoadedMetadata={() => {
             if (videoRef.current) {
@@ -79,10 +79,10 @@ export default function MainLayout({
         />
 
         {capturedImages.length === 3 && (
-          <div className="flex mt-4 justify-between">
+          <div className="flex flex-col gap-5 mt-4 justify-between">
             <button
               onClick={handleProcessImage}
-              className="btn btn-dash w-full text-[#34364a]"
+              className="btn btn-dash rounded-xl border-blue-600 hover:bg-transparent w-full text-[#34364a]"
             >
               {previewLoading && processingIndex !== null ? (
                 <div className="flex items-center gap-2">
@@ -99,9 +99,13 @@ export default function MainLayout({
                   </span>
                 </div>
               ) : (
-                "Preview"
+                "Preview template"
               )}
             </button>
+
+            {/* <button className="btn hover:shadow-none font-bold bg-[#e5e9f2] text-[#34364a] rounded-xl border-0 hover:bg-[#e5e9f2] w-full">
+              Generate Gif
+            </button> */}
           </div>
         )}
       </div>
