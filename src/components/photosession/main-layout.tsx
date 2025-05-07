@@ -103,9 +103,7 @@ export default function MainLayout({
               )}
             </button>
 
-            {/* <button className="btn hover:shadow-none font-bold bg-[#e5e9f2] text-[#34364a] rounded-xl border-0 hover:bg-[#e5e9f2] w-full">
-              Generate Gif
-            </button> */}
+            {/* #e5e9f2#e5e9f2 */}
           </div>
         )}
       </div>
