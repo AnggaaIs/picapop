@@ -46,7 +46,7 @@ export default function TemplateList() {
                     <div className="bg-[#dee3ff] px-3 rounded-xl w-fit text-[#677ffb] font-semibold text-[10px]">Special Partner</div>
                   </div>
                 ) : template.isNew ? (
-                  <div className="badge badge-success badge-xs">Baru ditambahkan</div>
+                  <div className="bg-green-200 px-3 text-[10px] font-semibold text-green-600 mt-2 w-fit rounded-xl">Baru ditambahkan</div>
                 ) : null}
               </div>
               <div>
