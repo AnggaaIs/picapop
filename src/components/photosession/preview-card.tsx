@@ -129,9 +129,6 @@ export default function PreviewCard({
             <motion.div
               key="image"
               className="w-full h-full"
-              // initial={{ opacity: 0, rotateY: 180 }}
-              // animate={{ opacity: 1, rotateY: 0 }}
-              // exit={{ opacity: 0, rotateY: -180 }}
               transition={{ duration: 0.5 }}
             >
               {image ? (

@@ -341,18 +341,18 @@ export default function PhotoSession() {
           </div>
 
           {processedImages && (
-            <div className="mt-10 p-6 rounded-xl flex flex-col items-center justify-center">
+            <div className="mt-10 p-2 rounded-xl flex flex-col items-center justify-center">
               <p className="mb-6 text-3xl font-semibold text-center text-[#34364a]">
                 Pilih template strip
               </p>
               <motion.div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl"
                 variants={{
-                  hidden: { opacity: 0 },    // keadaan awal container (mis. tersembunyi)
+                  hidden: { opacity: 0 },
                   visible: {
                     opacity: 1,
                     transition: {
-                      when: 'beforeChildren',    // animasi container sebelum anak-anaknya
-                      staggerChildren: 0.2       // jeda 0.2s antar item anak
+                      when: 'beforeChildren',
+                      staggerChildren: 0.2
                     }
                   }
                 }}
@@ -361,7 +361,7 @@ export default function PhotoSession() {
                 {processedImages.map((templateImage, index) => (
                   <PreviewCard
                     key={index}
-                    image={appliedImages[index] || templateImage} // tampilkan hasil gabungan kalau sudah apply
+                    image={appliedImages[index] || templateImage}
                     index={index}
                     onApply={() => handleApply(index)}
                     isApplied={!!appliedImages[index]}

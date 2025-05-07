@@ -36,17 +36,17 @@ export default function TemplateList() {
                 : "bg-white border-transparent"
               }`}
 
-            onClick={() => onSelect(template.filename)}
+            // onClick={() => onSelect(template.filename)}
           >
             <div className="flex flex-col items-center justify-center gap-5">
               <div className="text-center ">
-                <p className="text-md text-center font-medium text-[#34364a]">{template.label}</p>
+                <p className="text-md text-center font-semibold text-[#34364a]">{template.label}</p>
                 {template.isPartner?.status ? (
                   <div className="w-full justify-center flex mt-2">
                     <div className="bg-[#dee3ff] px-3 rounded-xl w-fit text-[#677ffb] font-semibold text-[10px]">Special Partner</div>
                   </div>
                 ) : template.isNew ? (
-                  <div className="badge badge-success badge-xs">Baru ditambahkan</div>
+                  <div className="bg-green-200 px-3 text-[10px] font-semibold text-green-600 mt-2 w-fit rounded-xl">Baru ditambahkan</div>
                 ) : null}
               </div>
               <div>
@@ -67,24 +67,28 @@ export default function TemplateList() {
                 />
               </div>
             </div>
+            <div className="pt-4 space-y-2">
+              <p className="text-xs text-center font-semibold text-[#34364a]">{template.isPartner?.partner_name || 'PicaPop'}</p>
+              <p className="text-xs text-center text-[#34364a]/60">{new Date(template.date).toLocaleDateString("id-ID", { year: "numeric", month: "long", day: "numeric" })}</p>
+            </div>
           </div>
         ))}
       </div>
 
-      {selected && (
+      {/* {selected && ( */}
         <div className="bg-gradient-to-t mb-2 via-white h-[100px] rounded-2xl from-white sticky bottom-0 w-full p-5">
           <div className="relative w-full h-full flex items-center justify-center max-w-xl mx-auto">
             <Button
               onClick={() => {
-                router.push("/getstarted?t=" + selected);
+                router.push("/getstarted");
               }}
               className="absolute w-full left-0 bottom-0"
             >
-              Gunakan template ini
+              Selanjutnya
             </Button>
           </div>
         </div>
-      )}
+      {/* )} */}
     </>
   )
 }
