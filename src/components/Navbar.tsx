@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <div className="navbar">
       <div className="flex-1">
-        <Link href="/" className="btn btn-ghost text-xl text-[#34364a]">PicaPop</Link>
+        <Link href="/" className="btn btn-ghost bg-transparent rounded-xl shadow-none text-xl text-[#34364a]">PicaPop</Link>
       </div>
       {/* <div className="flex-none">
         <div className="dropdown dropdown-end">
