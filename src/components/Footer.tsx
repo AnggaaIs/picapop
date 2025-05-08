@@ -8,7 +8,7 @@ export default function Footer() {
           PicaPop
         </Link>
         <p className="mb-6 mt-2 text-white/70">Pilih template, ambil foto, dan bagikan hasilnya dalam sekejap!</p>
-        <ul className="flex flex-wrap justify-center items-center mb-6 text-white/80">
+        <ul className="flex text-sm flex-wrap justify-center items-center mb-6 text-white/80">
           <li>
             <a href="/privacy-policy" className="mr-4 hover:underline md:mr-6">Privacy Policy</a>
           </li>
