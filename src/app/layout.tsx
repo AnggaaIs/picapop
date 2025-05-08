@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Onest } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
 import { Suspense } from "react";
@@ -9,7 +9,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Script from "next/script";
 
-const onest = Onest({
+const onest = Outfit({
   subsets: ["latin"],
 });
 
@@ -85,8 +85,8 @@ export const metadata: Metadata = {
     "top selfie booth 2025"
   ],
   icons: {
-    icon: "/picapop.png",
-    shortcut: "/picapop.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
   },
   category: 'Community',
   verification: {
@@ -105,14 +105,17 @@ export const metadata: Metadata = {
     url: 'https://picapop.my.id/',
     description:
       "Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share!",
-    images: [
-      {
-        url: "/picapop.png",
-        width: 1200,
-        height: 630,
-        alt: "PicaPop - Fun & Creative Photo Booth",
-      },
-    ],
+    // images: [
+    //   {
+    //     url: "/picapop.png",
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "PicaPop - Fun & Creative Photo Booth",
+    //   },
+    // ],
+  },
+  appleWebApp: {
+    title: "PicaPop",
   },
   twitter: {
     card: "summary_large_image",
