@@ -9,10 +9,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: 'https://picapop.my.id/about',
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.7,
+    },
+    {
       url: 'https://picapop.my.id/templates',
       lastModified: new Date(),
       changeFrequency: 'daily',
-      priority: 0.8,
+      priority: 0.7,
     },
     {
       url: 'https://picapop.my.id/privacy-policy',

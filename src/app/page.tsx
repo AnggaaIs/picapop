@@ -90,7 +90,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="flex flex-col items-center p-10 mt-15 rounded-4xl">
+      <section className="flex flex-col items-center md:p-10 px-3 mt-15 rounded-4xl">
         <div className="flex flex-col items-center max-w-6xl md:p-5 rounded-xl w-full">
           <div className="mb-16 lg:mb-16 text-center">
             <h2 className="text-2xl mb-2 text-[#34364a] md:font-extrabold font-bold leading-tight text-center md:text-3xl">

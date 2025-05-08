@@ -8,7 +8,7 @@ export default function FeaturesItem({
   icon: React.ReactNode
 } & React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className="bg-white px-5 py-6 rounded-lg">
+    <div className="bg-white px-5 py-6 rounded-xl">
       <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-blue-100 lg:h-12 lg:w-12">
         {icon}
       </div>
