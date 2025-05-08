@@ -5,16 +5,12 @@ import { useEffect, useState } from "react";
 import Button from "../button";
 
 export default function TemplateList() {
-  // const [selected, setSelected] = useState<string | null>(null);
   const [templates, setTemplates] =
     useState<{
       label: string; filename: string; isNew: boolean; date: Date; isPartner: {
         status: boolean; partner_name: string;
       } | null
     }[]>([]);
-  // const onSelect = (value: string) => {
-  //   setSelected(value);
-  // };
 
   useEffect(() => {
     fetch("/api/templates")
