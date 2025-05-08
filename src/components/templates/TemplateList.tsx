@@ -70,7 +70,7 @@ export default function TemplateList() {
             {[1, 2, 3, 4,5,6,7,8,9,10].map((_, index) => (
               <div
                 key={index}
-                className={`w-full cursor-pointer hover:border-2 hover:border-blue-700 border-2 transition-all ease-in rounded-xl p-4 border-transparent`}
+                className={`w-full bg-white cursor-pointer hover:border-2 hover:border-blue-700 border-2 transition-all ease-in rounded-xl p-4 py-6 border-transparent`}
               >
                 <div className="flex flex-col items-center justify-center gap-5">
                   <div className="">
