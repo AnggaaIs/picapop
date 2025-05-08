@@ -120,7 +120,7 @@ export default function Home() {
                 key={index}
                 className="items-center bg-white py-5 px-2 flex-col justify-around flex w-full transition-all ease rounded-xl"
               >
-                <p className="mb-2 text-center text-[#34364a] font-bold text-sm">{template.label}</p>
+                <p className="mb-4 text-center text-[#34364a] font-bold text-sm">{template.label}</p>
                 <Image
                   className="rounded-md"
                   src={`/template/${template.filename}`}
