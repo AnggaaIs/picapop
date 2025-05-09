@@ -53,7 +53,7 @@ export default function CustomPhotobox({
 
     const photoSize = cmToPx(4);
     const margin = cmToPx(0.2);
-    const verticalMargin = cmToPx(0.02);
+    const verticalMargin = cmToPx(0.3);
     const padding = cmToPx(0.5);
     const footerSpace = cmToPx(1);
 
