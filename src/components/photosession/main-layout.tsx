@@ -40,7 +40,11 @@ export default function MainLayout({
   );
 
   if (mode === "template" && capturedImages.length > 3) {
-    capturedImages.splice(0, 1);
+    if (capturedImages.length === 6) {
+      capturedImages.splice(0, 3);
+    } else if (capturedImages.length === 4) {
+      capturedImages.splice(0, 1);
+    }
   }
 
   return (
