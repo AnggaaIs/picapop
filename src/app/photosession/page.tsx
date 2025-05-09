@@ -322,7 +322,10 @@ export default function PhotoSession() {
           {/* Mode selector */}
           <div className="flex justify-center gap-4 my-4">
             <button
-              onClick={() => setMode("template")}
+              onClick={() => {
+                setMode("template");
+                setStripCount(3);
+              }}
               className={`px-6 py-2 rounded-lg transition-all ${
                 mode === "template"
                   ? "bg-blue-600 text-white"
