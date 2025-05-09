@@ -319,33 +319,6 @@ export default function PhotoSession() {
             handleCameraSelect={handleCameraSelect}
           />
 
-          {/* Mode selector */}
-          <div className="flex justify-center gap-4 my-4">
-            <button
-              onClick={() => {
-                setMode("template");
-                setStripCount(3);
-              }}
-              className={`px-6 py-2 rounded-lg transition-all ${
-                mode === "template"
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-200 hover:bg-gray-300"
-              }`}
-            >
-              Template
-            </button>
-            <button
-              onClick={() => setMode("custom")}
-              className={`px-6 py-2 rounded-lg transition-all ${
-                mode === "custom"
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-200 hover:bg-gray-300"
-              }`}
-            >
-              Custom
-            </button>
-          </div>
-
           {/* component camera */}
           <MainLayout
             videoRef={videoRef}
@@ -364,7 +337,30 @@ export default function PhotoSession() {
             applyFilterToAllImages={applyFilterToAllImages}
           />
 
-          <div className="flex flex-wrap gap-2 mt-5">
+          <div className="mt-6">
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={() => setMode("template")}
+                className={`w-full py-2 tracking-wide text-sm rounded-xl font-bold transition-all ${mode === "template"
+                  ? "bg-green-600 text-white"
+                  : "bg-gray-200 hover:bg-gray-300"
+                  }`}
+              >
+                Template
+              </button>
+              <button
+                onClick={() => setMode("custom")}
+                className={`w-full py-2 tracking-wide text-sm rounded-xl font-bold transition-all ${mode === "custom"
+                  ? "bg-green-600 text-white"
+                  : "bg-gray-200 hover:bg-gray-300"
+                  }`}
+              >
+                Custom
+              </button>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-2 mt-2">
             <button
               disabled={isCapturing || error != null || !selectedDeviceId}
               onClick={startAutoCapture}

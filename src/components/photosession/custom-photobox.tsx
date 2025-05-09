@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -295,18 +296,18 @@ export default function CustomPhotobox({
   };
 
   return (
-    <div className="mt-5">
-      <div className="p-4 bg-gray-100 rounded-xl">
-        <h2 className="text-xl font-semibold mb-4">Custom Photostrip</h2>
+    <div className="mt-10">
+      <div className="p-4 bg-white rounded-xl">
+        <h2 className="text-xl font-bold text-center text-[#34364a] mb-4">Custom Photostrip</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-sm text-[#34364a] font-medium mb-2">
               Number of Photos
             </label>
-            <div className="flex gap-2">
+            <div className="flex gap-2 *:py-1.5 *:cursor-pointer">
               <button
-                className={`px-4 py-2 rounded-lg ${
+                className={`px-5 text-sm font-bold tracking-wide rounded-xl ${
                   stripCount === 3 ? "bg-blue-600 text-white" : "bg-gray-200"
                 }`}
                 onClick={() => handleSelectStrip(3)}
@@ -314,7 +315,7 @@ export default function CustomPhotobox({
                 3 Photos
               </button>
               <button
-                className={`px-4 py-2 rounded-lg ${
+                className={`px-5 text-sm font-bold tracking-wide rounded-xl ${
                   stripCount === 4 ? "bg-blue-600 text-white" : "bg-gray-200"
                 }`}
                 onClick={() => handleSelectStrip(4)}
@@ -322,7 +323,7 @@ export default function CustomPhotobox({
                 4 Photos
               </button>
               <button
-                className={`px-4 py-2 rounded-lg ${
+                className={`px-5 text-sm font-bold tracking-wide rounded-xl ${
                   stripCount === 6 ? "bg-blue-600 text-white" : "bg-gray-200"
                 }`}
                 onClick={() => handleSelectStrip(6)}
@@ -333,7 +334,7 @@ export default function CustomPhotobox({
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-[#34364a] text-sm font-medium mb-2">
               Background Color
             </label>
             <div className="flex items-center gap-2">
@@ -349,7 +350,7 @@ export default function CustomPhotobox({
         </div>
 
         <div className="mb-4">
-          <p className="text-sm mb-2">
+          <p className="text-sm text-[#34364a] mb-2">
             Photos captured: {safeImages.length} / {stripCount}
           </p>
           {safeImages.length > 0 && (
@@ -362,7 +363,7 @@ export default function CustomPhotobox({
               {safeImages.slice(0, stripCount).map((img, index) => (
                 <div
                   key={index}
-                  className="w-16 h-16 bg-gray-200 rounded overflow-hidden border border-gray-300"
+                  className="w-16 h-16 bg-gray-200 rounded-xl overflow-hidden border border-gray-300"
                 >
                   <img
                     src={img}
@@ -387,7 +388,7 @@ export default function CustomPhotobox({
 
         {finalPhotostrip && safeImages.length > 0 && (
           <div className="mt-4">
-            <h3 className="text-lg font-medium mb-2">Your Custom Photostrip</h3>
+            <h3 className="text-lg text-[#34364a] text-center font-medium mb-2">Your Custom Photostrip</h3>
             <div className="bg-gray-100 p-4 rounded-xl flex justify-center">
               <AnimatePresence mode="wait">
                 {showQR && link ? (
@@ -428,15 +429,15 @@ export default function CustomPhotobox({
           </div>
         )}
 
-        <div className="flex flex-col items-center mt-4">
-          <div className="flex flex-col gap-2 mt-4 max-w-[200px]">
+        <div className="flex flex-col items-center mt-4 ">
+          <div className="flex flex-col gap-2 mt-4 w-full">
             {finalPhotostrip && safeImages.length > 0 && (
-              <>
-                <div className="flex flex-col gap-2">
+              <div className="w-full">
+                <div className="flex w-full md:flex-row flex-col gap-4 *:cursor-pointer">
                   {!link && (
                     <button
                       onClick={handleGetLink}
-                      className={`px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 flex-1 ${
+                      className={`py-2.5 w-full font-semibold rounded-xl bg-green-600 text-white hover:bg-green-700 ${
                         loading ? "opacity-50" : ""
                       }`}
                       disabled={loading}
@@ -452,7 +453,7 @@ export default function CustomPhotobox({
                   )}
                   <button
                     onClick={downloadPhotostrip}
-                    className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 flex-1"
+                    className="py-2.5 w-full font-semibold rounded-xl bg-blue-600 text-white hover:bg-blue-700"
                   >
                     Download
                   </button>
@@ -487,7 +488,7 @@ export default function CustomPhotobox({
                     </button>
                   </>
                 )}
-              </>
+              </div>
             )}
           </div>
         </div>
