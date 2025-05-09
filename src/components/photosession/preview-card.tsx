@@ -6,6 +6,7 @@ import { ClipboardCopy } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import QRCodeStyling from "qr-code-styling";
 import Button from "../button";
+import CopyAlert from "../copy-alert";
 
 /* eslint-disable @next/next/no-img-element */
 export default function PreviewCard({
@@ -23,6 +24,7 @@ export default function PreviewCard({
   const [loading, setLoading] = useState(false);
   const [showQR, setShowQR] = useState(false);
   const qrRef = useRef<HTMLDivElement | null>(null);
+  const [showCopyAlert, setShowCopyAlert] = useState(false);
 
   const handleGetLink = async () => {
     if (!image) return;
@@ -55,6 +57,14 @@ export default function PreviewCard({
   };
 
   const getLinkUrl = () => `${window.location.origin}/strip/${link}`;
+
+  const handleCopyLink = () => {
+    if (link) {
+      navigator.clipboard.writeText(getLinkUrl());
+    }
+
+    setShowCopyAlert(true);
+  };
 
   const generateQrCode = (url: string, container: HTMLDivElement) => {
     container.innerHTML = "";
@@ -97,12 +107,12 @@ export default function PreviewCard({
           scale: 1,
           transition: {
             duration: 0.4,
-            ease: 'easeOut'            // transisi lembut (ease-out):contentReference[oaicite:4]{index=4}
-          }
-        }
+            ease: "easeOut", // transisi lembut (ease-out):contentReference[oaicite:4]{index=4}
+          },
+        },
       }}
-
-      className="group rounded-xl overflow-hidden bg-white transition-all hover:ring-2 hover:ring-blue-700" >
+      className="group rounded-xl overflow-hidden bg-white transition-all hover:ring-2 hover:ring-blue-700"
+    >
       <div className="relative aspect-[4/5] w-full">
         <AnimatePresence mode="wait">
           {showQR && link ? (
@@ -164,11 +174,15 @@ export default function PreviewCard({
               className="w-full p-2 bg-base-200 border rounded-md"
             />
             <button
-              onClick={() => navigator.clipboard.writeText(getLinkUrl())}
+              onClick={handleCopyLink}
               className="btn btn-ghost text-[#34364a] p-2"
               title="Copy to clipboard"
             >
               <ClipboardCopy size={18} />
+              <CopyAlert
+                show={showCopyAlert}
+                onClose={() => setShowCopyAlert(false)}
+              />
             </button>
           </div>
         )}
@@ -210,6 +224,6 @@ export default function PreviewCard({
           </>
         )}
       </div>
-    </motion.div >
+    </motion.div>
   );
 }

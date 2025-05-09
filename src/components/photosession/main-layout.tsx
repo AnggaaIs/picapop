@@ -6,6 +6,7 @@ import { HashLoader } from "react-spinners";
 export default function MainLayout({
   videoRef,
   filter,
+  mode,
   isFrontCamera,
   canvasRef,
   capturedImages,
@@ -20,6 +21,7 @@ export default function MainLayout({
 }: {
   videoRef: React.RefObject<HTMLVideoElement | null>;
   filter: string;
+  mode: "template" | "custom";
   isFrontCamera: boolean;
   canvasRef: React.RefObject<HTMLCanvasElement | null>;
   capturedImages: string[];
@@ -36,6 +38,10 @@ export default function MainLayout({
     () => Promise.resolve(() => <canvas ref={canvasRef} className="hidden" />),
     { ssr: false }
   );
+
+  if (mode === "template" && capturedImages.length > 3) {
+    capturedImages.splice(0, 3);
+  }
 
   return (
     <div className="grid sm:grid-cols-4 gap-5 mt-5">
@@ -78,7 +84,7 @@ export default function MainLayout({
           applyFilterToAllImages={applyFilterToAllImages}
         />
 
-        {capturedImages.length === 3 && (
+        {mode === "template" && capturedImages.length === 3 && (
           <div className="flex flex-col gap-5 mt-4 justify-between">
             <button
               onClick={handleProcessImage}
@@ -102,8 +108,6 @@ export default function MainLayout({
                 "Preview template"
               )}
             </button>
-
-            {/* #e5e9f2#e5e9f2 */}
           </div>
         )}
       </div>

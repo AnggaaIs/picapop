@@ -12,6 +12,7 @@ import { phrases } from "@/utils/config";
 import MainLayout from "@/components/photosession/main-layout";
 import HeaderLayout from "@/components/photosession/header-layout";
 import { motion } from "framer-motion";
+import CustomPhotobox from "@/components/photosession/custom-photobox";
 
 export default function PhotoSession() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -30,6 +31,10 @@ export default function PhotoSession() {
   const [processedImages, setProcessedImages] = useState<string[] | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
   const [appliedImages, setAppliedImages] = useState<(string | null)[]>([]);
+  const [stripCount, setStripCount] = useState(3);
+
+  // Mode selection - default to template, can be "template" or "custom"
+  const [mode, setMode] = useState<"template" | "custom">("template");
 
   const [templates, setTemplates] =
     useState<{ filename: string; label: string }[]>();
@@ -124,7 +129,8 @@ export default function PhotoSession() {
   useEffect(() => {
     if (!selectedDeviceId || error || isCapturing) return;
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Enter") {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
         if (isCapturing) return;
         startAutoCapture();
       }
@@ -251,7 +257,7 @@ export default function PhotoSession() {
     setProcessedImages(null);
     setIsCapturing(true);
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < stripCount; i++) {
       for (let count = 3; count > 0; count--) {
         setCountdown(count);
         await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -262,7 +268,7 @@ export default function PhotoSession() {
       setTimeout(() => captureImage(), 1000);
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      if (i < 2) {
+      if (i < stripCount - 1) {
         await new Promise((resolve) => setTimeout(resolve, 100));
       }
     }
@@ -313,10 +319,35 @@ export default function PhotoSession() {
             handleCameraSelect={handleCameraSelect}
           />
 
+          {/* Mode selector */}
+          <div className="flex justify-center gap-4 my-4">
+            <button
+              onClick={() => setMode("template")}
+              className={`px-6 py-2 rounded-lg transition-all ${
+                mode === "template"
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-200 hover:bg-gray-300"
+              }`}
+            >
+              Template
+            </button>
+            <button
+              onClick={() => setMode("custom")}
+              className={`px-6 py-2 rounded-lg transition-all ${
+                mode === "custom"
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-200 hover:bg-gray-300"
+              }`}
+            >
+              Custom
+            </button>
+          </div>
+
           {/* component camera */}
           <MainLayout
             videoRef={videoRef}
             filter={filter}
+            mode={mode}
             isFrontCamera={isFrontCamera}
             canvasRef={canvasRef}
             capturedImages={capturedImages}
@@ -340,38 +371,47 @@ export default function PhotoSession() {
             </button>
           </div>
 
-          {processedImages && (
-            <div className="mt-10 p-2 rounded-xl flex flex-col items-center justify-center">
-              <p className="mb-6 text-3xl font-semibold text-center text-[#34364a]">
-                Pilih template strip
-              </p>
-              <motion.div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: {
-                      when: 'beforeChildren',
-                      staggerChildren: 0.2
-                    }
-                  }
-                }}
-                initial="hidden"
-                animate="visible">
-                {processedImages.map((templateImage, index) => (
-                  <PreviewCard
-                    key={index}
-                    image={appliedImages[index] || templateImage}
-                    index={index}
-                    onApply={() => handleApply(index)}
-                    isApplied={!!appliedImages[index]}
-                  />
-                ))}
-              </motion.div>
-            </div>
+          {mode === "custom" ? (
+            <CustomPhotobox
+              capturedImages={capturedImages}
+              setStripCount={setStripCount}
+            />
+          ) : (
+            processedImages && (
+              <div className="mt-10 p-2 rounded-xl flex flex-col items-center justify-center">
+                <p className="mb-6 text-3xl font-semibold text-center text-[#34364a]">
+                  Pilih template strip
+                </p>
+                <motion.div
+                  className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl"
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                      opacity: 1,
+                      transition: {
+                        when: "beforeChildren",
+                        staggerChildren: 0.2,
+                      },
+                    },
+                  }}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {processedImages.map((templateImage, index) => (
+                    <PreviewCard
+                      key={index}
+                      image={appliedImages[index] || templateImage}
+                      index={index}
+                      onApply={() => handleApply(index)}
+                      isApplied={!!appliedImages[index]}
+                    />
+                  ))}
+                </motion.div>
+              </div>
+            )
           )}
         </div>
       </div>
-    </Suspense >
+    </Suspense>
   );
 }
