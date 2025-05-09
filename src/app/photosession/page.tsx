@@ -340,7 +340,10 @@ export default function PhotoSession() {
           <div className="mt-6">
             <div className="flex justify-center gap-4">
               <button
-                onClick={() => setMode("template")}
+                onClick={() => {
+                  setMode("template");
+                  setStripCount(3);
+                }}
                 className={`w-full py-2 tracking-wide text-sm rounded-xl font-bold transition-all ${mode === "template"
                   ? "bg-green-600 text-white"
                   : "bg-gray-200 hover:bg-gray-300"
