@@ -46,38 +46,46 @@ export default function CustomPhotobox({
     const stripCanvas = stripCanvasRef.current;
     if (!stripCanvas) return;
 
-    const ctx = stripCanvas.getContext("2d");
-    if (!ctx) return;
-
+    const dpr = window.devicePixelRatio || 1;
     const dpi = 300;
     const cmToPx = (cm: number) => Math.round((cm * dpi) / 2.54);
 
     const photoSize = cmToPx(4);
     const margin = cmToPx(0.2);
-    const verticalMargin = cmToPx(0.3);
-    const padding = cmToPx(0.5);
+    const verticalMargin = cmToPx(0.5);
+    const padding = cmToPx(0.3);
     const footerSpace = cmToPx(1);
 
     const columns = stripCount === 6 ? 2 : 1;
     const rows = Math.ceil(stripCount / columns);
 
-    const width = columns * photoSize + (columns - 1) * margin + padding * 2;
-    const height =
+    const logicalWidth =
+      columns * photoSize + (columns - 1) * margin + padding * 2;
+    const logicalHeight =
       rows * photoSize +
       (rows - 1) * verticalMargin +
       padding * 2 +
       footerSpace;
 
-    stripCanvas.width = width;
-    stripCanvas.height = height;
+    stripCanvas.width = logicalWidth * dpr;
+    stripCanvas.height = logicalHeight * dpr;
+
+    stripCanvas.style.width = `${logicalWidth}px`;
+    stripCanvas.style.height = `${logicalHeight}px`;
+
+    const ctx = stripCanvas.getContext("2d");
+    if (!ctx) return;
+
+    ctx.scale(dpr, dpr);
 
     ctx.fillStyle = backgroundColor;
-    ctx.fillRect(0, 0, width, height);
+    ctx.fillRect(0, 0, logicalWidth, logicalHeight);
 
     const usableImages = safeImages.slice(0, stripCount);
     const imagePromises = usableImages.map((src) => {
       return new Promise<HTMLImageElement>((resolve) => {
         const img = new Image();
+        img.crossOrigin = "anonymous";
         img.onload = () => resolve(img);
         img.src = src;
       });
@@ -108,6 +116,7 @@ export default function CustomPhotobox({
         let offsetY = 0;
 
         const aspectRatio = originalWidth / originalHeight;
+
         if (aspectRatio > 1) {
           drawHeight = photoSize / aspectRatio;
           offsetY = (photoSize - drawHeight) / 2;
@@ -123,35 +132,28 @@ export default function CustomPhotobox({
         const y = padding + row * (photoSize + verticalMargin) + offsetY;
 
         const cornerRadius = cmToPx(0.2);
+
         ctx.save();
         ctx.beginPath();
         ctx.moveTo(x + cornerRadius, y);
         ctx.lineTo(x + drawWidth - cornerRadius, y);
-        ctx.arcTo(
-          x + drawWidth,
-          y,
-          x + drawWidth,
-          y + drawHeight,
-          cornerRadius
-        );
+        ctx.quadraticCurveTo(x + drawWidth, y, x + drawWidth, y + cornerRadius);
         ctx.lineTo(x + drawWidth, y + drawHeight - cornerRadius);
-        ctx.arcTo(
+        ctx.quadraticCurveTo(
           x + drawWidth,
           y + drawHeight,
-          x + drawWidth - drawWidth,
-          y + drawHeight,
-          cornerRadius
+          x + drawWidth - cornerRadius,
+          y + drawHeight
         );
         ctx.lineTo(x + cornerRadius, y + drawHeight);
-        ctx.arcTo(
+        ctx.quadraticCurveTo(
           x,
           y + drawHeight,
           x,
-          y + drawHeight - cornerRadius,
-          cornerRadius
+          y + drawHeight - cornerRadius
         );
         ctx.lineTo(x, y + cornerRadius);
-        ctx.arcTo(x, y, x + cornerRadius, y, cornerRadius);
+        ctx.quadraticCurveTo(x, y, x + cornerRadius, y);
         ctx.closePath();
         ctx.clip();
         ctx.drawImage(img, x, y, drawWidth, drawHeight);
@@ -161,31 +163,23 @@ export default function CustomPhotobox({
         ctx.beginPath();
         ctx.moveTo(x + cornerRadius, y);
         ctx.lineTo(x + drawWidth - cornerRadius, y);
-        ctx.arcTo(
-          x + drawWidth,
-          y,
-          x + drawWidth,
-          y + drawHeight,
-          cornerRadius
-        );
+        ctx.quadraticCurveTo(x + drawWidth, y, x + drawWidth, y + cornerRadius);
         ctx.lineTo(x + drawWidth, y + drawHeight - cornerRadius);
-        ctx.arcTo(
+        ctx.quadraticCurveTo(
           x + drawWidth,
           y + drawHeight,
-          x + drawWidth - drawWidth,
-          y + drawHeight,
-          cornerRadius
+          x + drawWidth - cornerRadius,
+          y + drawHeight
         );
         ctx.lineTo(x + cornerRadius, y + drawHeight);
-        ctx.arcTo(
+        ctx.quadraticCurveTo(
           x,
           y + drawHeight,
           x,
-          y + drawHeight - cornerRadius,
-          cornerRadius
+          y + drawHeight - cornerRadius
         );
         ctx.lineTo(x, y + cornerRadius);
-        ctx.arcTo(x, y, x + cornerRadius, y, cornerRadius);
+        ctx.quadraticCurveTo(x, y, x + cornerRadius, y);
         ctx.closePath();
         ctx.lineWidth = 3;
         ctx.strokeStyle = darkStrokeColor;
@@ -198,9 +192,9 @@ export default function CustomPhotobox({
       ctx.fillStyle = isDarkColor(backgroundColor) ? "#ffffff" : "#000000";
       ctx.textAlign = "center";
       ctx.textBaseline = "bottom";
-      ctx.fillText("PicaPop", width / 2, height - cmToPx(0.6));
+      ctx.fillText("PicaPop", logicalWidth / 2, logicalHeight - cmToPx(0.6));
 
-      setFinalPhotostrip(stripCanvas.toDataURL("image/png"));
+      setFinalPhotostrip(stripCanvas.toDataURL("image/png", 1.0));
     });
   };
 

@@ -319,9 +319,6 @@ export default function PhotoSession() {
             handleCameraSelect={handleCameraSelect}
           />
 
-          {/* Mode selector */}
-
-
           {/* component camera */}
           <MainLayout
             videoRef={videoRef}
