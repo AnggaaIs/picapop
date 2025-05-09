@@ -2,7 +2,6 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Outfit } from "next/font/google";
-import { HashLoader } from "react-spinners";
 import { ClipboardCopy } from "lucide-react";
 import QRCodeStyling from "qr-code-styling";
 import CopyAlert from "../copy-alert";
