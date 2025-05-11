@@ -141,6 +141,7 @@ export default function RootLayout({
         <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem>
           <Suspense fallback={null}>
             <Navbar />
+            <br />
             {children}
             <Footer />
           </Suspense>
