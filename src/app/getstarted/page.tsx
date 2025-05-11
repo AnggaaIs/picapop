@@ -8,8 +8,8 @@ export default function GetStarted() {
   const searchParams = useSearchParams();
   const template = searchParams.get("t");
   return (
-    <div className="flex flex-col justify-center items-center py-10 px-8 h-screen">
-      <h2 className="text-3xl font-extrabold text-[#34364a]">Petunjuk Penggunaan!</h2>
+    <div className="flex flex-col justify-center items-center py-20 px-8 h-screen">
+      <h2 className="text-2xl md:text-3xl font-extrabold text-[#34364a]">Petunjuk Penggunaan!</h2>
       <div className="my-5 text-center text-[#34364a]">
         <p>Kamu hanya memiliki <b>3 detik</b> setiap cuplikan foto</p>
         <p className="mt-2">Sesi foto online ini hanya mengambil <b>3 foto</b> dalam satu sesi</p>

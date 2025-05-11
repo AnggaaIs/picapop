@@ -309,7 +309,7 @@ export default function PhotoSession() {
 
   return (
     <Suspense>
-      <div className="flex items-center justify-center flex-col mb-25 p-5">
+      <div className="flex items-center justify-center flex-col mb-25 p-5 pt-15">
         <div className="max-w-3xl">
           <HeaderLayout
             error={error}

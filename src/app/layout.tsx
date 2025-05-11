@@ -142,6 +142,7 @@ export default function RootLayout({
           <Suspense fallback={null}>
             <Navbar />
             <br />
+            <br />
             {children}
             <Footer />
           </Suspense>
