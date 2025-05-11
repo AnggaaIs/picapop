@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="max-w-3xl mx-auto p-6 pb-20 py-10">
+    <main className="max-w-3xl mx-auto p-6 pb-20 py-26">
       <h1 className="text-4xl font-bold mb-4 text-center text-[#34384a]">About PicaPop</h1>
       <p className="mb-4 text-[#34384a]">
         Welcome to <strong>PicaPop</strong>! We are a creative and fun online photo booth platform that helps you capture unforgettable selfies and photostrips with stylish templates.

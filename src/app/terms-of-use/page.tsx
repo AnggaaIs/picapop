@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 const TermsOfUse = () => {
   return (
-    <div className="min-h-screen px-6 py-12 ">
+    <div className="min-h-screen px-6 py-26">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-extrabold mb-6 text-center text-[#34364a]">Syarat dan Ketentuan Penggunaan - PicaPop</h1>
 

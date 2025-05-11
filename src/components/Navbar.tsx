@@ -1,11 +1,21 @@
 'use client';
 
 import Link from "next/link";
+import { motion, useTransform, useViewportScroll } from "framer-motion";
 
 export default function Navbar() {
   // const { setTheme } = useTheme()
+  const { scrollY } = useViewportScroll();
+  const height = useTransform(scrollY, [0, 100], [100, 60]);
+
+  const bg = useTransform(scrollY, [0, 100], ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 1)']);
+  const shadow = useTransform(scrollY, [0, 100], ['0px 0px 0px rgba(0, 0, 0, 0)', '0px 0px 20px rgba(0, 0, 0, 0.1)']);
   return (
-    <div className="navbar bg-white">
+    <motion.div style={{
+      background: bg,
+      height,
+      boxShadow: shadow,
+    }} className="navbar fixed z-15">
       <div className="flex-1">
         <Link href={'/'} className="btn btn-ghost bg-transparent rounded-xl shadow-none text-xl">PicaPop</Link>
       </div>
@@ -15,6 +25,6 @@ export default function Navbar() {
           <li><Link href={'/about'}>About</Link></li>
         </ul>
       </div>
-    </div>
+    </motion.div>
   )
 }
