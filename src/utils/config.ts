@@ -22,4 +22,11 @@ export const phrases = [
   "Senyum Kayak Artis!",
   "Flash On!",
   "Bilang WiLa!",
-]
+];
+
+export const partner_map = {
+  "Affection Unveiled": "Teras48",
+  "Phantom of My Heart": "Teras48",
+  "Teras JKT48": "Teras48",
+  "Mind Maze": "48 Country",
+};

@@ -82,7 +82,7 @@ export default function Home() {
           </div>
           <div
             className={
-              "grid grid-cols-2 gap-8 sm:gap-12 md:flex md:justify-center md:items-center md:flex-wrap "
+              "grid grid-cols-2 gap-4 sm:gap-4 md:flex md:justify-center md:items-center md:flex-wrap "
             }
           >
             <PartnersItems />
