@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { NextResponse } from "next/server";
+import { partner_map } from "@/utils/config";
 
 export async function GET() {
   try {
@@ -57,15 +58,14 @@ export async function GET() {
       );
 
     const filterSpecialTemplate = sortedTemplates.map((item) => {
-      
+
       // Partner template
-      if (["Affection Unveiled", "Phantom of My Heart", "Teras JKT48"].includes(item.label)) {
-        console.log(item.label);
+      if (partner_map[item.label as keyof typeof partner_map]) {
         return {
           ...item,
           isPartner: {
             status: true,
-            partner_name: "Teras48",
+            partner_name: partner_map[item.label as keyof typeof partner_map],
           },
         };
       } else {
