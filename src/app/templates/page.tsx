@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Temukan berbagai template photostrip aesthetic dan lucu di PicaPop. Pilih yang paling sesuai dengan gayamu sebelum mengambil selfie!",
   openGraph: {
-    title: "Pilih Template Foto - PicaPop",
+    title: "Pilih Template Foto",
     description:
       "Jelajahi koleksi template foto unik dari PicaPop. Sempurnakan hasil selfiemu dengan pilihan desain yang keren dan stylish.",
     type: "website",

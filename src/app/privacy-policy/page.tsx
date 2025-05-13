@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     description:
         "Pelajari bagaimana PicaPop mengelola dan melindungi data pribadi Anda.",
     openGraph: {
-        title: "Kebijakan Privasi - PicaPop",
+        title: "Kebijakan Privasi",
         description: "Privasi Anda penting bagi kami. Baca kebijakan privasi lengkap dari PicaPop.",
         type: "website",
         url: "https://picapop.my.id/privacy-policy",
