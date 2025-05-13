@@ -20,10 +20,31 @@ export async function GET() {
 
     const files = fs.readdirSync(templateDir);
 
+    // const templates = files
+    //   .filter((file) => file.endsWith(".png"))
+    //   .map((file) => {
+    //     const namaFile = file.replace(".png", "").replace(/-/g, " ");
+    //     const label = namaFile.replace(/\s*\(\d{2} \d{2} \d{4}\)$/, "");
+    //     const dateMatch = namaFile.match(/\((\d{2}) (\d{2}) (\d{4})\)/);
+    //     let date;
+    //     if (dateMatch) {
+    //       const day = parseInt(dateMatch[1], 10);
+    //       const month = parseInt(dateMatch[2], 10) - 1;
+    //       const year = parseInt(dateMatch[3], 10);
+
+    //       date = new Date(year, month, day);
+    //     }
+    //     return {
+    //       label,
+    //       date,
+    //       filename: file,
+    //     };
+    //   });
+
     const templates = files
-      .filter((file) => file.endsWith(".png"))
+      .filter((file) => /\.(png|jpg)$/i.test(file)) // support .png dan .jpg (case-insensitive)
       .map((file) => {
-        const namaFile = file.replace(".png", "").replace(/-/g, " ");
+        const namaFile = file.replace(/\.(png|jpg)$/i, "").replace(/-/g, " ");
         const label = namaFile.replace(/\s*\(\d{2} \d{2} \d{4}\)$/, "");
         const dateMatch = namaFile.match(/\((\d{2}) (\d{2}) (\d{4})\)/);
         let date;
@@ -31,7 +52,6 @@ export async function GET() {
           const day = parseInt(dateMatch[1], 10);
           const month = parseInt(dateMatch[2], 10) - 1;
           const year = parseInt(dateMatch[3], 10);
-
           date = new Date(year, month, day);
         }
         return {
@@ -40,6 +60,7 @@ export async function GET() {
           filename: file,
         };
       });
+
 
     // Hitung batas waktu seminggu yang lalu
     const oneWeekAgo = new Date();
