@@ -1,87 +1,110 @@
-import React from "react";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Syarat dan Ketentuan Penggunaan",
-  description:
-    "Baca syarat dan ketentuan penggunaan layanan PicaPop sebelum menggunakan platform kami.",
-  openGraph: {
-    title: "Syarat dan Ketentuan",
-    description: "Ketahui hak dan tanggung jawab Anda saat menggunakan layanan PicaPop.",
-    type: "website",
-    url: "https://picapop.my.id/terms-of-use",
-    images: [
-      {
-        url: "/picapop.png",
-        width: 1200,
-        height: 630,
-        alt: "PicaPop - Fun & Creative Photo Booth",
-      },
-    ],
-  },
-  twitter: {
-    title: "Syarat dan Ketentuan - PicaPop",
-    description: "Ketahui hak dan tanggung jawab Anda saat menggunakan layanan PicaPop.",
-    images: ["/twitter-image.png"],
-    card: "summary_large_image",
-  },
-};
+"use client";
+import { motion } from "framer-motion";
 
 const TermsOfUse = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5 }
+    }
+  };
+
+  const terms = [
+    {
+      title: "Penggunaan Layanan",
+      content: "Layanan PicaPop hanya boleh digunakan untuk keperluan pribadi dan non-komersial. Penggunaan layanan secara ilegal atau yang melanggar hukum berlaku tidak diperbolehkan."
+    },
+    {
+      title: "Hak Kekayaan Intelektual",
+      content: "Seluruh konten, termasuk namun tidak terbatas pada teks, gambar, desain, dan kode milik PicaPop dilindungi oleh hak cipta dan tidak boleh disalin atau digunakan tanpa izin tertulis dari kami."
+    },
+    {
+      title: "Konten yang Dihasilkan Pengguna",
+      content: "Anda bertanggung jawab penuh atas konten (seperti foto) yang Anda unggah atau hasilkan melalui layanan ini. Dilarang mengunggah konten yang mengandung unsur kekerasan, kebencian, pornografi, atau melanggar hukum."
+    },
+    {
+      title: "Batasan Tanggung Jawab",
+      content: "Kami tidak bertanggung jawab atas kerugian langsung maupun tidak langsung yang diakibatkan oleh penggunaan layanan ini. PicaPop disediakan \"apa adanya\" tanpa jaminan apapun."
+    },
+    {
+      title: "Perubahan Ketentuan",
+      content: "Kami berhak mengubah syarat dan ketentuan ini kapan saja. Perubahan akan diumumkan melalui situs web dan berlaku segera setelah dipublikasikan."
+    },
+    {
+      title: "Hukum yang Berlaku",
+      content: "Ketentuan ini tunduk dan ditafsirkan sesuai dengan hukum yang berlaku di Indonesia."
+    }
+  ];
+
   return (
-    <div className="min-h-screen px-6 py-26">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-extrabold mb-6 text-center text-[#34364a]">Syarat dan Ketentuan Penggunaan - PicaPop</h1>
+    <div className="min-h-screen bg-gradient-to-b from-white to-[#f6f8fd] relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute inset-0 bg-[#34364a]/[0.02] -z-1" />
+      <div className="absolute top-40 -left-64 w-96 h-96 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob" />
+      <div className="absolute top-40 -right-64 w-96 h-96 bg-purple-50 rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob animation-delay-2000" />
 
-        <p className="mb-4 text-[#34364a]">
-          Dengan mengakses dan menggunakan PicaPop, Anda menyetujui untuk terikat pada syarat
-          dan ketentuan berikut. Jika Anda tidak setuju dengan ketentuan ini, mohon untuk tidak
-          menggunakan layanan kami.
-        </p>
+      <motion.div 
+        className="py-20 px-6"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div 
+          className="max-w-3xl mx-auto bg-white/70 backdrop-blur-lg rounded-2xl p-8 md:p-12 shadow-sm"
+          variants={itemVariants}
+        >
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#34364a] to-blue-600"
+            variants={itemVariants}
+          >
+            Syarat dan Ketentuan
+          </motion.h1>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-2 text-[#34364a]">1. Penggunaan Layanan</h2>
-        <p className="mb-4 text-[#34364a]">
-          Layanan PicaPop hanya boleh digunakan untuk keperluan pribadi dan non-komersial.
-          Penggunaan layanan secara ilegal atau yang melanggar hukum berlaku tidak diperbolehkan.
-        </p>
+          <motion.p 
+            className="mb-8 text-lg text-[#34364a]/80 leading-relaxed"
+            variants={itemVariants}
+          >
+            Dengan mengakses dan menggunakan PicaPop, Anda menyetujui untuk terikat pada syarat
+            dan ketentuan berikut. Jika Anda tidak setuju dengan ketentuan ini, mohon untuk tidak
+            menggunakan layanan kami.
+          </motion.p>
 
-        <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">2. Hak Kekayaan Intelektual</h2>
-        <p className="mb-4 text-[#34364a]">
-          Seluruh konten, termasuk namun tidak terbatas pada teks, gambar, desain, dan kode
-          milik PicaPop dilindungi oleh hak cipta dan tidak boleh disalin atau digunakan tanpa
-          izin tertulis dari kami.
-        </p>
+          {terms.map((term, index) => (
+            <motion.div 
+              key={term.title}
+              variants={itemVariants}
+              className="mb-8 last:mb-0"
+            >
+              <h2 className="text-2xl font-semibold mb-3 text-[#34364a] flex items-center">
+                <span className="text-blue-600 mr-3">{index + 1}.</span>
+                {term.title}
+              </h2>
+              <p className="text-[#34364a]/80 leading-relaxed pl-7">
+                {term.content}
+              </p>
+            </motion.div>
+          ))}
 
-        <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">3. Konten yang Dihasilkan Pengguna</h2>
-        <p className="mb-4 text-[#34364a]">
-          Anda bertanggung jawab penuh atas konten (seperti foto) yang Anda unggah atau hasilkan
-          melalui layanan ini. Dilarang mengunggah konten yang mengandung unsur kekerasan,
-          kebencian, pornografi, atau melanggar hukum.
-        </p>
-
-        <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">4. Batasan Tanggung Jawab</h2>
-        <p className="mb-4 text-[#34364a]">
-          Kami tidak bertanggung jawab atas kerugian langsung maupun tidak langsung yang
-          diakibatkan oleh penggunaan layanan ini. PicaPop disediakan &quot;apa adanya&quot; tanpa
-          jaminan apapun.
-        </p>
-
-        <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">5. Perubahan Ketentuan</h2>
-        <p className="mb-4 text-[#34364a]">
-          Kami berhak mengubah syarat dan ketentuan ini kapan saja. Perubahan akan diumumkan
-          melalui situs web dan berlaku segera setelah dipublikasikan.
-        </p>
-
-        <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">6. Hukum yang Berlaku</h2>
-        <p className="mb-4 text-[#34364a]">
-          Ketentuan ini tunduk dan ditafsirkan sesuai dengan hukum yang berlaku di Indonesia.
-        </p>
-
-        <p className="mt-8 text-sm text-gray-500">
-          Terakhir diperbarui: April 2025
-        </p>
-      </div>
+          <motion.p 
+            className="mt-12 text-sm text-[#34364a]/60 border-t pt-8"
+            variants={itemVariants}
+          >
+            Terakhir diperbarui: April 2025
+          </motion.p>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
+
 export default TermsOfUse;
