@@ -1,58 +1,74 @@
+'use client'
+import { motion } from "framer-motion";
 import TemplateList from "@/components/templates/TemplateList";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Pilih Template Foto",
-  description:
-    "Temukan berbagai template photostrip aesthetic dan lucu di PicaPop. Pilih yang paling sesuai dengan gayamu sebelum mengambil selfie!",
-  openGraph: {
-    title: "Pilih Template Foto",
-    description:
-      "Jelajahi koleksi template foto unik dari PicaPop. Sempurnakan hasil selfiemu dengan pilihan desain yang keren dan stylish.",
-    type: "website",
-    url: "https://picapop.my.id/templates",
-    images: [
-      {
-        url: "/picapop.png",
-        width: 1200,
-        height: 630,
-        alt: "PicaPop Template Selection",
-      },
-    ],
-  },
-  twitter: {
-    title: "Pilih Template Foto - PicaPop",
-    description:
-      "Jelajahi berbagai pilihan template photostrip yang fun dan menarik di PicaPop.",
-    images: ["/twitter-image.png"],
-    card: "summary_large_image",
-  },
-  keywords: [
-    "template photobooth online",
-    "pilih template selfie",
-    "photo strip aesthetic",
-    "photostrip lucu online",
-    "template kamera online",
-    "fotostrip gratis",
-    "edit selfie dengan template",
-    "pilih desain foto strip",
-    "template lucu untuk selfie",
-    "photobooth template editor"
-  ],
-};
-
 
 export default function Template() {
-  return <>
-    <div className="flex flex-col items-center py-10 mt-10 mb-20 min-h-screen">
-      <div className="flex px-6 flex-col items-center max-w-6xl md:py-5 rounded-xl w-full">
-        <h1 className="text-center text-4xl text-[#34364a] font-extrabold">Template Foto</h1>
-        <p className="text-center text-[#34364a] mt-5">
-          Kami menyediakan beberapa template foto yang bisa kamu gunakan
-        </p>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
 
-        <TemplateList />
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-white to-[#f6f8fd]">
+      {/* Hero Section */}
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-[#34364a]/[0.02] -z-1" />
+
+        <motion.div
+          className="container mx-auto px-4 py-16 sm:py-24"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <div className="text-center max-w-3xl mx-auto">
+            <motion.h1
+              variants={itemVariants}
+              className="text-4xl md:text-5xl font-extrabold text-[#34364a] mb-6"
+            >
+              Template Foto
+            </motion.h1>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-lg text-[#34364a]/80 mb-8"
+            >
+              Pilih template yang sesuai dengan gayamu dan buat momen spesialmu
+              lebih berkesan
+            </motion.p>
+
+
+          </div>
+        </motion.div>
       </div>
+
+      {/* Templates Grid Section */}
+      <motion.div
+        className="container mx-auto px-4 pb-20"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+      >
+        <div className="max-w-7xl mx-auto">
+          <TemplateList />
+        </div>
+      </motion.div>
     </div>
-  </>;
+  );
 }

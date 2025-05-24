@@ -1,84 +1,98 @@
-import { Metadata } from "next";
-import React from "react";
-
-export const metadata: Metadata = {
-    title: "Kebijakan Privasi",
-    description:
-        "Pelajari bagaimana PicaPop mengelola dan melindungi data pribadi Anda.",
-    openGraph: {
-        title: "Kebijakan Privasi",
-        description: "Privasi Anda penting bagi kami. Baca kebijakan privasi lengkap dari PicaPop.",
-        type: "website",
-        url: "https://picapop.my.id/privacy-policy",
-        images: [
-            {
-                url: "/picapop.png",
-                width: 1200,
-                height: 630,
-                alt: "PicaPop - Fun & Creative Photo Booth",
-            },
-        ],
-    },
-    twitter: {
-        title: "Kebijakan Privasi - PicaPop",
-        description: "Privasi Anda penting bagi kami. Baca kebijakan privasi lengkap dari PicaPop.",
-        images: ["/twitter-image.png"],
-        card: "summary_large_image",
-    },
-};
+"use client";
+import { motion } from "framer-motion";
 
 const PrivacyPolicy = () => {
-    return (
-        <div className="py-26 min-h-screen px-6 ">
-            <div className="max-w-3xl mx-auto">
-                <h1 className="text-4xl font-bold mb-6 text-center text-[#34364a]">Kebijakan Privasi - PicaPop</h1>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 }
+    }
+  };
 
-                <p className="mb-4 text-[#34364a]">
-                    Selamat datang di PicaPop! Privasi Anda sangat penting bagi kami. Kebijakan
-                    privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan
-                    melindungi informasi pribadi Anda saat menggunakan aplikasi kami.
-                </p>
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
 
-                <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">1. Informasi yang Kami Kumpulkan</h2>
-                <p className="mb-4 text-[#34364a]">
-                    Kami dapat mengumpulkan informasi seperti foto yang Anda unggah, preferensi
-                    template, serta data teknis seperti jenis perangkat dan browser yang digunakan.
-                    Kami tidak mengumpulkan informasi pribadi yang sensitif seperti nama lengkap atau
-                    alamat kecuali secara eksplisit diberikan oleh pengguna.
-                </p>
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-white to-[#f6f8fd] relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute inset-0 bg-[#34364a]/[0.02] -z-1" />
+      <div className="absolute top-40 -left-64 w-96 h-96 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob" />
+      <div className="absolute top-40 -right-64 w-96 h-96 bg-purple-50 rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob animation-delay-2000" />
 
-                <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">2. Penggunaan Informasi</h2>
-                <p className="mb-4 text-[#34364a]">
-                    Informasi yang dikumpulkan digunakan untuk meningkatkan layanan, menyediakan
-                    pengalaman pengguna yang lebih personal, serta untuk keperluan analitik internal.
-                    Kami tidak menjual atau membagikan informasi pribadi Anda kepada pihak ketiga.
-                </p>
+      <motion.div 
+        className="py-20 px-6"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div 
+          className="max-w-3xl mx-auto bg-white/70 backdrop-blur-lg rounded-2xl p-8 md:p-12 shadow-sm"
+          variants={itemVariants}
+        >
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#34364a] to-blue-600"
+            variants={itemVariants}
+          >
+            Kebijakan Privasi
+          </motion.h1>
 
-                <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">3. Keamanan Data</h2>
-                <p className="mb-4 text-[#34364a]">
-                    Kami menggunakan langkah-langkah keamanan teknis dan organisasi untuk melindungi
-                    data Anda dari akses yang tidak sah, kehilangan, atau pengubahan.
-                </p>
+          <motion.p 
+            className="mb-8 text-lg text-[#34364a]/80 leading-relaxed"
+            variants={itemVariants}
+          >
+            Selamat datang di PicaPop! Privasi Anda sangat penting bagi kami. Kebijakan
+            privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan
+            melindungi informasi pribadi Anda saat menggunakan aplikasi kami.
+          </motion.p>
 
-                <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">4. Hak Pengguna</h2>
-                <p className="mb-4 text-[#34364a]">
-                    Anda memiliki hak untuk mengakses, memperbarui, atau menghapus informasi pribadi
-                    Anda yang disimpan oleh kami. Jika Anda memiliki pertanyaan atau permintaan terkait
-                    data pribadi, silakan hubungi kami.
-                </p>
+          {sections.map((section, index) => (
+            <motion.div key={section.title} variants={itemVariants}>
+              <h2 className="text-2xl font-bold text-[#34364a] mt-12 mb-4 flex items-center">
+                <span className="text-blue-600 mr-3">{index + 1}.</span>
+                {section.title}
+              </h2>
+              <p className="text-[#34364a]/80 leading-relaxed">
+                {section.content}
+              </p>
+            </motion.div>
+          ))}
 
-                <h2 className="text-2xl text-[#34364a] font-semibold mt-8 mb-2">5. Perubahan Kebijakan</h2>
-                <p className="mb-4 text-[#34364a]">
-                    Kami dapat memperbarui kebijakan privasi ini dari waktu ke waktu. Setiap perubahan
-                    akan diinformasikan melalui aplikasi atau website kami.
-                </p>
-
-                <p className="mt-8 text-sm text-gray-500">
-                    Terakhir diperbarui: April 2025
-                </p>
-            </div>
-        </div>
-    );
+          <motion.p 
+            className="mt-12 text-sm text-[#34364a]/60 border-t pt-8"
+            variants={itemVariants}
+          >
+            Terakhir diperbarui: April 2025
+          </motion.p>
+        </motion.div>
+      </motion.div>
+    </div>
+  );
 };
+
+const sections = [
+  {
+    title: "Informasi yang Kami Kumpulkan",
+    content: "Kami dapat mengumpulkan informasi seperti foto yang Anda unggah, preferensi template, serta data teknis seperti jenis perangkat dan browser yang digunakan. Kami tidak mengumpulkan informasi pribadi yang sensitif seperti nama lengkap atau alamat kecuali secara eksplisit diberikan oleh pengguna."
+  },
+  {
+    title: "Penggunaan Informasi",
+    content: "Informasi yang dikumpulkan digunakan untuk meningkatkan layanan, menyediakan pengalaman pengguna yang lebih personal, serta untuk keperluan analitik internal. Kami tidak menjual atau membagikan informasi pribadi Anda kepada pihak ketiga."
+  },
+  {
+    title: "Keamanan Data",
+    content: "Kami menggunakan langkah-langkah keamanan teknis dan organisasi untuk melindungi data Anda dari akses yang tidak sah, kehilangan, atau pengubahan."
+  },
+  {
+    title: "Hak Pengguna",
+    content: "Anda memiliki hak untuk mengakses, memperbarui, atau menghapus informasi pribadi Anda yang disimpan oleh kami. Jika Anda memiliki pertanyaan atau permintaan terkait data pribadi, silakan hubungi kami."
+  },
+  {
+    title: "Perubahan Kebijakan",
+    content: "Kami dapat memperbarui kebijakan privasi ini dari waktu ke waktu. Setiap perubahan akan diinformasikan melalui aplikasi atau website kami."
+  }
+];
 
 export default PrivacyPolicy;
