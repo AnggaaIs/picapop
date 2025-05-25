@@ -255,6 +255,7 @@ export default function PhotoSession() {
     if (isCapturing) return;
     setCapturedImages([]);
     setProcessedImages(null);
+    setAppliedImages([]);
     setIsCapturing(true);
 
     for (let i = 0; i < stripCount; i++) {
@@ -337,31 +338,33 @@ export default function PhotoSession() {
             applyFilterToAllImages={applyFilterToAllImages}
           />
 
-          <div className="mt-6">
+          {/* <div className="mt-6">
             <div className="flex justify-center gap-4">
               <button
                 onClick={() => {
                   setMode("template");
                   setStripCount(3);
                 }}
-                className={`w-full py-2 tracking-wide text-sm rounded-xl font-bold transition-all ${mode === "template"
-                  ? "bg-green-600 text-white"
-                  : "bg-gray-200 hover:bg-gray-300"
-                  }`}
+                className={`w-full py-2 tracking-wide text-sm rounded-xl font-bold transition-all ${
+                  mode === "template"
+                    ? "bg-green-600 text-white"
+                    : "bg-gray-200 hover:bg-gray-300"
+                }`}
               >
                 Template
               </button>
               <button
                 onClick={() => setMode("custom")}
-                className={`w-full py-2 tracking-wide text-sm rounded-xl font-bold transition-all ${mode === "custom"
-                  ? "bg-green-600 text-white"
-                  : "bg-gray-200 hover:bg-gray-300"
-                  }`}
+                className={`w-full py-2 tracking-wide text-sm rounded-xl font-bold transition-all ${
+                  mode === "custom"
+                    ? "bg-green-600 text-white"
+                    : "bg-gray-200 hover:bg-gray-300"
+                }`}
               >
                 Custom
               </button>
             </div>
-          </div>
+          </div> */}
 
           <div className="flex flex-wrap gap-2 mt-2">
             <button

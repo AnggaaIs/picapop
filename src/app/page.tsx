@@ -23,22 +23,13 @@ export default function Home() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.15 }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.5 }
-    }
+      transition: { staggerChildren: 0.15 },
+    },
   };
 
   return (
     <div className="bg-gradient-to-b from-white to-[#f6f8fd]">
-      <motion.div 
+      <motion.div
         className="flex justify-center flex-col items-center px-10 pt-12 min-h-[80vh]"
         variants={containerVariants}
         initial="hidden"
@@ -53,7 +44,11 @@ export default function Home() {
               Pilih template, ambil foto, dan bagikan hasilnya dalam sekejap!
             </p>
 
-            <Button size="sm" className="mt-10 md:w-1/2 max-w-[250px]" onClick={() => router.push('/getstarted')}>
+            <Button
+              size="sm"
+              className="mt-10 md:w-1/2 max-w-[250px]"
+              onClick={() => router.push("/getstarted")}
+            >
               Cobain Sekarang!
             </Button>
           </div>
@@ -92,7 +87,7 @@ export default function Home() {
         </div>
       </motion.div>
 
-      <motion.section 
+      <motion.section
         className="bg-white"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -119,7 +114,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <motion.section 
+      <motion.section
         className="bg-[#f6f8fd]"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -145,7 +140,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <motion.div 
+      <motion.div
         className="bg-white flex flex-col items-center p-10 mt-20 rounded-3xl"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -153,7 +148,9 @@ export default function Home() {
         transition={{ duration: 0.5 }}
       >
         <div className="flex flex-col items-center max-w-2xl md:p-5 rounded-xl w-full">
-          <h1 className="text-center text-4xl font-bold text-[#34364a]">Template Foto</h1>
+          <h1 className="text-center text-4xl font-bold text-[#34364a]">
+            Template Foto
+          </h1>
           <p className="text-center text-base text-[#34364a]/80 mt-2">
             Kami menyediakan beberapa template foto yang bisa kamu gunakan
           </p>
@@ -168,7 +165,9 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 className="items-center bg-white py-5 px-2 flex-col justify-around flex w-full transition-all ease rounded-xl"
               >
-                <p className="mb-4 text-center text-[#34364a] font-bold text-sm">{template.label}</p>
+                <p className="mb-4 text-center text-[#34364a] font-bold text-sm">
+                  {template.label}
+                </p>
                 <Image
                   className="rounded-md"
                   src={`/template/${template.filename}`}
@@ -182,7 +181,11 @@ export default function Home() {
 
           <div className="relative w-full mb-2">
             <div className="left-0 z-[6] h-[350px] -top-45 w-full items-center justify-center flex from-[#f6f8fd] via-[#f6f8fd] bg-gradient-to-t to-transparent absolute">
-              <Button size="sm" className="md:w-1/2 w-full max-w-[550px]" onClick={() => router.push("/templates")}>
+              <Button
+                size="sm"
+                className="md:w-1/2 w-full max-w-[550px]"
+                onClick={() => router.push("/templates")}
+              >
                 Lihat semua template
               </Button>
             </div>
