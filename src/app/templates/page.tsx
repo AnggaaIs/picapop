@@ -14,58 +14,66 @@ export default function Template() {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.6,
         ease: "easeOut"
       }
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-[#f6f8fd]">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-[#34364a]/[0.02] -z-1" />
+    <div className="min-h-screen overflow-x-hidden bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-100/50">
 
+      {/* Hero Section - More Compact */}
+      <div className="relative overflow-hidden">
         <motion.div
-          className="container mx-auto px-4 py-16 sm:py-24"
+          className="container mx-auto px-4 py-12 sm:py-16 max-w-full"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <div className="text-center max-w-3xl mx-auto">
+          <div className="text-center max-w-2xl mx-auto">
+            <motion.div
+              className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-medium mb-4"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              🎨 Koleksi Template
+            </motion.div>
+
             <motion.h1
               variants={itemVariants}
-              className="text-4xl md:text-5xl font-extrabold text-[#34364a] mb-6"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4"
             >
-              Template Foto
+              <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                Template Foto
+              </span>{" "}
+              Terbaik
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
-              className="text-lg text-[#34364a]/80 mb-8"
+              className="text-sm sm:text-base text-gray-600 mb-6 leading-relaxed"
             >
-              Pilih template yang sesuai dengan gayamu dan buat momen spesialmu
-              lebih berkesan
+              Pilih template yang sesuai dengan gayamu dan buat momen spesialmu lebih berkesan
             </motion.p>
-
-
           </div>
         </motion.div>
       </div>
 
       {/* Templates Grid Section */}
       <motion.div
-        className="container mx-auto px-4 pb-20"
-        initial={{ opacity: 0, y: 20 }}
+        className="relative container mx-auto px-4 pb-16 overflow-x-hidden max-w-full"
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.5 }}
+        transition={{ delay: 0.3, duration: 0.6 }}
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto overflow-x-hidden">
           <TemplateList />
         </div>
       </motion.div>

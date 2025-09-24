@@ -29,9 +29,9 @@ export default function Button({
   const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-300 ease-in-out rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400/50 disabled:opacity-50 disabled:cursor-not-allowed";
 
   const variants = {
-    default: "bg-blue-500 text-white hover:bg-blue-600 shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.65)] border border-blue-400",
-    outline: "border-2 border-blue-500 text-blue-500 hover:bg-blue-50 shadow-[0_0_10px_rgba(59,130,246,0.3)] hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]",
-    ghost: "text-blue-500 hover:bg-blue-50 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)]"
+    default: "bg-emerald-500 text-white hover:bg-emerald-600 shadow-md hover:shadow-lg border border-emerald-400",
+    outline: "border-2 border-emerald-500 text-emerald-500 hover:bg-emerald-50 shadow-sm hover:shadow-md",
+    ghost: "text-emerald-500 hover:bg-emerald-50 hover:shadow-sm"
   };
 
   const sizes = {
