@@ -102,7 +102,7 @@ export default function TemplateList() {
                     transition={{ duration: 0.2 }}
                   >
                     <span className="text-xs font-medium text-gray-800 flex items-center gap-1">
-                      👁️ Preview
+                      Preview
                     </span>
                   </motion.div>
                 </div>

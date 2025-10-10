@@ -43,14 +43,14 @@ export default function Template() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
             >
-              🎨 Koleksi Template
+              Koleksi Template Foto Strip
             </motion.div>
 
             <motion.h1
               variants={itemVariants}
               className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4"
             >
-              <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+              <span className="text-emerald-500">
                 Template Foto
               </span>{" "}
               Terbaik

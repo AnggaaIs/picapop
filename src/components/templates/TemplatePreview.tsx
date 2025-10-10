@@ -1,7 +1,7 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { X, Download, Share2, Heart } from "lucide-react";
+import { X, Download, Share2, Heart, Camera } from "lucide-react";
 import { useEffect, useState } from "react";
 import Toast from "../Toast";
 
@@ -102,7 +102,7 @@ export default function TemplatePreview({ isOpen, onClose, template }: TemplateP
 
   const handleFavorite = () => {
     // This could be connected to a favorites system later
-    showToast('Template ditambahkan ke favorit! (Coming Soon)', 'info');
+    showToast('(Coming Soon)', 'info');
   };
 
   const toggleZoom = () => {
@@ -140,8 +140,10 @@ export default function TemplatePreview({ isOpen, onClose, template }: TemplateP
             <div className="relative bg-gradient-to-r from-emerald-50 to-teal-50 p-3 sm:p-4 border-b border-gray-100">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-xs sm:text-sm font-bold">🎨</span>
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gray-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-xs sm:text-sm font-bold">
+                      <Camera className="w-4 h-4 sm:w-5 sm:h-5" />
+                    </span>
                   </div>
                   <div className="min-w-0 flex-1">
                     <h2 className="text-sm sm:text-lg font-bold text-gray-900 truncate">{template.label}</h2>
@@ -208,7 +210,7 @@ export default function TemplatePreview({ isOpen, onClose, template }: TemplateP
                   {/* Zoom Controls */}
                   <div className="absolute bottom-3 right-3 flex gap-2">
                     <div className="bg-black/70 text-white px-2 py-1 rounded-lg text-xs flex items-center gap-1 opacity-80 hover:opacity-100 transition-opacity">
-                      {isZoomed ? '🔍➖' : '🔍➕'} {isZoomed ? 'Zoom Out' : 'Zoom In'}
+                       {isZoomed ? 'Zoom Out' : 'Zoom In'}
                     </div>
                   </div>
                 </motion.div>
@@ -245,14 +247,6 @@ export default function TemplatePreview({ isOpen, onClose, template }: TemplateP
                     <div>
                       <h3 className="text-sm font-semibold text-gray-900 mb-2">Fitur</h3>
                       <div className="space-y-2">
-                        {/* <div className="flex items-center gap-2 text-sm text-gray-600">
-                          <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
-                          <span>Upload foto mudah</span>
-                        </div> */}
-                        {/* <div className="flex items-center gap-2 text-sm text-gray-600">
-                          <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
-                          <span>Kustomisasi posisi</span>
-                        </div> */}
                         <div className="flex items-center gap-2 text-sm text-gray-600">
                           <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
                           <span>Download gratis</span>
@@ -267,39 +261,16 @@ export default function TemplatePreview({ isOpen, onClose, template }: TemplateP
 
                   {/* Action Buttons */}
                   <div className="space-y-2 sm:space-y-3">
-                    {/* <Button
-                      onClick={handleUseTemplate}
-                      className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-sm sm:text-base py-2.5 sm:py-3"
-                      size="md"
-                    >
-                      Gunakan Template
-                    </Button> */}
-
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-1 gap-2">
                       <button
-                        onClick={handleDownload}
-                        className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                        onClick={handleFavorite}
+                        className="flex items-center justify-center gap-2 w-full px-3 sm:px-4 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200"
                       >
-                        <Download className="w-3 h-3 sm:w-4 sm:h-4 text-gray-600" />
-                        <span className="text-xs sm:text-sm text-gray-700">Download</span>
-                      </button>
-
-                      <button
-                        onClick={handleShare}
-                        className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200"
-                      >
-                        <Share2 className="w-3 h-3 sm:w-4 sm:h-4 text-gray-600" />
-                        <span className="text-xs sm:text-sm text-gray-700">Share</span>
-                      </button>
+                      <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-gray-600" />
+                      <span className="text-xs sm:text-sm text-gray-700">Favorit</span>
+                    </button>
                     </div>
 
-                    <button 
-                      onClick={handleFavorite}
-                      className="flex items-center justify-center gap-2 w-full px-3 sm:px-4 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200"
-                    >
-                      <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-gray-600" />
-                      <span className="text-xs sm:text-sm text-gray-700">Simpan ke Favorit</span>
-                    </button>
                   </div>
 
                   {/* Tips */}

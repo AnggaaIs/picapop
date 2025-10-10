@@ -56,7 +56,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 overflow-hidden">
+    <footer className="relative  bg-gray-900 via-slate-800 to-gray-900 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/5 to-teal-600/5"></div>
       <div className="absolute top-0 -right-20 w-64 h-64 bg-gradient-to-br from-emerald-400/10 to-teal-500/10 rounded-full blur-3xl"></div>
@@ -78,16 +78,7 @@ export default function Footer() {
                 href="/"
                 className="inline-flex items-center gap-3 group mb-6"
               >
-                <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  {Camera ? (
-                    <Camera className="w-5 h-5 text-white" />
-                  ) : (
-                    <span className="text-white font-bold text-xs">📷</span>
-                  )}
-                </div>
-                <span className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
-                  PicaPop
-                </span>
+                <span className="text-3xl font-bold text-white">PicaPop</span>
               </Link>
               <p className="text-gray-300 text-lg leading-relaxed mb-6 max-w-md">
                 Wujudkan kreativitas Anda dengan template foto yang menarik.
@@ -97,17 +88,17 @@ export default function Footer() {
               {/* Features Highlights */}
               <div className="space-y-3 mb-8">
                 <div className="flex items-center gap-3 text-gray-300">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                  <span className="text-sm">100+ Template Premium</span>
+                  <div className="w-2 h-2 bg-gray-200 rounded-full"></div>
+                  <span className="text-sm">20+ Template Premium</span>
                 </div>
                 <div className="flex items-center gap-3 text-gray-300">
-                  <div className="w-2 h-2 bg-teal-500 rounded-full animate-pulse"></div>
+                  <div className="w-2 h-2 bg-gray-200 rounded-full"></div>
                   <span className="text-sm">
                     Download Gratis Tanpa Watermark
                   </span>
                 </div>
                 <div className="flex items-center gap-3 text-gray-300">
-                  <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></div>
+                  <div className="w-2 h-2 bg-gray-200 rounded-full"></div>
                   <span className="text-sm">Sesi Foto Real-time</span>
                 </div>
               </div>
@@ -120,9 +111,9 @@ export default function Footer() {
                     <motion.a
                       key={index}
                       href={social.href}
-                      className="w-10 h-10 bg-gray-800 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-500 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300 group text-xs font-bold"
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
+                      className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300 group text-xs font-bold"
+                      // whileHover={{ scale: 1.1, y: -2 }}
+                      // whileTap={{ scale: 0.95 }}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
@@ -141,7 +132,7 @@ export default function Footer() {
             {/* Quick Links */}
             <motion.div variants={itemVariants}>
               <h3 className="text-white font-semibold text-lg mb-6 flex items-center gap-2">
-                <div className="w-1 h-6 bg-gradient-to-b from-emerald-500 to-teal-500 rounded-full"></div>
+                {/* <div className="w-1 h-6 bg-gradient-to-b from-emerald-500 to-teal-500 rounded-full"></div> */}
                 Quick Links
               </h3>
               <ul className="space-y-3">
@@ -162,18 +153,12 @@ export default function Footer() {
             {/* Contact Info */}
             <motion.div variants={itemVariants}>
               <h3 className="text-white font-semibold text-lg mb-6 flex items-center gap-2">
-                <div className="w-1 h-6 bg-gradient-to-b from-emerald-500 to-teal-500 rounded-full"></div>
+                {/* <div className="w-1 h-6 bg-gradient-to-b from-emerald-500 to-teal-500 rounded-full"></div> */}
                 Contact
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3 text-gray-300 text-sm">
-                  {Mail ? (
-                    <Mail className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                  ) : (
-                    <span className="text-emerald-400 mt-0.5 flex-shrink-0">
-                      ✉️
-                    </span>
-                  )}
+                  <Mail className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="font-medium">Email</p>
                     <a
@@ -185,63 +170,22 @@ export default function Footer() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3 text-gray-300 text-sm">
-                  {MapPin ? (
-                    <MapPin className="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0" />
-                  ) : (
-                    <span className="text-teal-400 mt-0.5 flex-shrink-0">
-                      📍
-                    </span>
-                  )}
+                  <MapPin className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="font-medium">Location</p>
                     <p>Indonesia, Bandar Lampung</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 text-gray-300 text-sm">
-                  {Heart ? (
-                    <Heart className="w-4 h-4 text-pink-400 mt-0.5 flex-shrink-0" />
-                  ) : (
-                    <span className="text-pink-400 mt-0.5 flex-shrink-0">
-                      ❤️
-                    </span>
-                  )}
+                  <Heart className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="font-medium">Made with</p>
-                    <p>Love & Dedication</p>
+                    <p>Love</p>
                   </div>
                 </div>
               </div>
             </motion.div>
           </div>
-
-          {/* Newsletter Section */}
-          {/* <motion.div
-            variants={itemVariants}
-            className="mt-12 pt-8 border-t border-gray-700"
-          >
-            <div className="text-center max-w-2xl mx-auto">
-              <h3 className="text-white font-semibold text-xl mb-4">
-                Stay Updated with PicaPop
-              </h3>
-              <p className="text-gray-300 mb-6">
-                Dapatkan template terbaru dan tips fotografi langsung di inbox Anda
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="Your email address"
-                  className="flex-1 px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-colors duration-300"
-                />
-                <motion.button
-                  className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-medium rounded-lg transition-all duration-300 flex items-center gap-2 justify-center"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Subscribe
-                </motion.button>
-              </div>
-            </div>
-          </motion.div> */}
         </motion.div>
 
         {/* Bottom Footer */}
@@ -268,8 +212,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-6 text-sm text-gray-400">
                 <span className="flex items-center gap-2">
-                  Made with <Heart className="w-4 h-4 text-pink-400" /> in
-                  Indonesia
+                  Made with <Heart className="w-4 h-4 text-emerald-400" />
                 </span>
               </div>
             </div>

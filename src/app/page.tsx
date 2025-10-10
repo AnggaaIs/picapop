@@ -28,7 +28,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-100/50 overflow-x-hidden">
+    <div className="bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-100/50 overflow-x-hidden">
       {/* Hero Section */}
       <motion.section
         className="relative overflow-hidden"
@@ -36,48 +36,39 @@ export default function Home() {
         initial="hidden"
         animate="visible"
       >
-        {/* Background Elements - Commented out to prevent overflow */}
-        {/* <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/5 to-teal-600/5"></div>
-        <div className="absolute top-20 -right-20 w-72 h-72 bg-gradient-to-br from-emerald-400/15 to-teal-500/15 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-gradient-to-tr from-green-400/12 to-cyan-400/12 rounded-full blur-3xl"></div> */}
-
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 lg:pt-32 lg:pb-24">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            
             {/* Text Content */}
-            <motion.div 
+            <motion.div
               className="text-center lg:text-left space-y-8"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <div className="space-y-6">
-                <motion.h1 
+                <motion.h1
                   className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                 >
-                  <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                    Satu Klik,
-                  </span>
+                  <span className="">Satu Klik,</span>
                   <br />
-                  <span className="text-gray-900">
-                    Foto Makin Aesthetic!
-                  </span>
+                  <span className="text-gray-900">Foto Makin Aesthetic!</span>
                 </motion.h1>
-                
-                <motion.p 
+
+                <motion.p
                   className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                  Transformasi foto biasa jadi karya seni dalam sekejap! Pilih template, ambil foto, dan bagikan hasilnya dengan mudah.
+                  Transformasi foto biasa jadi karya seni dalam sekejap! Pilih
+                  template, ambil foto, dan bagikan hasilnya dengan mudah.
                 </motion.p>
               </div>
 
-              <motion.div 
+              <motion.div
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -85,30 +76,27 @@ export default function Home() {
               >
                 <Button
                   size="lg"
-                  className="group relative overflow-hidden bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-4 rounded-xl shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                  className="group relative tracking-wide overflow-hidden text-white px-8 py-4 rounded-xl shadow-md transform hover:scale-100 transition-all duration-300"
                   onClick={() => router.push("/getstarted")}
                 >
                   <span className="relative z-10 flex items-center gap-2">
-                    Mulai Sekarang
-                    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                    Gas jepret
                   </span>
                 </Button>
-                
+
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-2 border-gray-300 text-gray-700 hover:border-emerald-500 hover:text-emerald-600 px-8 py-4 rounded-xl transition-all duration-300"
+                  className="border-2  text-gray-700 hover:border-emerald-500 hover:text-emerald-600 px-8 py-4 rounded-xl transition-all duration-300"
                   onClick={() => router.push("/templates")}
                 >
-                  Lihat Template
+                  List Template
                 </Button>
               </motion.div>
             </motion.div>
 
             {/* Image Showcase */}
-            <motion.div 
+            <motion.div
               className="relative flex justify-center lg:justify-end"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -179,18 +167,6 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent"></div>
                 </motion.div>
-
-                {/* Floating Elements */}
-                <motion.div 
-                  className="absolute top-4 left-1/2 w-4 h-4 sm:w-6 sm:h-6 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full opacity-50"
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                />
-                <motion.div 
-                  className="absolute bottom-8 left-4 sm:left-8 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-green-500 to-cyan-500 rounded-full opacity-40"
-                  animate={{ y: [0, -15, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                />
               </div>
             </motion.div>
           </div>
@@ -208,39 +184,38 @@ export default function Home() {
         {/* Background Pattern */}
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-white"></div>
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-px h-32 bg-gradient-to-b from-gray-300 to-transparent"></div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center mb-16 lg:mb-20"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <motion.h2 
+            <motion.h2
               className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                Kolaborasi
-              </span>{" "}
-              yang Menginspirasi
+              <span className="text-emerald-500">Kolaborasi</span> yang
+              Menginspirasi
             </motion.h2>
-            <motion.p 
+            <motion.p
               className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Bersama mitra terpercaya, kami menghadirkan pengalaman kreatif yang tak terlupakan untuk setiap moment berharga Anda
+              Bersama mitra terpercaya, kami menghadirkan pengalaman kreatif
+              yang tak terlupakan untuk setiap moment berharga Anda
             </motion.p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="relative"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -248,7 +223,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             {/* Partners Container with Modern Card Design */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 shadow-md p-8 lg:p-12">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 p-8 lg:p-12">
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-items-center">
                 <PartnersItems />
               </div>
@@ -269,12 +244,8 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.08),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(20,184,166,0.08),transparent_50%)]"></div>
-        
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center mb-16 lg:mb-20"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -282,16 +253,16 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <motion.div
-              className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-100 text-emerald-800 text-sm font-medium mb-6"
+              className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-100 text-emerald-800 text-sm tracking-wide font-medium mb-6"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              ✨ Mengapa PicaPop?
+              Kenapa harus PicaPop?
             </motion.div>
-            
-            <motion.h2 
+
+            <motion.h2
               className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -300,24 +271,23 @@ export default function Home() {
             >
               <span className="text-gray-900">Pose Ngawur,</span>
               <br />
-              <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                Hasil Tetap Keren!
-              </span>
+              <span className="text-emerald-600">Hasil Tetap Keren!</span>
             </motion.h2>
-            
-            <motion.p 
+
+            <motion.p
               className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Kamu yang kaku depan kamera? Nggak masalah! Di PicaPop, asal jepret aja. 
-              Sisanya biar template lucu kami yang bantu kamu tampil memukau
+              Kamu yang kaku depan kamera? Nggak masalah! Di PicaPop, asal
+              jepret aja. Sisanya biar template lucu kami yang bantu kamu tampil
+              memukau
             </motion.p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -337,13 +307,8 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-50/50 to-white"></div>
-        <div className="absolute top-1/2 left-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-gradient-to-br from-emerald-100/30 to-teal-100/30 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 sm:w-36 sm:h-36 lg:w-48 lg:h-48 bg-gradient-to-br from-green-100/30 to-cyan-100/30 rounded-full blur-2xl"></div>
-
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center mb-16 lg:mb-20"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -351,40 +316,38 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <motion.div
-              className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-800 text-sm font-medium mb-6"
+              className="inline-flex tracking-wide items-center px-4 py-2 rounded-full bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-800 text-sm font-medium mb-6"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              🎨 Koleksi Eksklusif
+              Koleksi Eksklusif
             </motion.div>
 
-            <motion.h2 
+            <motion.h2
               className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                Template Foto
-              </span>{" "}
-              Terbaik
+              <span className="text-emerald-600">Template Foto</span> Terbaik
             </motion.h2>
-            
-            <motion.p 
+
+            <motion.p
               className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Pilihan template berkualitas tinggi yang siap membuat foto Anda tampil lebih menarik dan berkesan
+              Pilihan template berkualitas tinggi yang siap membuat foto Anda
+              tampil lebih menarik dan berkesan
             </motion.p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="relative mb-16"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -399,15 +362,15 @@ export default function Home() {
                   initial={{ opacity: 0, y: 30, scale: 0.9 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ 
-                    duration: 0.6, 
+                  transition={{
+                    duration: 0.6,
                     delay: index * 0.1,
-                    ease: "easeOut"
+                    ease: "easeOut",
                   }}
-                  whileHover={{ 
+                  whileHover={{
                     y: -8,
                     scale: 1.02,
-                    transition: { duration: 0.3 }
+                    transition: { duration: 0.3 },
                   }}
                   className="group relative bg-white rounded-2xl border border-gray-200/50 shadow-md hover:shadow-lg transition-all duration-500 overflow-hidden"
                 >
@@ -420,7 +383,7 @@ export default function Home() {
                       className="object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
+
                     {/* Overlay Content */}
                     <div className="absolute inset-0 flex items-end justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                       <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2 mb-4 mx-4">
@@ -437,21 +400,21 @@ export default function Home() {
                       {template.label}
                     </h3>
                     <div className="flex items-center justify-center">
-                      <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
-                        ✨ Premium
+                      <span className="tracking-wider inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        Premium
                       </span>
                     </div>
                   </div>
 
                   {/* Hover Border Effect */}
-                  <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-emerald-200 transition-colors duration-300"></div>
+                  {/* <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-emerald-200 transition-colors duration-300"></div> */}
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
           {/* CTA Section */}
-          <motion.div 
+          <motion.div
             className="text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -461,22 +424,39 @@ export default function Home() {
             <div className="relative inline-block">
               <Button
                 size="lg"
-                className="group bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-12 py-4 rounded-xl shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                className="group text-white px-12 py-4 rounded-xl transition-all duration-300"
                 onClick={() => router.push("/templates")}
               >
                 <span className="flex items-center gap-3">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                    />
                   </svg>
-                  Jelajahi Semua Template
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  Liat semua template yuk
+                  <svg
+                    className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
                   </svg>
                 </span>
               </Button>
-              
-              {/* Background decoration */}
-              {/* <div className="absolute -inset-4 bg-gradient-to-r from-emerald-600/15 to-teal-600/15 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
             </div>
           </motion.div>
         </div>
