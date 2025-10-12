@@ -76,12 +76,11 @@ export default function GetStarted() {
             className="mb-8"
           >
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-100 text-emerald-800 text-sm font-medium mb-6">
-              <Sparkles className="w-4 h-4 mr-2" />
               Siap Memulai Sesi Foto?
             </div>
             
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+              <span className="text-emerald-600">
                 Panduan
               </span>{" "}
               Sesi Foto
@@ -130,9 +129,8 @@ export default function GetStarted() {
             {/* Rule 1 */}
             <motion.div
               className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-all duration-300 group"
-              whileHover={{ y: -5, scale: 1.02 }}
             >
-              <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-300">
                 <Clock className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">3 Detik</h3>
@@ -145,9 +143,8 @@ export default function GetStarted() {
             {/* Rule 2 */}
             <motion.div
               className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-all duration-300 group"
-              whileHover={{ y: -5, scale: 1.02 }}
             >
-              <div className="w-12 h-12 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-12 h-12 bg-cyan-500 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-300">
                 <Camera className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">3 Foto</h3>
@@ -160,9 +157,8 @@ export default function GetStarted() {
             {/* Rule 3 */}
             <motion.div
               className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-all duration-300 group"
-              whileHover={{ y: -5, scale: 1.02 }}
             >
-              <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-300">
                 <Sparkles className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Gaya Terbaik</h3>
@@ -176,7 +172,7 @@ export default function GetStarted() {
           {/* Tips Section */}
           <motion.div
             variants={itemVariants}
-            className="bg-gradient-to-r from-emerald-100 to-teal-100 rounded-2xl p-6 mb-8 border border-emerald-200"
+            className="bg-emerald-200 rounded-2xl p-6 mb-8 border border-emerald-200"
           >
             <div className="flex items-center gap-2 mb-4">
               <Info className="w-5 h-5 text-emerald-600" />
@@ -210,7 +206,7 @@ export default function GetStarted() {
             <Button 
               onClick={handleStart}
               disabled={isStarting}
-              className={`bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 group ${isStarting ? 'opacity-75 cursor-not-allowed' : ''}`}
+              className={`bg--600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 group ${isStarting ? 'opacity-75 cursor-not-allowed' : ''}`}
               size="lg"
             >
               {isStarting ? (
