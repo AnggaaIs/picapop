@@ -7,10 +7,12 @@ export default function HeaderLayout({
   devices,
   selectedDeviceId,
   handleCameraSelect,
+  tipe_layout = "photosession",
 }: {
   error: string | null;
   devices: MediaDeviceInfo[];
   selectedDeviceId: string | undefined;
+  tipe_layout?: "photosession" | "instastory";
   handleCameraSelect: (deviceId: string) => void;
   countdown: string | number | null;
 }) {
@@ -19,7 +21,7 @@ export default function HeaderLayout({
       {countdown == null ? (
         <div className="pb-5">
           <h2 className="text-3xl tracking-wide text-[#34364a] font-extrabold text-center">
-            Photo Session
+            {tipe_layout === "photosession" ? "Photo Session" : "Insta Story Strip"}
           </h2>
         </div>
       ) : (

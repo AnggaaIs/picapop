@@ -188,7 +188,7 @@ export default function PreviewCard({
         )}
 
         {!isApplied && onApply && (
-          <Button onClick={onApply} className=" w-full">
+          <Button onClick={onApply} className="text-sm w-full">
             Pakai template
           </Button>
         )}
@@ -196,7 +196,7 @@ export default function PreviewCard({
         {isApplied && !link && (
           <Button
             onClick={handleGetLink}
-            className={`btn w-full ${loading ? "btn-disabled" : ""}`}
+            className={`btn w-full text-sm ${loading ? "btn-disabled" : ""}`}
             disabled={loading}
           >
             {loading ? "Menyimpan..." : "Dapatkan link"}
@@ -208,7 +208,7 @@ export default function PreviewCard({
             <a
               href={image}
               download={`PicaPop-${index + 1}.png`}
-              className="btn btn-outline border border-blue-700 hover:bg-[#34364a] hover:text-white hover:border-[#34364a] text-[#34364a] rounded-lg w-full"
+              className="btn text-sm btn-outline border border-blue-700 hover:bg-[#34364a] hover:text-white hover:border-[#34364a] text-[#34364a] rounded-lg w-full"
             >
               Download
             </a>
