@@ -166,24 +166,25 @@ export default function PreviewCard({
 
       <div className="p-3 bg-white space-y-2">
         {isApplied && link && (
-          <div className="flex space-x-2 items-center">
+          <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
             <input
               type="text"
               value={getLinkUrl()}
               readOnly
-              className="w-full p-2 bg-base-200 border rounded-md"
+              className="w-full p-2 bg-base-200 border rounded-md text-sm"
             />
             <button
               onClick={handleCopyLink}
-              className="btn btn-ghost text-[#34364a] p-2"
+              className="btn btn-primary min-w-[100px] sm:min-w-[auto] px-4 py-2 whitespace-nowrap"
               title="Copy to clipboard"
             >
               <ClipboardCopy size={18} />
-              <CopyAlert
-                show={showCopyAlert}
-                onClose={() => setShowCopyAlert(false)}
-              />
+              <span className="ml-2">Copy</span>
             </button>
+            <CopyAlert
+              show={showCopyAlert}
+              onClose={() => setShowCopyAlert(false)}
+            />
           </div>
         )}
 

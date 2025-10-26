@@ -129,7 +129,6 @@
 //   },
 // };
 
-
 // export default function RootLayout({
 //   children,
 // }: Readonly<{
@@ -162,7 +161,7 @@ import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
 import { Suspense } from "react";
 import { Analytics } from "@vercel/analytics/next";
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Script from "next/script";
@@ -174,7 +173,7 @@ const onest = Outfit({
 export const metadata: Metadata = {
   title: {
     template: "%s | PicaPop - Fun & Creative Photo Booth for Unique Selfies",
-    default: "PicaPop - Fun & Creative Photo Booth for Unique Selfies"
+    default: "PicaPop - Fun & Creative Photo Booth for Unique Selfies",
   },
   description:
     "Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share!",
@@ -186,9 +185,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-snippet': -1,
-      'max-image-preview': 'large',
-      'max-video-preview': -1
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
     },
   },
   keywords: [
@@ -240,27 +239,27 @@ export const metadata: Metadata = {
     "PicaPop selfie editor",
     "online camera app for selfies",
     "photo booth collage maker",
-    "top selfie booth 2025"
+    "top selfie booth 2025",
   ],
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
   },
-  category: 'Community',
+  category: "Community",
   verification: {
-    google: 'google',
-    yandex: 'yandex',
-    yahoo: 'yahoo',
+    google: "google",
+    yandex: "yandex",
+    yahoo: "yahoo",
   },
   openGraph: {
     title: {
       template: "%s | PicaPop - Fun & Creative Photo Booth for Unique Selfies",
-      default: "PicaPop - Fun & Creative Photo Booth for Unique Selfies"
+      default: "PicaPop - Fun & Creative Photo Booth for Unique Selfies",
     },
     locale: "id_ID",
-    type: 'website',
-    siteName: 'PicaPop',
-    url: 'https://picapop.my.id/',
+    type: "website",
+    siteName: "PicaPop",
+    url: "https://picapop.my.id/",
     description:
       "Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share!",
     // images: [
@@ -279,7 +278,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: {
       template: "%s | PicaPop",
-      default: "PicaPop - Fun & Creative Photo Booth for Unique Selfies"
+      default: "PicaPop - Fun & Creative Photo Booth for Unique Selfies",
     },
     description:
       "Capture stunning selfies instantly with PicaPop! Choose from stylish photostrip templates, add filters, and save your perfect shots. No app download needed – just snap, style, and share!",
@@ -293,7 +292,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light" className="light scroll-smooth" suppressHydrationWarning>
+    <html
+      lang="en"
+      data-theme="light"
+      className="light scroll-smooth"
+      suppressHydrationWarning
+    >
       <body
         className={`
           ${onest.className} 
@@ -309,10 +313,7 @@ export default function RootLayout({
         <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem>
           <Suspense fallback={null}>
             <div className="flex flex-col min-h-screen">
-              <Navbar />
-              <main className="flex-grow pt-20">
-                {children}
-              </main>
+              <main className="flex-grow">{children}</main>
               <Footer />
             </div>
           </Suspense>

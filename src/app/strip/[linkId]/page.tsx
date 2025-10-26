@@ -3,11 +3,13 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import Navbar from "@/components/Navbar";
 
 export default function StripPageClient() {
   const { linkId } = useParams<{ linkId: string }>();
   const router = useRouter();
   const [imageBase64, setImageBase64] = useState<string | null>(null);
+  const [createdAt, setCreatedAt] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -27,6 +29,7 @@ export default function StripPageClient() {
 
         const data = await res.json();
         setImageBase64(data?.data?.imageBase64 || null);
+        setCreatedAt(data?.data?.createdAt || null);
       } catch (error) {
         console.error("[FETCH_IMAGE_ERROR]", error);
         // router.replace("/404");
@@ -41,8 +44,9 @@ export default function StripPageClient() {
   }, [linkId, router]);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-6 pb-20 bg-base-200">
-      <div className="bg-base-100 rounded-lg p-6 w-full max-w-sm">
+    <main className="min-h-screen flex flex-col items-center justify-center p-6 pb-20 bg-base-200 pt-32">
+      <Navbar />
+      <div className="bg-base-100 rounded-lg p-6 w-full max-w-sm mt-6">
         <h1 className="text-xl font-bold mb-4 text-center">Shared Image</h1>
 
         {loading ? (
@@ -58,6 +62,21 @@ export default function StripPageClient() {
               alt="Shared"
               className="w-full max-w-3xl max-h-[80vh] object-contain rounded-lg border shadow"
             />
+            {createdAt && (
+              <div className="mt-3 text-center text-sm text-gray-500">
+                <p>📅 Diambil pada:</p>
+                <p className="font-medium text-gray-700">
+                  {new Date(createdAt).toLocaleString("id-ID", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </p>
+              </div>
+            )}
             <div className="mt-4 text-center">
               <a
                 href={imageBase64}

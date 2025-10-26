@@ -1,6 +1,7 @@
-'use client'
+"use client";
 import { motion } from "framer-motion";
 import TemplateList from "@/components/templates/TemplateList";
+import Navbar from "@/components/Navbar";
 
 export default function Template() {
   const containerVariants = {
@@ -8,9 +9,9 @@ export default function Template() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
@@ -20,14 +21,14 @@ export default function Template() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-100/50">
-
+    <div className="min-h-screen overflow-x-hidden bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-100/50 pt-28">
+      <Navbar />
       {/* Hero Section - More Compact */}
       <div className="relative overflow-hidden">
         <motion.div
@@ -50,17 +51,15 @@ export default function Template() {
               variants={itemVariants}
               className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4"
             >
-              <span className="text-emerald-500">
-                Template Foto
-              </span>{" "}
-              Terbaik
+              <span className="text-emerald-500">Template Foto</span> Terbaik
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
               className="text-sm sm:text-base text-gray-600 mb-6 leading-relaxed"
             >
-              Pilih template yang sesuai dengan gayamu dan buat momen spesialmu lebih berkesan
+              Pilih template yang sesuai dengan gayamu dan buat momen spesialmu
+              lebih berkesan
             </motion.p>
           </div>
         </motion.div>

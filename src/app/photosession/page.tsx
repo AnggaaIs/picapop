@@ -13,6 +13,7 @@ import MainLayout from "@/components/photosession/main-layout";
 import HeaderLayout from "@/components/photosession/header-layout";
 import { motion } from "framer-motion";
 import CustomPhotobox from "@/components/photosession/custom-photobox";
+import Navbar from "@/components/Navbar";
 
 export default function PhotoSession() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -310,7 +311,8 @@ export default function PhotoSession() {
 
   return (
     <Suspense>
-      <div className="flex items-center justify-center flex-col mb-25 p-5 pt-15">
+      <Navbar />
+      <div className="flex items-center justify-center flex-col mb-25 p-5 pt-32">
         <div className="max-w-3xl">
           <HeaderLayout
             error={error}

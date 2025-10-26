@@ -32,6 +32,7 @@ export async function GET(
     return NextResponse.json(
       createResponse(200, "Image retrieved successfully", {
         imageBase64: imageDoc.imageBase64,
+        createdAt: imageDoc.createdAt,
       })
     );
   } catch (error) {

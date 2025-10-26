@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
 
 export default function GetStarted() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-100/50 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-100/50 overflow-hidden pt-10">
+      <Navbar />
       <div className="relative flex flex-col justify-center items-center min-h-screen px-4 py-12">
         <div className="w-full max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-100 text-emerald-800 text-sm font-medium mb-6">

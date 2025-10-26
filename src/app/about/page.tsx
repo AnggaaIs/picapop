@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Camera, CloudLightning, CloudMoonRain } from "lucide-react";
+import Navbar from "@/components/Navbar";
 
 const teamMembers = [
   {
@@ -49,7 +50,8 @@ export default function AboutPage() {
   };
 
   return (
-    <main className="relative from-slate-50 via-emerald-50/30 to-teal-100/50 overflow-hidden">
+    <main className="relative from-slate-50 via-emerald-50/30 to-teal-100/50 overflow-hidden pt-28">
+      <Navbar />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <motion.div
           variants={containerVariants}
@@ -176,10 +178,7 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                <span className="text-emerald-600">
-                  Tim
-                </span>{" "}
-                dibalik PicaPop
+                <span className="text-emerald-600">Tim</span> dibalik PicaPop
               </motion.h2>
 
               <motion.p

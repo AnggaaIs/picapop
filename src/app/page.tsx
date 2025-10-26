@@ -2,6 +2,7 @@
 import Button from "@/components/button";
 import FeaturesLayout from "@/components/features.layout";
 import PartnersItems from "@/components/partner.items";
+import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -28,7 +29,8 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-100/50 overflow-x-hidden">
+    <div className="bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-100/50 overflow-x-hidden pt-14">
+      <Navbar />
       {/* Hero Section */}
       <motion.section
         className="relative overflow-hidden"

@@ -3,7 +3,7 @@ import { connectToDatabase } from "@/lib/mongodb";
 import DataImage from "@/models/data-image";
 import { DateTime } from "luxon";
 
-const ACCESS_TOKEN = process.env.NEXT_PUBLIC_SAVE_IMAGE_TOKEN;
+const ACCESS_TOKEN = process.env.EXPIRED_DELETE_IMAGE_TOKEN;
 
 export async function GET(req: Request) {
   const token = req.headers.get("Authorization")?.split(" ")[1];

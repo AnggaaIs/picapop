@@ -1,5 +1,6 @@
 "use client";
 import Button from "@/components/button";
+import Navbar from "@/components/Navbar";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
@@ -43,7 +44,8 @@ export default function Strip() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-100/50 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-100/50 overflow-hidden pt-28">
+      <Navbar />
       <div className="relative flex flex-col justify-center items-center min-h-screen px-4 py-12">
         <motion.div
           className="w-full max-w-4xl mx-auto text-center"
